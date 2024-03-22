@@ -27,6 +27,22 @@ Alternatively, to deploy and test it elsewhere you can:
 npm run build
 ```
 
+## Backend Setup and Initialization:
+Navigate to the backend folder and install necessary packages using:
+```
+npm install
+```
+
+Run the Express.JS server using:
+```
+npm start
+```
+
+Access the server by using the following local address in a browser:
+```
+localhost:3000
+```
+
 >[!IMPORTANT]
 > Nothing yet!
 
