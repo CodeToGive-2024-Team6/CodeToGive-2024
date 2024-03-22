@@ -5,7 +5,7 @@
 >This website is currently in beta and bugs will be a-plenty! Please report bugs if you find any!
 
 >[!TIP]
->You can access the deployed website at [website URL here](https://google.com) or follow the following instructions to build and deploy it yourself.
+>You can access the deployed website at [codetogive6.web.app](https://codetogive6.web.app) or follow the following instructions to build and deploy it yourself.
 
 Clone the repo locally to your machine:
 ```
