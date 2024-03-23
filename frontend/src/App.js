@@ -6,6 +6,7 @@ import StartPage from './components/pages/StartPage';
 import ResidentHomePage from './components/pages/resident/ResidentHomePage';
 import CaregiverHomePage from './components/pages/caregiver/CaregiverHomePage';
 import CaregiverSearchPage from './components/pages/caregiver/CaregiverSearchPage';
+import CaregiverResidentPage from './components/pages/caregiver/view_resident_intervention/CaregiverResidentPage';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ const App = () => {
                     <Route path="/resident_homepage" element={<ResidentHomePage />} />
                     <Route path="/caregiver_homepage" element={<CaregiverHomePage />} />
                     <Route path = "/caregiver_search" element = {<CaregiverSearchPage />} />
+                    <Route path = "/caregiver_resident" element = {<CaregiverResidentPage />} />
                     
                 </Routes>
             </div>

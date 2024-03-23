@@ -2,8 +2,10 @@ import React, { useState, useEffect, useMemo } from 'react';
 import './CaregiverSearchPage.css'; // Import CSS file
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import {VscAccount} from  "react-icons/vsc";
+import { useNavigate } from 'react-router-dom';
 
 const CaregiverSearchPage = () => {
+    const navigate = useNavigate();
     const allResidents = useMemo(() => [
         { name: 'Resident 1', house: 'House A' },
         { name: 'Resident 2', house: 'House B' },
@@ -17,6 +19,7 @@ const CaregiverSearchPage = () => {
 
     const handleItemClick = (resident) => {
         console.log(`Clicked on ${resident.name}`);
+        navigate('/caregiver_resident', { state: { resident } });
     };
 
     useEffect(() => {

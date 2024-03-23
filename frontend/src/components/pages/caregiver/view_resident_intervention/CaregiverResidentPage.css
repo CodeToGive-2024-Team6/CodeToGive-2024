@@ -1,0 +1,38 @@
+
+
+.header-bar {
+    width: 100%;
+    height: 200px;
+    background-color: #B0F0FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+}
+
+.circle-icon {
+    position: absolute;
+    margin-top: 200px;
+    /* transform: translateY(-50%); */
+    left: 40px;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background-color: #00AFD7;
+    border-color: white;
+    border-width: 10px;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+
+
+}
+    
+
+
+
+
