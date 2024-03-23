@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './CaregiverHomePage.css'; // Import CSS file
 import { VscAccount } from "react-icons/vsc";
+import { FaAddressBook, FaBuilding, FaFacebookMessenger } from "react-icons/fa";
+import { CgAddR } from "react-icons/cg";
 
 const CaregiverHomePage = () => {
     const appointments = ['Appointment 1: Date and Time', 'Appointment 2: Date and Time', 'Appointment 3: Date and Time'];
@@ -14,17 +16,41 @@ const CaregiverHomePage = () => {
     }, [currentAppointmentIndex, appointments.length]);
 
     return (
-        <div>
-            <div className="header-bar">
-                <h1>Hi! Caregiver Name</h1>
-                <VscAccount 
-                    style={{color: 'white', fontSize: '2em', marginRight: '10px'}}
-                />  
+        <div className="page-layout">
+            <div>
+                <div className="header-bar">
+                    <h1>Hi! Caregiver Name</h1>
+                    <VscAccount 
+                        style={{color: 'white', fontSize: '2em', marginRight: '10px'}}
+                    />  
+                </div>
+                <div className="appointment-view">
+                    <h2>Current Appointment</h2>
+                    <p>{appointments[currentAppointmentIndex]}</p>
+                </div>
+                <div className="grid-view">
+                    <div className="grid-box">
+                        <FaBuilding style={{fontSize: '4em'}}/>
+                        <p>My List of Residents</p>
+                    </div>
+                    <div className="grid-box">
+                        <CgAddR style={{fontSize: '4em'}}/>
+                        <p>Add Resident</p>
+                    </div>
+                    <div className="grid-box">
+                        <FaFacebookMessenger style={{fontSize: '4em'}}/>
+                        <p>Communication</p>
+                    </div>
+                    <div className="grid-box">
+                        <FaAddressBook style={{fontSize: '4em'}}/>
+                        <p>My Resident</p>
+                    </div>
+                </div>
             </div>
-            <div className="appointment-view">
-                <h2>Current Appointment</h2>
-                <p>{appointments[currentAppointmentIndex]}</p>
-            </div>
+            {/* <div className="statistics-view">
+                <div className="statistics-box">Statistics 1</div>
+                <div className="statistics-box">Statistics 2</div>
+            </div> */}
         </div>
     );
 };

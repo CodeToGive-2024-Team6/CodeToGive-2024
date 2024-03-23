@@ -4,7 +4,7 @@
 .header-bar {
     width: 100%;
     height: 50px;
-    background-color: #f8f9fa;
+    background-color: #00AFD7;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,4 +29,41 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     position: absolute;
     left: 0;
+    background-color: #B0F0FF;
 }
+
+/* CaregiverHomePage.css */
+
+/* Grid view */
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 40%;
+    margin: 20px;
+    position: absolute;
+    left: 0;
+    top: calc(30% + 40px); /* Adjust this value as needed */
+}
+
+/* CaregiverHomePage.css */
+
+/* Grid box */
+.grid-box {
+    width: 200px; /* Set width */
+    height: 200px; /* Set height */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color:#00AFD7;
+    display: flex; /* Add this */
+    justify-content: center; /* Add this */
+    align-items: center; /* Add this */
+    flex-direction: column; /* Add this */
+}
+
+
+
+
+
