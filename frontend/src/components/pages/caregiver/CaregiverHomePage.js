@@ -3,6 +3,8 @@ import './CaregiverHomePage.css'; // Import CSS file
 import { VscAccount } from "react-icons/vsc";
 import { FaAddressBook, FaBuilding, FaFacebookMessenger } from "react-icons/fa";
 import { CgAddR } from "react-icons/cg";
+import { Link } from 'react-router-dom';
+
 
 const CaregiverHomePage = () => {
     const appointments = ['Appointment 1: Date and Time', 'Appointment 2: Date and Time', 'Appointment 3: Date and Time'];
@@ -21,7 +23,7 @@ const CaregiverHomePage = () => {
                 <div className="header-bar">
                     <h1>Hi! Caregiver Name</h1>
                     <VscAccount 
-                        style={{color: 'white', fontSize: '2em', marginRight: '10px'}}
+                        style={{color: 'white', fontSize: '2em', marginRight: '50px'}}
                     />  
                 </div>
                 <div className="appointment-view">
@@ -47,10 +49,20 @@ const CaregiverHomePage = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className="statistics-view">
-                <div className="statistics-box">Statistics 1</div>
-                <div className="statistics-box">Statistics 2</div>
-            </div> */}
+            
+            <div className='grid-view-stats'>
+                <div className='statistics-box'>
+                    <h2>Statistics 1</h2>
+                </div>
+
+                <div className='statistics-box'>
+                    <h2>Statistics 2</h2>
+                </div>
+
+
+            </div>
+
+            
         </div>
     );
 };

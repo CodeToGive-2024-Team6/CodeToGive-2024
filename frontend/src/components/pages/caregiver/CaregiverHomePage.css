@@ -66,4 +66,30 @@
 
 
 
+/* grid view for 2 boxes vertical*/
+.grid-view-stats {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    width: 40%;
+    margin: 20px;
+    position: absolute;
+    left: 55%;
+    top: calc(5% + 40px); /* Adjust this value as needed */
+    
+}
 
+/* Statistics box */
+.statistics-box {
+    width: 400px; /* Set width */
+    height: 250px; /* Set height */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color:#00AFD7;
+    display: flex; /* Add this */
+    justify-content: center; /* Add this */
+    align-items: center; /* Add this */
+    flex-direction: column; /* Add this */
+}
