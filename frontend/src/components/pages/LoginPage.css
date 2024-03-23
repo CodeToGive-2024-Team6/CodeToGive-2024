@@ -1,0 +1,43 @@
+/* login page css */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.login-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.login-page input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-page button {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  background-color: #00AFD7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-page button:hover {
+  background-color: #00AFD7;
+}
