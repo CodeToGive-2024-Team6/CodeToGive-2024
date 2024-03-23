@@ -31,10 +31,10 @@ const CaregiverHomePage = () => {
                     <p>{appointments[currentAppointmentIndex]}</p>
                 </div>
                 <div className="grid-view">
-                    <div className="grid-box">
+                    <Link to="/caregiver_search"style={{ textDecoration: 'none', color: 'black' }} className="grid-box">
                         <FaBuilding style={{fontSize: '4em'}}/>
-                        <p>My List of Residents</p>
-                    </div>
+                        <p>Search Facility</p>
+                    </Link>
                     <div className="grid-box">
                         <CgAddR style={{fontSize: '4em'}}/>
                         <p>Add Resident</p>
