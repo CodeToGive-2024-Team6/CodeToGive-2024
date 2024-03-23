@@ -1,6 +1,6 @@
 // HomePage.js
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ResidentHomePage.css'; // Import CSS file
 import { VscAccount } from "react-icons/vsc";
 import { LuGoal } from "react-icons/lu";
@@ -10,6 +10,23 @@ import { FiMessageSquare } from "react-icons/fi";
 //import companyLogo from './company_logo.png';
 
 const HomePage = () => {
+    useEffect(() => {
+        const list = document.querySelectorAll('.list');
+
+        function activeLink() {
+            list.forEach((item) => 
+                item.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        list.forEach((item) =>
+            item.addEventListener('click', activeLink));
+
+        return () => {
+            list.forEach((item) =>
+                item.removeEventListener('click', activeLink));
+        };
+    }, []);
 
     return (
         <div class="navigation">
