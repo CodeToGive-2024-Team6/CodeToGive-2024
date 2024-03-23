@@ -1,19 +1,31 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './CaregiverSearchPage.css'; // Import CSS file
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
+import {VscAccount} from  "react-icons/vsc";
 
 const CaregiverSearchPage = () => {
-    const allResidents = useMemo(() => ['Resident 1', 'Resident 2', 'Resident 3', 'Resident 4'], []); // Use useMemo here
+    const allResidents = useMemo(() => [
+        { name: 'Resident 1', house: 'House A' },
+        { name: 'Resident 2', house: 'House B' },
+        { name: 'Resident 3', house: 'House A' },
+        { name: 'Resident 4', house: 'House C' }
+    ], []);    
     const [searchValue, setSearchValue] = useState('');
     const [displayedResidents, setDisplayedResidents] = useState(allResidents);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10; // Change this to the number of items you want per page
 
+    const handleItemClick = (resident) => {
+        console.log(`Clicked on ${resident.name}`);
+    };
+
     useEffect(() => {
         setDisplayedResidents(
             allResidents.filter(resident =>
-                resident.toLowerCase().includes(searchValue.toLowerCase())
+                resident.name.toLowerCase().includes(searchValue.toLowerCase())
+                || resident.house.toLowerCase().includes(searchValue.toLowerCase())
             )
+        
         );
     }, [searchValue, allResidents]);
 
@@ -22,8 +34,13 @@ const CaregiverSearchPage = () => {
     const currentItems = displayedResidents.slice(indexOfFirstItem, indexOfLastItem);
 
     const renderItems = currentItems.map((resident, index) => (
-        <p key={index}>{resident}</p>
-    ));
+        <div key={index} className="list-item" onClick={() => handleItemClick(resident)}>
+            <VscAccount style={{color: '#00AFD7', fontSize: '2em'}}/>
+            <p>{resident.name}</p>
+            <p>{resident.house}</p>
+            
+        </div>));
+
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(displayedResidents.length / itemsPerPage); i++) {
