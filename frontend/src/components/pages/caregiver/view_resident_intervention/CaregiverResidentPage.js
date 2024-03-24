@@ -4,14 +4,13 @@ import "./CaregiverResidentPage.css"; // Import CSS file
 //import company logo
 import company_logo from "./company_logo.png";
 import {VscAccount} from  "react-icons/vsc";
-
-
 import { LuGoal } from "react-icons/lu";
 import { FaRegBell } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FiMessageSquare } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
+import { Profile } from "./Profile.js";
 
 
 const CaregiverResidentPage = () => {
@@ -50,6 +49,7 @@ const CaregiverResidentPage = () => {
                     <li className={activeContent === 'profile' ? 'list active' : 'list'}>
                         <a href="#" onClick={() => setActiveContent('profile')}>
                             <span class="icon">
+                                <Profile/>
                             <FaRegUser style={{fontSize: '1em'}}/></span>
                             <span class="title">PROFILE</span>
                         </a>
