@@ -54,11 +54,11 @@ const HomePage = () => {
                             <span class="title">REMINDERS</span>
                         </a>
                     </li>
-                    <li className={activeContent === 'resources' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('resources')}>
+                    <li className={activeContent === 'calendar' ? 'list active' : 'list'}>
+                        <a href="#" onClick={() => setActiveContent('calendar')}>
                             <span class="icon">
-                            <FaBook style={{fontSize: '1em'}}/></span>
-                            <span class="title">RESOURCES</span>
+                            <FiCalendar style={{fontSize: '1em'}}/></span>
+                            <span class="title">CALENDAR</span>
                         </a>
                     </li>
                     <li className={activeContent === 'messages' ? 'list active' : 'list'}>
@@ -68,11 +68,11 @@ const HomePage = () => {
                             <span class="title">MESSAGES</span>
                         </a>
                     </li>
-                    <li className={activeContent === 'calendar' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('calendar')}>
+                    <li className={activeContent === 'resources' ? 'list active' : 'list'}>
+                        <a href="#" onClick={() => setActiveContent('resources')}>
                             <span class="icon">
-                            <FiCalendar style={{fontSize: '1em'}}/></span>
-                            <span class="title">CALENDAR</span>
+                            <FaBook style={{fontSize: '1em'}}/></span>
+                            <span class="title">RESOURCES</span>
                         </a>
                     </li>
                 </ul>
@@ -92,10 +92,10 @@ const HomePage = () => {
                         <p>Your reminders content goes here</p>
                     </>
                 )}
-                {activeContent === 'resources' && (
+                {activeContent === 'calendar' && (
                     <>
-                        <h2>Resources</h2>
-                        <p>Your resources content goes here</p>
+                        <h2>Calendar</h2>
+                        <p>Your calendar for daily activities appears here!</p>
                     </>
                 )}
                 {activeContent === 'messages' && (
@@ -104,10 +104,10 @@ const HomePage = () => {
                         <p>Your messages content goes here</p>
                     </>
                 )}
-                {activeContent === 'calendar' && (
+                {activeContent === 'resources' && (
                     <>
-                        <h2>Calendar</h2>
-                        <p>Your calendar for daily activities appears here!</p>
+                        <h2>Resources</h2>
+                        <p>Your resources content goes here</p>
                     </>
                 )}
             </div>
