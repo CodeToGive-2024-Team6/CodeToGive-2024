@@ -21,7 +21,8 @@ export const Profile = () => {
         <div className="page-layout">
             <div>
                 <text>HI</text>
-
+                <h2>Welcome Back, (Caregiver Name) 👋</h2>
+                <p>Your profile information will be displayed here!</p>
             </div>
         </div>
     );

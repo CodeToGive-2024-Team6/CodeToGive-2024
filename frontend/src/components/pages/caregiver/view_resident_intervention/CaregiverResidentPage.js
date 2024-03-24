@@ -109,8 +109,6 @@ const CaregiverResidentPage = () => {
                 {activeContent === 'profile' && (
                     <>
                         <Profile/>
-                        <h2>Welcome Back, (Caregiver Name) 👋</h2>
-                        <p>Your profile information will be displayed here!</p>
                     </>
                 )}
                 {activeContent === 'goals' && (
