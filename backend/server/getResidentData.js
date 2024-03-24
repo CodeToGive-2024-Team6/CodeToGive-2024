@@ -7,6 +7,28 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+
+//function to fetch all resident data 
+async function getResidentsAllData() {
+  const residentsRef = db.collection('residents');
+  const snapshot = await residentsRef.get();
+  
+  if (snapshot.empty) {
+    console.log('No matching documents.');
+    return [];
+  }  
+  const residentsData = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+  
+  return residentsData;
+}
+
+
+
+
+
 async function getResidentsByUserID(userID) {
   const residentsRef = db.collection('residents');
   const snapshot = await residentsRef.where('userID', '==', userID).get();
@@ -165,4 +187,4 @@ async function getFollowupsByUserID(userID) {
 }
 
 
-module.exports = {getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID}
+module.exports = {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID}
