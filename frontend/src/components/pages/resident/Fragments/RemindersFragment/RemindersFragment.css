@@ -5,6 +5,9 @@
     width: auto;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
 
 
 .reminder-item {

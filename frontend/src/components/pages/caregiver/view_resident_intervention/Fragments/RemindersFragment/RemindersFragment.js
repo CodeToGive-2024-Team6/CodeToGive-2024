@@ -20,7 +20,8 @@ function RemindersFragment() {
     const [selectedReminder, setSelectedReminder] = useState(null);
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
     const [showForm, setShowForm] = useState(false);
-    const [isAddButtonClicked, setIsAddButtonClicked] = useState(false);
+    const [isFormOpen, setIsFormOpen] = useState(false);
+
 
     const handleReminderClick = (reminder) => {
         setSelectedReminder(reminder);
@@ -49,12 +50,12 @@ function RemindersFragment() {
     };
 
     useEffect(() => {
-        if (isAddButtonClicked) {
-            document.body.classList.add('blur');
+        if (isFormOpen) {
+            document.body.classList.add('no-scroll');
         } else {
-            document.body.classList.remove('blur');
+            document.body.classList.remove('no-scroll');
         }
-    }, [isAddButtonClicked]);
+    }, [isFormOpen]);
 
     
 
@@ -83,12 +84,12 @@ function RemindersFragment() {
 
                     </div>
                 ))}
-                <button onClick={() => {setShowForm(true);setIsAddButtonClicked(!isAddButtonClicked);} }>Add Reminder</button>
+                <button onClick={() => {setShowForm(true);setIsFormOpen(true)} }>Add Reminder</button>
                 
                 {showForm && (
                     <div className="modal">
                         <div className="modal-content">
-                            <span className="close-button" onClick={() => setShowForm(false)}>&times;</span>
+                            <span className="close-button" onClick={() => {setShowForm(false);setIsFormOpen(false)}}>&times;</span>
                             <form className="form-container" onSubmit={handleFormSubmit}>
                                 <input name="heading" value={newReminder.heading} onChange={handleInputChange} placeholder="Reminder Heading" required />
                                 <input name="meetingInfo" value={newReminder.meetingInfo} onChange={handleInputChange} placeholder="Meeting Info" required />
