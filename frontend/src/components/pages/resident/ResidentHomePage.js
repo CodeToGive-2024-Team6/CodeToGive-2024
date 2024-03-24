@@ -16,6 +16,7 @@ import {
 //import companyLogo from "../../../company_logo.png";
 
 //import fragments
+
 import GoalsFragment from './Fragments/GoalsFragment/GoalsFragment';
 import RemindersFragment from './Fragments/RemindersFragment/RemindersFragment';
 import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ObjectiveCard from '../../../../ObjectiveCard';
 
 function GoalsFragment({ mockObjectives }) {
