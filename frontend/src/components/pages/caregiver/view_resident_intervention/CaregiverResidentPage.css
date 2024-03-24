@@ -140,5 +140,16 @@
     white-space: nowrap;
 }
 
+/* Ensure fragments are aligned next to the navigation bar */
+.fragments-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px; /* Add padding as needed */
+}
+
+
+
+
 
 
