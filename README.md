@@ -32,6 +32,11 @@ Navigate to the backend folder and install necessary packages using:
 ```
 npm install
 ```
+Install chart.js using (This will be required to run this web-app successfully):
+
+```
+npm install chart.js
+```
 
 Run the Express.JS server using:
 ```
