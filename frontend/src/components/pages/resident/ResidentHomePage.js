@@ -7,6 +7,12 @@ import { LuGoal } from 'react-icons/lu';
 import { FaRegBell } from 'react-icons/fa';
 import { FaBook } from 'react-icons/fa';
 import { FiMessageSquare } from 'react-icons/fi';
+import {
+  Bell,
+  CircleUserRound,
+  LibraryBig,
+  MessageSquareText,
+} from 'lucide-react';
 //import companyLogo from "../../../company_logo.png";
 
 //import fragments
@@ -15,126 +21,115 @@ import GoalsFragment from './Fragments/GoalsFragment/GoalsFragment';
 import RemindersFragment from './Fragments/RemindersFragment/RemindersFragment';
 import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
 import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
+import { SideBar, SideBarItem } from '../../SideBar';
 
 const HomePage = () => {
-    const [activeContent, setActiveContent] = useState('goals');
-    const mockObjectives = [
-        {
-            title: 'Maintaining a healthy living environment',
-            description: 'In particular, the bedroom',
-            term: 'Short-term',
-            status: 'Completed',
-            means: '',
-            healthAspects: ['Global Health']
-        },
-        {
-            title: 'Improving consumption habits',
-            description: 'Maintain a routine of consumption by using the appropriate services: transition to use only the prescribed medication (methadone, dilaudid)',
-            term: 'Short-term',
-            status: 'In progress',
-            means: 'Use addiction services and follow established routines (average 4 injections per day)',
-            healthAspects: ['Physical Health', 'Mental health']
-        },
-        {
-            title: 'Maintain medical follow-up with treating teams',
-            description: '',
-            term: 'Short-term',
-            status: 'Future',
-            means: 'Keep your appointments and ask for support',
-            healthAspects: ['Physical Health']
-        },
-        {
-            title: 'Obtaining specialized follow-up for Victims of Sexual Assault (CALACS)',
-            description: '',
-            term: 'Short-term',
-            status: 'Paused',
-            means: 'Undertake the CAVACS process (Mrs. does not want to at the moment)',
-            healthAspects: ['Mental Health', 'Social Health', 'Economic Health']
-        },
-        {
-            title: 'Stabilizing consumption',
-            description: 'Use only the prescribed medication (methadone) to be able to pay for the room on the 3rd floor.',
-            term: 'Long-term',
-            status: 'In progress',
-            means: '',
-            healthAspects: ['Physical Health', 'Mental health']
-        }
-    ];
 
-    useEffect(() => {
-        const list = document.querySelectorAll('.list');
+  const [activeContent, setActiveContent] = useState('GOALS');
 
-        function activeLink() {
-            list.forEach((item) =>
-                item.classList.remove('active'));
-            this.classList.add('active');
-        }
+  const handleActivateItem = (itemName) => {
+    setActiveContent(itemName);
+  };
 
-        list.forEach((item) => item.addEventListener('click', activeLink));
+  const mockObjectives = [
+    {
+      title: 'Maintaining a healthy living environment',
+      description: 'In particular, the bedroom',
+      term: 'Short-term',
+      status: 'Completed',
+      means: '',
+      healthAspects: ['Global Health'],
+    },
+    {
+      title: 'Improving consumption habits',
+      description:
+        'Maintain a routine of consumption by using the appropriate services: transition to use only the prescribed medication (methadone, dilaudid)',
+      term: 'Short-term',
+      status: 'In progress',
+      means:
+        'Use addiction services and follow established routines (average 4 injections per day)',
+      healthAspects: ['Physical Health', 'Mental health'],
+    },
+    {
+      title: 'Maintain medical follow-up with treating teams',
+      description: '',
+      term: 'Short-term',
+      status: 'Future',
+      means: 'Keep your appointments and ask for support',
+      healthAspects: ['Physical Health'],
+    },
+    {
+      title:
+        'Obtaining specialized follow-up for Victims of Sexual Assault (CALACS)',
+      description: '',
+      term: 'Short-term',
+      status: 'Paused',
+      means:
+        'Undertake the CAVACS process (Mrs. does not want to at the moment)',
+      healthAspects: ['Mental Health', 'Social Health', 'Economic Health'],
+    },
+    {
+      title: 'Stabilizing consumption',
+      description:
+        'Use only the prescribed medication (methadone) to be able to pay for the room on the 3rd floor.',
+      term: 'Long-term',
+      status: 'In progress',
+      means: '',
+      healthAspects: ['Physical Health', 'Mental health'],
+    },
+  ];
 
-        return () => {
-            list.forEach((item) => item.removeEventListener('click', activeLink));
-        };
-    }, []);
+  useEffect(() => {
+    const list = document.querySelectorAll('.list');
 
-    return (
-        <div className='resident-homepage-container'>
-            <div className="navigation">
-                <ul>
-                    <VscAccount
-                        style={{ color: 'white', fontSize: '1em', marginRight: '50px' }}
-                    />
-                    {/* Main content of your application */}
+    function activeLink() {
+      list.forEach((item) => item.classList.remove('active'));
+      this.classList.add('active');
+    }
 
-                    <li className={activeContent === 'goals' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('goals')}>
-                            <span class="icon">
-                                <LuGoal style={{ fontSize: '1em' }} /></span>
-                            <span class="title">GOALS</span>
-                        </a>
-                    </li>
-                    <li className={activeContent === 'reminders' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('reminders')}>
-                            <span class="icon">
-                                <FaRegBell style={{ fontSize: '1em' }} /></span>
-                            <span class="title">REMINDERS</span>
-                        </a>
-                    </li>
-                    <li className={activeContent === 'resources' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('resources')}>
-                            <span class="icon">
-                                <FaBook style={{ fontSize: '1em' }} /></span>
-                            <span class="title">RESOURCES</span>
-                        </a>
-                    </li>
-                    <li className={activeContent === 'messages' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('messages')}>
-                            <span class="icon">
-                                <FiMessageSquare style={{ fontSize: '1em' }} /></span>
-                            <span class="title">MESSAGES</span>
-                        </a>
-                    </li>
-                </ul>
+    list.forEach((item) => item.addEventListener('click', activeLink));
+
+    return () => {
+      list.forEach((item) => item.removeEventListener('click', activeLink));
+    };
+  }, []);
+
+  return (
+    <div className="h-screen w-screen flex">
+      <SideBar onActivateItem={handleActivateItem}>
+        <SideBarItem icon={<CircleUserRound />} text="GOALS" active/>
+        <SideBarItem icon={<Bell />} text="REMINDERS" />
+        <SideBarItem icon={<MessageSquareText />} text="MESSAGES" />
+        <SideBarItem icon={<LibraryBig />} text="RESOURCES" />
+      </SideBar>
+      <div className="flex flex-col m-6 flex-1">
+        <div className="text-2xl font-bold my-6 ">Welcome back, Jane! 👋</div>
+        <div className="flex flex-col md:flex-row gap-x-6">
+          <div
+            className="flex flex-col flex-1"
+            style={{ flexBasis: '40%', flexGrow: 1 }}
+          >
+            {activeContent === 'GOALS' && (
+              <>
+                <div className="mb-6">Your assigned goals and objectives</div>
+                <GoalsFragment mockObjectives={mockObjectives} />
+              </>
+            )}
+            {activeContent === 'REMINDERS' && <RemindersFragment />}
+            {activeContent === 'RESOURCES' && <ResourcesFragment />}
+            {activeContent === 'MESSAGES' && <MessagesFragment />}
+          </div>
+          <div
+            className="mt-10 flex flex-col flex-1 gap-y-6"
+            style={{ flexBasis: '0%', flexGrow: 1 }}
+          >
+            <div className="shadow-inner rounded-2xl p-6">
+              Progress is shown here! _______________
             </div>
-
-            <div className='additional-content-resident'>
-
-                <div className='welcome-resident'>
-                    <h1>Welcome Resident Name</h1>
-                    <p>Here you can view your goals, reminders, resources, and messages.</p>
-                </div>
-
-
-                <div style={{ marginLeft: '4%', marginTop: '3%' }}>
-                    {activeContent === 'goals' && <GoalsFragment />}
-                    {activeContent === 'reminders' && <RemindersFragment />}
-                    {activeContent === 'resources' && <ResourcesFragment />}
-                    {activeContent === 'messages' && <MessagesFragment />}
-                </div>
-
+            <div className="shadow-inner rounded-2xl p-6">
+              Feedback Form here!
             </div>
-
-
+          </div>
         </div>
     );
 };
