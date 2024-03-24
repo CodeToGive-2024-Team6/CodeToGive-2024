@@ -3,18 +3,19 @@
 .start-page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #f5efe8;
 }
 
 .start-page .header {
-  margin-bottom: 20px; /* Adjust margin as needed */
+  margin-bottom: 20px;
+  /* Adjust margin as needed */
 }
 
 .start-page .logo {
-  width: 200px; /* Adjust width as needed */
+  width: 200px;
+  /* Adjust width as needed */
+
 }
 
 .start-page h1 {
@@ -25,12 +26,12 @@
 .button-container {
   display: flex;
   justify-content: space-between;
-  width: 60%; /* Adjust as needed */
+  /* Adjust as needed */
 }
 
 .start-page .circle {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   background-color: #00AFD7;
   border-radius: 50%;
   display: flex;
@@ -49,10 +50,39 @@
 }
 
 .start-page .circle.caregiver {
-  margin-right: 20px; /* Add margin between buttons */
+  margin-top: 220px;
+  margin-left: 150px;
+  margin-right: 20px;
+  /* Add margin between buttons */
 }
 
 .start-page .circle.resident {
-  margin-left: 20px; /* Add margin between buttons */
+  margin-top: 220px;
+  margin-left: 20px;
+  margin-left: 20px;
+  /* Add margin between buttons */
 }
 
+.start-page .houselogo {
+  width: 500px;
+  height: 600px;
+  margin-right: 20px;
+  float: right;
+}
+
+.start-page .rectangle {
+  background-color: #00AFD7;
+  height: 100px;
+}
+
+.start-page .caregivers-name {
+  color: #00AFD7;
+  font-size: x-large;
+  margin-left: 193px;
+}
+
+.start-page .residents-name {
+  color: #00AFD7;
+  font-size: x-large;
+  margin-left: 65px;
+}
