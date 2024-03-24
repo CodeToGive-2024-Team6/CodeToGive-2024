@@ -7,6 +7,11 @@ import { LuGoal } from 'react-icons/lu';
 import { FaRegBell } from 'react-icons/fa';
 import { FaBook } from 'react-icons/fa';
 import { FiMessageSquare } from 'react-icons/fi';
+import { Bell, 
+  CircleUserRound, 
+  LibraryBig, 
+  MessageSquareText 
+} from 'lucide-react';    
 //import companyLogo from "../../../company_logo.png";
 
 //import fragments
@@ -15,6 +20,7 @@ import GoalsFragment from './Fragments/GoalsFragment/GoalsFragment';
 import RemindersFragment from './Fragments/RemindersFragment/RemindersFragment';
 import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
 import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
+import { SideBar, SideBarItem} from '../../SideBar';
 
 const HomePage = () => {
   const [activeContent, setActiveContent] = useState('GOALS');
