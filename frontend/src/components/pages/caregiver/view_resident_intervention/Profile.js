@@ -20,6 +20,7 @@ export const Profile = () => {
     return (
         <div className="page-layout">
             <div>
+                <text>HI</text>
 
             </div>
         </div>

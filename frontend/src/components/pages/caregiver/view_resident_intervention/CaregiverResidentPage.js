@@ -49,7 +49,6 @@ const CaregiverResidentPage = () => {
                     <li className={activeContent === 'profile' ? 'list active' : 'list'}>
                         <a href="#" onClick={() => setActiveContent('profile')}>
                             <span class="icon">
-                                <Profile/>
                             <FaRegUser style={{fontSize: '1em'}}/></span>
                             <span class="title">PROFILE</span>
                         </a>
@@ -109,6 +108,7 @@ const CaregiverResidentPage = () => {
             <div className='additional-content'>
                 {activeContent === 'profile' && (
                     <>
+                        <Profile/>
                         <h2>Welcome Back, (Caregiver Name) 👋</h2>
                         <p>Your profile information will be displayed here!</p>
                     </>
