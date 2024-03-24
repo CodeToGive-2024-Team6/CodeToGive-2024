@@ -40,6 +40,7 @@ function RemindersFragment() {
         setReminders([...reminders, newReminder]);
         setNewReminder({ heading: '', meetingInfo: '', date: '', time: '' , type: '', note: '', communication: ''});
         setShowForm(false);
+        setIsFormOpen(false);
     };
 
     const handleLongPress = (index) => {

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
 
-const {getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID} = require('./getResidentData.js')
+const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID} = require('./getResidentData.js')
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
@@ -21,6 +21,17 @@ app.get('/residentinfo/:resident_id', async (req, res) => {
     res.status(404).send(error.message);
   }
 });
+
+//Endpoint for resident all data. Currently contains a placeholder, needs to be replaced with real data.
+app.get('/residentalldata', async (req, res) => {
+  try {
+    const info = await getResidentsAllData();
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
 
 // Endpoint that lists all objectives for a given resident. Currently a placeholder, needs to be replaced with real data.
 app.get('/objectives/:resident_id', async (req, res) => {
