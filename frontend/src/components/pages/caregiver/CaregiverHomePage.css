@@ -3,8 +3,8 @@
 /* Header bar */
 .header-bar {
     width: 100%;
-    height: 50px;
-    background-color: #00AFD7;
+    height: 250px;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,17 +19,23 @@
     color: #343a40;
 }
 
+.caregiver-upcoming-appointment {
+    width: 40%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #B0F0FF;
+}
+
 /* Appointment view */
 .appointment-view {
     width: 40%;
     margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
+    padding: 10px;
     border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     position: absolute;
     left: 0;
-    background-color: #B0F0FF;
+    background-color: #ADD2E2;
 }
 
 /* CaregiverHomePage.css */
@@ -61,13 +67,9 @@
     justify-content: center; /* Add this */
     align-items: center; /* Add this */
     flex-direction: column; /* Add this */
-    transition: all 400ms ease;
 }
 
-.grid-box:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 10px #00AFD7;
-}
+
 
 
 /* grid view for 2 boxes vertical*/
@@ -76,25 +78,26 @@
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
     width: 40%;
-    margin: 20px;
+    margin: 10px;
     position: absolute;
     left: 55%;
     top: calc(5% + 40px); /* Adjust this value as needed */
+    
 }
 
 /* Statistics box */
 .statistics-box {
     width: 400px; /* Set width */
-    height: 250px; /* Set height */
-    padding: 20px;
+    height: 350px; /* Set height */
+    padding: 0px;
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color:#00AFD7;
+    background-color: #fff;
     display: flex; /* Add this */
     justify-content: center; /* Add this */
     align-items: center; /* Add this */
-    flex-direction: column; /* Add this */
+    flex-direction: column;
     transition: all 400ms ease;
 }
 

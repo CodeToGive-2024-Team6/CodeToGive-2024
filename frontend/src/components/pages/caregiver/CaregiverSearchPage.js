@@ -6,14 +6,20 @@ import { VscAccount } from "react-icons/vsc";
 import { useNavigate } from 'react-router-dom';
 import { MdNavigateBefore } from "react-icons/md";
 
+
 const CaregiverSearchPage = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
     const allResidents = useMemo(() => [
         { name: 'Resident 1', house: 'House A' },
         { name: 'Resident 2', house: 'House B' },
         { name: 'Resident 3', house: 'House A' },
         { name: 'Resident 4', house: 'House C' }
     ], []);
+
+
+    
+
+
     const [searchValue, setSearchValue] = useState('');
     const [displayedResidents, setDisplayedResidents] = useState(allResidents);
     const [currentPage, setCurrentPage] = useState(1);
