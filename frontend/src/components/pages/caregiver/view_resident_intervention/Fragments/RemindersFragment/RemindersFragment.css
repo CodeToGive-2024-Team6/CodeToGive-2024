@@ -15,10 +15,13 @@
     /* border: 6px solid  */
     border-radius: 4px;
     margin-bottom: 10px;
-    background-color: #B0F0FF;
+    /* background-color: #B0F0FF; */
     width: 50%;
     height: 200px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: linear-gradient(to right, #B0F0FF, #00AFD7);
+    
+
 
 }
 
@@ -123,15 +126,17 @@
     position: fixed;
     z-index: 1;
     left: 0;
-    top: 30%;
+    top: 10%;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    /* background-color: rgba(0,0,0,0.4); */
     margin-left: auto;
     padding-bottom: 50px;
     margin-bottom: 50px;
+    position: -webkit-sticky
 }
+
 
 
 

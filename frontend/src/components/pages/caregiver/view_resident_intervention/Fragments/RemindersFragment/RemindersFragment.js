@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RemindersFragment.css'; // Import CSS file
 import { MdDeleteForever } from "react-icons/md";
 
@@ -20,6 +20,7 @@ function RemindersFragment() {
     const [selectedReminder, setSelectedReminder] = useState(null);
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
     const [showForm, setShowForm] = useState(false);
+    const [isAddButtonClicked, setIsAddButtonClicked] = useState(false);
 
     const handleReminderClick = (reminder) => {
         setSelectedReminder(reminder);
@@ -47,6 +48,16 @@ function RemindersFragment() {
 
     };
 
+    useEffect(() => {
+        if (isAddButtonClicked) {
+            document.body.classList.add('blur');
+        } else {
+            document.body.classList.remove('blur');
+        }
+    }, [isAddButtonClicked]);
+
+    
+
     return (
 
         <div className='container'>
@@ -72,7 +83,8 @@ function RemindersFragment() {
 
                     </div>
                 ))}
-                <button onClick={() => setShowForm(true)}>Add Reminder</button>
+                <button onClick={() => {setShowForm(true);setIsAddButtonClicked(!isAddButtonClicked);} }>Add Reminder</button>
+                
                 {showForm && (
                     <div className="modal">
                         <div className="modal-content">
@@ -99,7 +111,7 @@ function RemindersFragment() {
 
             <div className='scheduler'>
 
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FEdmonton&bgcolor=%23ffffff&title=le%20chainon&src=YWNhZHNjaEB1YWxiZXJ0YS5jYQ&color=%23F4511E" style={{height: ' 480px',width: '500px',marginLeft: '5px', borderWidth: '0px', borderRadius: "10px"}}></iframe>
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FEdmonton&bgcolor=%23ffffff&title=le%20chainon&src=ZW4uY2FuYWRpYW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%230B8043" style={{height: ' 480px',width: '500px',marginLeft: '5px', borderWidth: '0px', borderRadius: "10px"}}></iframe>
                
 
             </div>
