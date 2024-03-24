@@ -102,3 +102,8 @@
     transform: scale(1.03);
     box-shadow: 0 0 10px #00AFD7;
 }
+
+.page-layout .header-bar .caregiver-homepage-before {
+    display: flex;
+    color: #4079;
+}
