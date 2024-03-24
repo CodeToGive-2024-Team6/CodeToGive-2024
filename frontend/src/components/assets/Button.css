@@ -1,6 +1,6 @@
 :root {
     --primary: #00AFD7;
-    
+
 }
 
 .btn {
@@ -35,12 +35,9 @@
     font-size: 24px;
 }
 
-.btn--medium:hover, .btn--large:hover {
+.btn--medium:hover,
+.btn--large:hover {
     background-color: var(--primary);
     color: white;
     transition: all 0.3s ease;
 }
-
-
-
-

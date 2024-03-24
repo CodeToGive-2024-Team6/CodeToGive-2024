@@ -22,9 +22,9 @@ const CaregiverHomePage = () => {
             <div>
                 <div className="header-bar">
                     <h1>Hi! Caregiver Name</h1>
-                    <VscAccount 
-                        style={{color: 'white', fontSize: '2em', marginRight: '50px'}}
-                    />  
+                    <VscAccount
+                        style={{ color: 'white', fontSize: '2em', marginRight: '50px' }}
+                    />
                 </div>
                 <div className="appointment-view">
                     <h2>Current Appointment</h2>
@@ -32,24 +32,24 @@ const CaregiverHomePage = () => {
                 </div>
                 <div className="grid-view">
                     <div className="grid-box">
-                        <FaBuilding style={{fontSize: '4em'}}/>
+                        <FaBuilding style={{ fontSize: '4em' }} />
                         <p>My List of Residents</p>
                     </div>
                     <div className="grid-box">
-                        <CgAddR style={{fontSize: '4em'}}/>
+                        <CgAddR style={{ fontSize: '4em' }} />
                         <p>Add Resident</p>
                     </div>
                     <div className="grid-box">
-                        <FaFacebookMessenger style={{fontSize: '4em'}}/>
+                        <FaFacebookMessenger style={{ fontSize: '4em' }} />
                         <p>Communication</p>
                     </div>
                     <div className="grid-box">
-                        <FaAddressBook style={{fontSize: '4em'}}/>
+                        <FaAddressBook style={{ fontSize: '4em' }} />
                         <p>My Resident</p>
                     </div>
                 </div>
             </div>
-            
+
             <div className='grid-view-stats'>
                 <div className='statistics-box'>
                     <h2>Statistics 1</h2>
@@ -62,7 +62,7 @@ const CaregiverHomePage = () => {
 
             </div>
 
-            
+
         </div>
     );
 };
