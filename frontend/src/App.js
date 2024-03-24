@@ -8,6 +8,7 @@ import CaregiverHomePage from './components/pages/caregiver/CaregiverHomePage';
 import CaregiverSearchPage from './components/pages/caregiver/CaregiverSearchPage';
 import CaregiverResidentPage from './components/pages/caregiver/view_resident_intervention/CaregiverResidentPage';
 
+
 import './App.css';
 
 
