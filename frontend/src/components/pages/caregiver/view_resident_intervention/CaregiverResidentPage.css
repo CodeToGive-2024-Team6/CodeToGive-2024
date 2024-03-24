@@ -34,10 +34,18 @@
 
 .resident-profile-container-caregiver {
     display: flex;
-    height: 100vh;
+    justify-content: space-between;
     align-items: flex-start;
-    justify-content: space-between
+    height: 100vh; /* Make the container take the full viewport height */
 }
+
+/* container for heading and contwent */
+.additional-content-caregiver {
+    /* padding: 20px; */
+    flex-grow: 1; /* Allow the additional content to take remaining space */
+}
+
+
     
 .body {
     display: flex;
@@ -139,6 +147,11 @@
     line-height: 60px;
     white-space: nowrap;
 }
+
+
+
+
+
 
 
 
