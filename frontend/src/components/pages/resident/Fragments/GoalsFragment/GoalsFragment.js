@@ -1,12 +1,15 @@
 import React from 'react';
 
-function GoalsFragment() {
-    return (
-        <div>
-            <h1>Goals Fragment</h1>
-            <h2>notes</h2>
-        </div>
-    );
+import ObjectiveCard from '../../../../ObjectiveCard';
+
+function GoalsFragment({ mockObjectives }) {
+  return (
+    <div className='flex flex-col gap-y-6'>
+      {mockObjectives.map((objective, index) => (
+        <ObjectiveCard key={index} objective={objective} />
+      ))}
+    </div>
+  );
 }
 
 export default GoalsFragment;
