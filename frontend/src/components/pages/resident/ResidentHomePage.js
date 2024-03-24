@@ -10,6 +10,7 @@ import { FiMessageSquare } from 'react-icons/fi';
 //import companyLogo from "../../../company_logo.png";
 
 //import fragments
+
 import GoalsFragment from './Fragments/GoalsFragment/GoalsFragment';
 import RemindersFragment from './Fragments/RemindersFragment/RemindersFragment';
 import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
@@ -131,6 +132,7 @@ const HomePage = () => {
           </p>
         </div>
 
+
         <div className="m-6">
           {activeContent === 'goals' && (
             <GoalsFragment mockObjectives={mockObjectives} />
@@ -138,6 +140,7 @@ const HomePage = () => {
           {activeContent === 'reminders' && <RemindersFragment />}
           {activeContent === 'resources' && <ResourcesFragment />}
           {activeContent === 'messages' && <MessagesFragment />}
+
         </div>
       </div>
     </div>
