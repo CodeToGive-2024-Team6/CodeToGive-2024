@@ -1,5 +1,3 @@
-
-
 .header-bar-caregiver {
     width: 100%;
     height: 200px;
@@ -36,17 +34,19 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: 100vh; /* Make the container take the full viewport height */
+    height: 100vh;
+    /* Make the container take the full viewport height */
 }
 
 /* container for heading and contwent */
 .additional-content-caregiver {
     /* padding: 20px; */
-    flex-grow: 1; /* Allow the additional content to take remaining space */
+    flex-grow: 1;
+    /* Allow the additional content to take remaining space */
 }
 
 
-    
+
 .body {
     display: flex;
     justify-content: center;
@@ -88,7 +88,7 @@
 }
 
 .navigation ul li.active {
-    background: #00AFD7 ;
+    background: #00AFD7;
 }
 
 .navigation ul li.active a::before {
@@ -147,11 +147,3 @@
     line-height: 60px;
     white-space: nowrap;
 }
-
-
-
-
-
-
-
-

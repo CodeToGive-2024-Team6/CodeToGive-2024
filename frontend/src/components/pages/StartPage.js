@@ -35,17 +35,14 @@ const StartPage = () => {
 
                 <img src={houseLogo} alt="House Logo" className="houselogo" />
             </div>
-            <div className="footer-container">
-                <div className="heart-container">
-                    <div className="x1 heart"></div>
-                    <div className="x2 heart"></div>
-                    <div className="x3 heart"></div>
-                    <div className="x4 heart"></div>
-                    <div className="x5 heart"></div>
-                </div>
-                <div className="rectangle"></div>
+            <div className="rectangle"></div>
+            <div className="heart-container">
+                <div className="x1 heart"></div>
+                <div className="x2 heart"></div>
+                <div className="x3 heart"></div>
+                <div className="x4 heart"></div>
+                <div className="x5 heart"></div>
             </div>
-
         </div>
     );
 };

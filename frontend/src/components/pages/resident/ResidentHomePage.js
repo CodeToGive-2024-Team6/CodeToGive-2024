@@ -17,7 +17,13 @@ import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
 import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
 
 const HomePage = () => {
-  const [activeContent, setActiveContent] = useState('goals');
+
+  const [activeContent, setActiveContent] = useState('GOALS');
+
+  const handleActivateItem = (itemName) => {
+    setActiveContent(itemName);
+  };
+
   const mockObjectives = [
     {
       title: 'Maintaining a healthy living environment',
