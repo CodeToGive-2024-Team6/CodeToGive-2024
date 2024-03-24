@@ -86,7 +86,7 @@ const HomePage = () => {
           {/* Main content of your application */}
 
           <li className={activeContent === 'goals' ? 'list active' : 'list'}>
-            <a href="#" onClick={() => setActiveContent('goals')}>
+            <a onClick={() => setActiveContent('goals')}>
               <span className="icon">
                 <LuGoal style={{ fontSize: '1em' }} />
               </span>
@@ -96,7 +96,7 @@ const HomePage = () => {
           <li
             className={activeContent === 'reminders' ? 'list active' : 'list'}
           >
-            <a href="#" onClick={() => setActiveContent('reminders')}>
+            <a onClick={() => setActiveContent('reminders')}>
               <span className="icon">
                 <FaRegBell style={{ fontSize: '1em' }} />
               </span>
@@ -106,7 +106,7 @@ const HomePage = () => {
           <li
             className={activeContent === 'resources' ? 'list active' : 'list'}
           >
-            <a href="#" onClick={() => setActiveContent('resources')}>
+            <a onClick={() => setActiveContent('resources')}>
               <span className="icon">
                 <FaBook style={{ fontSize: '1em' }} />
               </span>
@@ -114,7 +114,7 @@ const HomePage = () => {
             </a>
           </li>
           <li className={activeContent === 'messages' ? 'list active' : 'list'}>
-            <a href="#" onClick={() => setActiveContent('messages')}>
+            <a onClick={() => setActiveContent('messages')}>
               <span className="icon">
                 <FiMessageSquare style={{ fontSize: '1em' }} />
               </span>
