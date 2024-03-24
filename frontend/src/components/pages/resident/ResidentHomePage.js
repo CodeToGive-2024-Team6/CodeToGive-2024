@@ -17,7 +17,6 @@ import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
 import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
 
 const HomePage = () => {
-
   const [activeContent, setActiveContent] = useState('GOALS');
 
   const handleActivateItem = (itemName) => {
@@ -83,70 +82,41 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="resident-homepage-container">
-      <div className="navigation">
-        <ul>
-          <VscAccount
-            style={{ color: 'white', fontSize: '1em', marginRight: '50px' }}
-          />
-          {/* Main content of your application */}
-
-          <li className={activeContent === 'goals' ? 'list active' : 'list'}>
-            <a href="#" onClick={() => setActiveContent('goals')}>
-              <span className="icon">
-                <LuGoal style={{ fontSize: '1em' }} />
-              </span>
-              <span className="title">GOALS</span>
-            </a>
-          </li>
-          <li
-            className={activeContent === 'reminders' ? 'list active' : 'list'}
+    <div className="h-screen w-screen flex">
+      <SideBar onActivateItem={handleActivateItem}>
+        <SideBarItem icon={<CircleUserRound />} text="GOALS" active/>
+        <SideBarItem icon={<Bell />} text="REMINDERS" />
+        <SideBarItem icon={<MessageSquareText />} text="MESSAGES" />
+        <SideBarItem icon={<LibraryBig />} text="RESOURCES" />
+      </SideBar>
+      <div className="flex flex-col m-6 flex-1">
+        <div className="text-2xl font-bold my-6 ">Welcome back, Jane! 👋</div>
+        <div className="flex flex-col md:flex-row gap-x-6">
+          <div
+            className="flex flex-col flex-1"
+            style={{ flexBasis: '40%', flexGrow: 1 }}
           >
-            <a href="#" onClick={() => setActiveContent('reminders')}>
-              <span className="icon">
-                <FaRegBell style={{ fontSize: '1em' }} />
-              </span>
-              <span className="title">REMINDERS</span>
-            </a>
-          </li>
-          <li
-            className={activeContent === 'resources' ? 'list active' : 'list'}
+            {activeContent === 'GOALS' && (
+              <>
+                <div className="mb-6">Your assigned goals and objectives</div>
+                <GoalsFragment mockObjectives={mockObjectives} />
+              </>
+            )}
+            {activeContent === 'REMINDERS' && <RemindersFragment />}
+            {activeContent === 'RESOURCES' && <ResourcesFragment />}
+            {activeContent === 'MESSAGES' && <MessagesFragment />}
+          </div>
+          <div
+            className="mt-10 flex flex-col flex-1 gap-y-6"
+            style={{ flexBasis: '0%', flexGrow: 1 }}
           >
-            <a href="#" onClick={() => setActiveContent('resources')}>
-              <span className="icon">
-                <FaBook style={{ fontSize: '1em' }} />
-              </span>
-              <span className="title">RESOURCES</span>
-            </a>
-          </li>
-          <li className={activeContent === 'messages' ? 'list active' : 'list'}>
-            <a href="#" onClick={() => setActiveContent('messages')}>
-              <span className="icon">
-                <FiMessageSquare style={{ fontSize: '1em' }} />
-              </span>
-              <span className="title">MESSAGES</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div className="additional-content-resident">
-        <div className="welcome-resident">
-          <h1>Welcome Resident Name</h1>
-          <p>
-            Here you can view your goals, reminders, resources, and messages.
-          </p>
-        </div>
-
-
-        <div className="m-6">
-          {activeContent === 'goals' && (
-            <GoalsFragment mockObjectives={mockObjectives} />
-          )}
-          {activeContent === 'reminders' && <RemindersFragment />}
-          {activeContent === 'resources' && <ResourcesFragment />}
-          {activeContent === 'messages' && <MessagesFragment />}
-
+            <div className="shadow-inner rounded-2xl p-6">
+              Progress is shown here! _______________
+            </div>
+            <div className="shadow-inner rounded-2xl p-6">
+              Feedback Form here!
+            </div>
+          </div>
         </div>
       </div>
     </div>
