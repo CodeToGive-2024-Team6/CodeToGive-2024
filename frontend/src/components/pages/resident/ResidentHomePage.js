@@ -97,7 +97,7 @@ const HomePage = () => {
   return (
     <div className="h-screen w-screen flex">
       <SideBar onActivateItem={handleActivateItem}>
-        <SideBarItem icon={<CircleUserRound />} text="GOALS" active/>
+        <SideBarItem icon={<CircleUserRound />} text="GOALS" active />
         <SideBarItem icon={<Bell />} text="REMINDERS" />
         <SideBarItem icon={<MessageSquareText />} text="MESSAGES" />
         <SideBarItem icon={<LibraryBig />} text="RESOURCES" />
@@ -131,7 +131,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default HomePage;
