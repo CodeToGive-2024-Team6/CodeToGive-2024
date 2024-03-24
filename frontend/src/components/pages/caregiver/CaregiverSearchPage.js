@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import './CaregiverSearchPage.css'; // Import CSS file
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { VscAccount } from "react-icons/vsc";
 import { useNavigate } from 'react-router-dom';
-import { MdNavigateBefore } from "react-icons/md";
 
 const CaregiverSearchPage = () => {
     const navigate = useNavigate();
@@ -61,11 +59,7 @@ const CaregiverSearchPage = () => {
     return (
         <div>
             <div className="header-bar">
-                <div className='search-before'>
-                    <Link to="/caregiver_homepage">
-                        <MdNavigateBefore />
-                    </Link>
-                </div>
+                <h1>Caregiver Search</h1>
                 <input
                     className="search-bar"
                     type="text"

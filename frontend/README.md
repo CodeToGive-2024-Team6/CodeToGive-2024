@@ -1,7 +1,5 @@
 In the project directory, first run 
 ### `npm install`
-then 
-### `npm run dev`
 
 In the project directory, you can run:
 ### `npm start`
@@ -10,4 +8,8 @@ or
 
 To instal the icons package
 ### `npm install react-icons --save`
+### `npm install lucide-react`
+### `npm install chart.js`
+### `npm install primereact primeicons`
+
 

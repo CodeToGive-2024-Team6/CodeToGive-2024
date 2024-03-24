@@ -7,12 +7,6 @@ import { LuGoal } from 'react-icons/lu';
 import { FaRegBell } from 'react-icons/fa';
 import { FaBook } from 'react-icons/fa';
 import { FiMessageSquare } from 'react-icons/fi';
-import {
-  Bell,
-  CircleUserRound,
-  LibraryBig,
-  MessageSquareText,
-} from 'lucide-react';
 //import companyLogo from "../../../company_logo.png";
 
 //import fragments
@@ -21,10 +15,8 @@ import GoalsFragment from './Fragments/GoalsFragment/GoalsFragment';
 import RemindersFragment from './Fragments/RemindersFragment/RemindersFragment';
 import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
 import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
-import { SideBar, SideBarItem } from '../../SideBar';
 
 const HomePage = () => {
-
   const [activeContent, setActiveContent] = useState('GOALS');
 
   const handleActivateItem = (itemName) => {
@@ -38,17 +30,15 @@ const HomePage = () => {
       term: 'Short-term',
       status: 'Completed',
       means: '',
-      healthAspects: ['Global Health'],
+      healthAspects: ['Global Health']
     },
     {
       title: 'Improving consumption habits',
-      description:
-        'Maintain a routine of consumption by using the appropriate services: transition to use only the prescribed medication (methadone, dilaudid)',
+      description: 'Maintain a routine of consumption by using the appropriate services: transition to use only the prescribed medication (methadone, dilaudid)',
       term: 'Short-term',
       status: 'In progress',
-      means:
-        'Use addiction services and follow established routines (average 4 injections per day)',
-      healthAspects: ['Physical Health', 'Mental health'],
+      means: 'Use addiction services and follow established routines (average 4 injections per day)',
+      healthAspects: ['Physical Health', 'Mental health']
     },
     {
       title: 'Maintain medical follow-up with treating teams',
@@ -56,27 +46,24 @@ const HomePage = () => {
       term: 'Short-term',
       status: 'Future',
       means: 'Keep your appointments and ask for support',
-      healthAspects: ['Physical Health'],
+      healthAspects: ['Physical Health']
     },
     {
-      title:
-        'Obtaining specialized follow-up for Victims of Sexual Assault (CALACS)',
+      title: 'Obtaining specialized follow-up for Victims of Sexual Assault (CALACS)',
       description: '',
       term: 'Short-term',
       status: 'Paused',
-      means:
-        'Undertake the CAVACS process (Mrs. does not want to at the moment)',
-      healthAspects: ['Mental Health', 'Social Health', 'Economic Health'],
+      means: 'Undertake the CAVACS process (Mrs. does not want to at the moment)',
+      healthAspects: ['Mental Health', 'Social Health', 'Economic Health']
     },
     {
       title: 'Stabilizing consumption',
-      description:
-        'Use only the prescribed medication (methadone) to be able to pay for the room on the 3rd floor.',
+      description: 'Use only the prescribed medication (methadone) to be able to pay for the room on the 3rd floor.',
       term: 'Long-term',
       status: 'In progress',
       means: '',
-      healthAspects: ['Physical Health', 'Mental health'],
-    },
+      healthAspects: ['Physical Health', 'Mental health']
+    }
   ];
 
   useEffect(() => {
@@ -97,7 +84,7 @@ const HomePage = () => {
   return (
     <div className="h-screen w-screen flex">
       <SideBar onActivateItem={handleActivateItem}>
-        <SideBarItem icon={<CircleUserRound />} text="GOALS" active />
+        <SideBarItem icon={<CircleUserRound />} text="GOALS" active/>
         <SideBarItem icon={<Bell />} text="REMINDERS" />
         <SideBarItem icon={<MessageSquareText />} text="MESSAGES" />
         <SideBarItem icon={<LibraryBig />} text="RESOURCES" />
