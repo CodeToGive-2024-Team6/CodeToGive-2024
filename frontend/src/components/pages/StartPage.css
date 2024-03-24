@@ -9,13 +9,10 @@
 
 .start-page .header {
   margin-bottom: 20px;
-  /* Adjust margin as needed */
 }
 
 .start-page .logo {
   width: 200px;
-  /* Adjust width as needed */
-
 }
 
 .start-page h1 {
@@ -26,7 +23,6 @@
 .button-container {
   display: flex;
   justify-content: space-between;
-  /* Adjust as needed */
 }
 
 .start-page .circle {
@@ -85,4 +81,121 @@
   color: #00AFD7;
   font-size: x-large;
   margin-left: 65px;
+}
+
+.heart-container {
+  position: relative;
+}
+
+.altheart {
+  background: url(http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat center;
+  width: 24px;
+  height: 21px;
+  position: relative;
+  display: block;
+}
+
+.heart {
+  position: absolute;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 18px;
+  top: 0;
+  width: 18px;
+  height: 30px;
+  background: #00AFD7;
+  border-radius: 30px 30px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.x1 {
+  left: 5%;
+}
+
+.x2 {
+  left: 25%;
+}
+
+.x3 {
+  left: 55%;
+}
+
+.x4 {
+  left: 72%;
+}
+
+.x5 {
+  left: 88%;
+}
+
+.x6 {
+  left: 33%;
+}
+
+@keyframes moveclouds {
+  0% {
+    top: 500px;
+  }
+
+  100% {
+    top: -500px;
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+
+  100% {
+    margin-left: 50px;
+  }
+}
+
+@keyframes swayWays {
+  0% {
+    transform: rotate(12deg);
+    left: -0.3%;
+  }
+
+  33% {
+    transform: rotate(-2deg);
+    left: 0.7%;
+  }
+
+  100% {
+    transform: rotate(0deg);
+    left: -12%;
+  }
+}
+
+.heart {
+  animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+
+.heart.x2 {
+  animation: moveclouds 25s linear infinite, sideWays 5s ease-in-out infinite alternate;
+}
+
+.heart.x3 {
+  animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+
+.heart.x4 {
+  animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
+}
+
+.heart.x5 {
+  animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
 }
