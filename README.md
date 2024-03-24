@@ -19,7 +19,7 @@ npm install
 
 Once all necessary files are downloaded, you can run the website yourself using npm:
 ```
-npm run dev
+npm start
 ```
 
 Alternatively, to deploy and test it elsewhere you can:
