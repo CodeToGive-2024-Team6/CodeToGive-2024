@@ -73,26 +73,28 @@
     padding: 10px;
     margin-bottom: 10px;
     height: 60px;
-    background-color: rgba(0, 175, 215, 0.5); /* Use rgba here */
-    transition: background-color 0.3s ease; /* Add this line */
-    font-family: Arial, sans-serif; /* Change the font */
-    color: #333; /* Change the text color */
+    background-color: rgba(0, 175, 215, 0.5);
+    /* Use rgba here */
+    transition: background-color 0.3s ease;
+    /* Add this line */
+    font-family: Arial, sans-serif;
+    /* Change the font */
+    color: #333;
+    /* Change the text color */
     font-size: large;
 }
 
 .list-item:hover {
-    background-color: rgba(0, 175, 215, 0.7); /* Change the background color on hover */
+    background-color: rgba(0, 175, 215, 0.7);
+    /* Change the background color on hover */
 }
 
 .list-item p {
-    margin: 0; /* Remove the default margin */
+    margin: 0;
+    /* Remove the default margin */
 }
 
 .list-item .VscAccount {
-    margin-right: 10px; /* Add some space on the right */
+    margin-right: 10px;
+    /* Add some space on the right */
 }
-
-
-
-
-

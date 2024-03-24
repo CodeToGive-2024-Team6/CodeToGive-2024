@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import './CaregiverSearchPage.css'; // Import CSS file
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
-import {VscAccount} from  "react-icons/vsc";
+import { VscAccount } from "react-icons/vsc";
 import { useNavigate } from 'react-router-dom';
 import { MdNavigateBefore } from "react-icons/md";
 
@@ -13,7 +13,7 @@ const CaregiverSearchPage = () => {
         { name: 'Resident 2', house: 'House B' },
         { name: 'Resident 3', house: 'House A' },
         { name: 'Resident 4', house: 'House C' }
-    ], []);    
+    ], []);
     const [searchValue, setSearchValue] = useState('');
     const [displayedResidents, setDisplayedResidents] = useState(allResidents);
     const [currentPage, setCurrentPage] = useState(1);
@@ -30,7 +30,7 @@ const CaregiverSearchPage = () => {
                 resident.name.toLowerCase().includes(searchValue.toLowerCase())
                 || resident.house.toLowerCase().includes(searchValue.toLowerCase())
             )
-        
+
         );
     }, [searchValue, allResidents]);
 
@@ -40,10 +40,10 @@ const CaregiverSearchPage = () => {
 
     const renderItems = currentItems.map((resident, index) => (
         <div key={index} className="list-item" onClick={() => handleItemClick(resident)}>
-            <VscAccount style={{color: '#00AFD7', fontSize: '2em'}}/>
+            <VscAccount style={{ color: '#00AFD7', fontSize: '2em' }} />
             <p>{resident.name}</p>
             <p>{resident.house}</p>
-            
+
         </div>));
 
 
@@ -74,8 +74,8 @@ const CaregiverSearchPage = () => {
                     onChange={e => setSearchValue(e.target.value)}
                 />
                 <button className="filter-button">
-                    <HiAdjustmentsHorizontal 
-                        style={{color: '#00AFD7', fontSize: '2em'}}
+                    <HiAdjustmentsHorizontal
+                        style={{ color: '#00AFD7', fontSize: '2em' }}
                     />
                 </button>
             </div>

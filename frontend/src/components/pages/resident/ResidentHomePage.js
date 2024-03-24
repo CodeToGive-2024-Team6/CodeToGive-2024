@@ -24,6 +24,7 @@ import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
 import { SideBar, SideBarItem } from '../../SideBar';
 
 const HomePage = () => {
+
   const [activeContent, setActiveContent] = useState('GOALS');
 
   const handleActivateItem = (itemName) => {
@@ -130,9 +131,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default HomePage;

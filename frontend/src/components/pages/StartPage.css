@@ -83,23 +83,16 @@
   margin-left: 65px;
 }
 
-.heart-container {
+.start-page .heart-container {
   position: relative;
 }
 
-.altheart {
-  background: url(http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat center;
-  width: 24px;
-  height: 21px;
-  position: relative;
-  display: block;
-}
 
-.heart {
+.start-page .heart {
   position: absolute;
 }
 
-.heart:before,
+.start-page .heart:before,
 .heart:after {
   position: absolute;
   content: "";
@@ -113,39 +106,39 @@
   transform-origin: 0 100%;
 }
 
-.heart:after {
+.start-page .heart:after {
   left: 0;
   transform: rotate(45deg);
   transform-origin: 100% 100%;
 }
 
-.x1 {
+.start-page .x1 {
   left: 5%;
 }
 
-.x2 {
+.start-page .x2 {
   left: 25%;
 }
 
-.x3 {
+.start-page .x3 {
   left: 55%;
 }
 
-.x4 {
+.start-page .x4 {
   left: 72%;
 }
 
-.x5 {
+.start-page .x5 {
   left: 88%;
 }
 
-.x6 {
+.start-page .x6 {
   left: 33%;
 }
 
 @keyframes moveclouds {
   0% {
-    top: 500px;
+    top: 0px;
   }
 
   100% {
@@ -197,5 +190,5 @@
 }
 
 .heart.x5 {
-  animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
+  animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
 }
