@@ -1,102 +1,255 @@
+.list-view-notes {
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    width: auto;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
+.note-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d6e8ed;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 1100px;
+    height: auto;
+
+}
+
+.note-item:hover {
+    background-color: #B0F0FF;
+}
+
+
+.note-item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 80%;
+}
+
+.note-details {
+    background-color: white;
+    border-radius: 10px;
+    width: 1060px;
+    padding-left: 6px;
+}
+
+.note-heading {
+    font-size: 1.5em;
+    /* Adjust as needed */
+    font-weight: bold;
+}
+
+.note-details {
+    margin-top: 10px;
+}
+
+.note-date {
+    align-self: center;
+    font-size: 1.2em;
+    /* Adjust as needed */
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border: #000 1px solid;
+    border-radius: 10px;
+
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.delete {
+
+    padding-left: 1030px;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin-left: auto;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    position: -webkit-sticky
+}
+
+.close-button {
+    color: #aaa;
+    margin-right: 500px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: #00AFD7;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #00AFD7;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 30%;
+    /* Adjust this value to make the modal smaller or larger */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-bottom: 100px;
+
+}
+
+.form-container {
+    width: 100%;
+    /* Adjust this value as needed */
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border: #000 1px solid;
+    border-radius: 20px;
+}
+
+.form-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.info-left,
+.info-right {
+    width: 100%;
+}
+
+.info-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.info-row label {
+    margin-right: 10px;
+    width: 150px;
+    text-align: right;
+}
+
+.info-row input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.info-row input:focus {
+    border-bottom: 1px solid #000;
+}
+
+.info-left,
+.info-right {
+    width: 45%;
+}
+
+.info-left h2 {
+    color: #00AFD7;
+    margin-bottom: 20px;
+}
+
+.info-left p,
+.info-right p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.info-left p strong,
+.info-right p strong {
+    margin-right: 10px;
+}
+
 .chronological-notes {
     font-size: xx-large;
     color: #00AFD7;
     padding-bottom: 10px;
 }
 
-.note {
-    width: 1250px;
-    height: auto;
-    background-color: #d6e8ed;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    padding-top: 10px;
-    position: relative;
-}
-
-.spacing {
-    height: 20px;
-}
-
-.general-info {
-    font-size: medium;
-    margin-left: 15px;
-    padding-bottom: 5px;
-}
-
-.white-note {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 1215px;
-    height: auto;
-    margin-left: 15px;
-    border-radius: 20px;
-    background-color: white;
-
-}
-
-.details {
-    padding-left: 10px;
-    padding-right: 5px;
-}
-
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    max-width: 600px;
-    /* Optional: Limit the maximum width of the popup */
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    /* Ensure the popup appears above other elements */
-}
-
-.popup input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.popup button {
-    padding: 8px 16px;
-    font-size: 16px;
-    background-color: #00AFD7;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.note:hover {
-    background-color: #B0F0FF;
-}
-
-.plus {
-    width: 1250px;
-    height: 100px;
-    background-color: #d6e8ed;
-    border-radius: 20px;
-    padding-top: 10px;
-}
-
-.plus:hover {
-    background-color: #B0F0FF;
-}
-
-.add-button {
-    padding-left: 580px;
-    padding-top: 15px;
-}
-
 .add-circle {
-    padding-left: 1200px;
+    padding-left: 1050px;
 }
