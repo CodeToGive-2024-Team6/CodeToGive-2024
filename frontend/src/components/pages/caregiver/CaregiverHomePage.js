@@ -87,7 +87,9 @@ const CaregiverHomePage = () => {
                 <div>
                     <canvas id="myChart"></canvas>
                     <div className='statistics-box'>
+                        <Link to="/stat">
                         <Chart type='pie' data={data} />
+                        </Link>
                     </div>
                 </div>
 
