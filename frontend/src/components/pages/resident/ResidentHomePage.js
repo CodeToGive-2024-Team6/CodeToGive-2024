@@ -7,6 +7,7 @@ import { LuGoal } from "react-icons/lu";
 import { FaRegBell } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FiMessageSquare } from "react-icons/fi";
+import { FiCalendar } from "react-icons/fi";
 //import companyLogo from "../../../company_logo.png";
 
 const HomePage = () => {
@@ -67,6 +68,13 @@ const HomePage = () => {
                             <span class="title">MESSAGES</span>
                         </a>
                     </li>
+                    <li className={activeContent === 'calendar' ? 'list active' : 'list'}>
+                        <a href="#" onClick={() => setActiveContent('calendar')}>
+                            <span class="icon">
+                            <FiCalendar style={{fontSize: '1em'}}/></span>
+                            <span class="title">CALENDAR</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -94,6 +102,12 @@ const HomePage = () => {
                     <>
                         <h2>Messages</h2>
                         <p>Your messages content goes here</p>
+                    </>
+                )}
+                {activeContent === 'calendar' && (
+                    <>
+                        <h2>Calendar</h2>
+                        <p>Your calendar for daily activities appears here!</p>
                     </>
                 )}
             </div>
