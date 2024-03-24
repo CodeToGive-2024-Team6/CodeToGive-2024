@@ -9,6 +9,13 @@ import { FaBook } from "react-icons/fa";
 import { FiMessageSquare } from "react-icons/fi";
 //import companyLogo from "../../../company_logo.png";
 
+//import fragments
+import GoalsFragment from "./Fragments/GoalsFragment/GoalsFragment";
+import RemindersFragment from "./Fragments/RemindersFragment/RemindersFragment";
+import ResourcesFragment from "./Fragments/ResourcesFragment/ResourcesFragment";
+import MessagesFragment from "./Fragments/MessagesFragment/MessagesFragment";
+
+
 const HomePage = () => {
     const [activeContent, setActiveContent] = useState('goals');
     
@@ -70,33 +77,24 @@ const HomePage = () => {
                 </ul>
             </div>
 
-            {/* Additional content for the homepage */}
-            <div className='additional-content'>
-                {activeContent === 'goals' && (
-                    <>
-                        <h2>Welcome Back, (Caregiver Name) 👋</h2>
-                        <p>Your assigned goals</p>
-                    </>
-                )}
-                {activeContent === 'reminders' && (
-                    <>
-                        <h2>Reminders</h2>
-                        <p>Your reminders content goes here</p>
-                    </>
-                )}
-                {activeContent === 'resources' && (
-                    <>
-                        <h2>Resources</h2>
-                        <p>Your resources content goes here</p>
-                    </>
-                )}
-                {activeContent === 'messages' && (
-                    <>
-                        <h2>Messages</h2>
-                        <p>Your messages content goes here</p>
-                    </>
-                )}
+            <div className='additional-content-resident'>
+
+                <div className='welcome-resident'>
+                    <h1>Welcome Back, Resident Name 👋</h1>
+                    <p>Here you can view your goals, reminders, resources, and messages.</p>
+                </div>
+                
+
+                <div style={{marginLeft: '4%', marginTop: '3%'}}>
+                    {activeContent === 'goals' && <GoalsFragment />}
+                    {activeContent === 'reminders' && <RemindersFragment />}
+                    {activeContent === 'resources' && <ResourcesFragment />}
+                    {activeContent === 'messages' && <MessagesFragment />}
+                </div>
+
             </div>
+
+            
         </div>
     );
 };

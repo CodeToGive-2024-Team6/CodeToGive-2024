@@ -1,0 +1,93 @@
+/* CaregiverSearchPage.css */
+
+/* Header bar */
+.header-bar {
+    width: 100%;
+    height: 80px;
+    background-color: #00AFD7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Search bar */
+.search-bar {
+    width: 40%;
+    height: 30px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+}
+
+/* Filter button */
+.filter-button {
+    margin-right: 60px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    color: #00AFD7;
+    cursor: pointer;
+}
+
+
+/* List view */
+.list-view {
+    margin: 20px;
+}
+
+
+/* Pagination */
+.pagination {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+
+/* List item */
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 60px;
+    background-color: rgba(0, 175, 215, 0.5); /* Use rgba here */
+    transition: background-color 0.3s ease; /* Add this line */
+    font-family: Arial, sans-serif; /* Change the font */
+    color: #333; /* Change the text color */
+    font-size: large;
+}
+
+.list-item:hover {
+    background-color: rgba(0, 175, 215, 0.7); /* Change the background color on hover */
+}
+
+.list-item p {
+    margin: 0; /* Remove the default margin */
+}
+
+.list-item .VscAccount {
+    margin-right: 10px; /* Add some space on the right */
+}
+
+
+
+
+
