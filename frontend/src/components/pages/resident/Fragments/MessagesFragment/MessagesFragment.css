@@ -1,11 +1,11 @@
 .message-container {
     position: relative; 
-  
     border: 2px solid #ddd; 
     border-radius: 8px;
     padding: 8px;
-    margin: 50px; 
-    height: 490px;
+    margin: 10px; 
+    height: 550px;
+    width: 100%;
     justify-content: center; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -57,7 +57,7 @@
 position: absolute;
 display: flex;
 bottom: 0;
-right: 210px;
+right: 100px;
 margin-bottom: 10px;
 background-color: #cb96b8;; 
 border: none;
