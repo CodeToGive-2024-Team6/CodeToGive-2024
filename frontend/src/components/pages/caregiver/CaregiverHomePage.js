@@ -23,7 +23,7 @@ const CaregiverHomePage = () => {
                 <div className="header-bar">
                     <h1>Hi! Caregiver Name</h1>
                     <VscAccount
-                        style={{ color: 'white', fontSize: '2em', marginRight: '50px' }}
+                        style={{ color: 'white', fontSize: '3em', marginRight: '50px' }}
                     />
                 </div>
                 <div className="appointment-view">

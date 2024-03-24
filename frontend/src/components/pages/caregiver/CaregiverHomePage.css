@@ -61,9 +61,13 @@
     justify-content: center; /* Add this */
     align-items: center; /* Add this */
     flex-direction: column; /* Add this */
+    transition: all 400ms ease;
 }
 
-
+.grid-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px #00AFD7;
+}
 
 
 /* grid view for 2 boxes vertical*/
@@ -76,7 +80,6 @@
     position: absolute;
     left: 55%;
     top: calc(5% + 40px); /* Adjust this value as needed */
-    
 }
 
 /* Statistics box */
@@ -92,4 +95,10 @@
     justify-content: center; /* Add this */
     align-items: center; /* Add this */
     flex-direction: column; /* Add this */
+    transition: all 400ms ease;
+}
+
+.statistics-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px #00AFD7;
 }
