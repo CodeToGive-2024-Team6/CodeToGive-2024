@@ -6,6 +6,9 @@ import { MdDeleteForever } from "react-icons/md";
 
 
 
+
+
+
 function RemindersFragment() {
     const [reminders, setReminders] = useState([
         {heading: 'Reminder 1', meetingInfo: 'Meeting Info 1', date: '2022-01-01', time: '12:00', type: 'Type 1', note: 'Note 1', communication: 'Communication 1'},
@@ -95,6 +98,8 @@ function RemindersFragment() {
             </div>
 
             <div className='scheduler'>
+
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FEdmonton&bgcolor=%23ffffff&title=le%20chainon&src=YWNhZHNjaEB1YWxiZXJ0YS5jYQ&color=%23F4511E" style={{height: ' 480px',width: '500px',marginLeft: '5px', borderWidth: '0px', borderRadius: "10px"}}></iframe>
                
 
             </div>
