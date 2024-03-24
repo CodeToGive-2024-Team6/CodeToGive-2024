@@ -18,12 +18,12 @@ import MessagesFragment from "./Fragments/MessagesFragment/MessagesFragment";
 
 const HomePage = () => {
     const [activeContent, setActiveContent] = useState('goals');
-    
+
     useEffect(() => {
         const list = document.querySelectorAll('.list');
 
         function activeLink() {
-            list.forEach((item) => 
+            list.forEach((item) =>
                 item.classList.remove('active'));
             this.classList.add('active');
         }
@@ -41,36 +41,36 @@ const HomePage = () => {
         <div className='resident-homepage-container'>
             <div className="navigation">
                 <ul>
-                    <VscAccount 
-                        style={{color: 'white', fontSize: '1em', marginRight: '50px'}}
+                    <VscAccount
+                        style={{ color: 'white', fontSize: '1em', marginRight: '50px' }}
                     />
                     {/* Main content of your application */}
 
                     <li className={activeContent === 'goals' ? 'list active' : 'list'}>
                         <a href="#" onClick={() => setActiveContent('goals')}>
                             <span class="icon">
-                            <LuGoal style={{fontSize: '1em'}}/></span>
+                                <LuGoal style={{ fontSize: '1em' }} /></span>
                             <span class="title">GOALS</span>
                         </a>
                     </li>
                     <li className={activeContent === 'reminders' ? 'list active' : 'list'}>
                         <a href="#" onClick={() => setActiveContent('reminders')}>
                             <span class="icon">
-                            <FaRegBell style={{fontSize: '1em'}}/></span>
+                                <FaRegBell style={{ fontSize: '1em' }} /></span>
                             <span class="title">REMINDERS</span>
                         </a>
                     </li>
                     <li className={activeContent === 'resources' ? 'list active' : 'list'}>
                         <a href="#" onClick={() => setActiveContent('resources')}>
                             <span class="icon">
-                            <FaBook style={{fontSize: '1em'}}/></span>
+                                <FaBook style={{ fontSize: '1em' }} /></span>
                             <span class="title">RESOURCES</span>
                         </a>
                     </li>
                     <li className={activeContent === 'messages' ? 'list active' : 'list'}>
                         <a href="#" onClick={() => setActiveContent('messages')}>
                             <span class="icon">
-                            <FiMessageSquare style={{fontSize: '1em'}}/></span>
+                                <FiMessageSquare style={{ fontSize: '1em' }} /></span>
                             <span class="title">MESSAGES</span>
                         </a>
                     </li>
@@ -83,9 +83,9 @@ const HomePage = () => {
                     <h1>Welcome Resident Name</h1>
                     <p>Here you can view your goals, reminders, resources, and messages.</p>
                 </div>
-                
 
-                <div style={{marginLeft: '4%', marginTop: '3%'}}>
+
+                <div style={{ marginLeft: '4%', marginTop: '3%' }}>
                     {activeContent === 'goals' && <GoalsFragment />}
                     {activeContent === 'reminders' && <RemindersFragment />}
                     {activeContent === 'resources' && <ResourcesFragment />}
@@ -94,7 +94,7 @@ const HomePage = () => {
 
             </div>
 
-            
+
         </div>
     );
 };
