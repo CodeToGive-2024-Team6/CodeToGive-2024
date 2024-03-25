@@ -16,7 +16,6 @@ import NotesFragment from "./Fragments/NotesFragment/NotesFragment";
 
 //import company logo
 import company_logo from "./company_logo.png";
-
 import { VscAccount } from "react-icons/vsc";
 
 
@@ -31,8 +30,7 @@ import { Profile } from "./Profile.js";
 
 const CaregiverResidentPage = () => {
 
-
-    const [selectedOption, setSelectedOption] = useState('RESOURCES');
+    const [selectedOption, setSelectedOption] = useState('PROFILE');
 
     useEffect(() => {
         const list = document.querySelectorAll('.list');
@@ -68,7 +66,7 @@ const CaregiverResidentPage = () => {
 
 
                     <li class="list active" onClick={() => setSelectedOption('PROFILE')}>
-                        <a href="#">
+                        <a>
                             <span class="icon">
                                 <FaRegUser style={{ fontSize: '1em' }} /></span>
                             <span class="title">PROFILE</span>
@@ -77,7 +75,7 @@ const CaregiverResidentPage = () => {
 
 
                     <li class="list" onClick={() => setSelectedOption('GOALS')}>
-                        <a href="#">
+                        <a>
                             <span class="icon">
                                 <LuGoal style={{ fontSize: '1em' }} /></span>
                             <span class="title">GOALS</span>
@@ -85,7 +83,7 @@ const CaregiverResidentPage = () => {
                     </li>
 
                     <li class="list" onClick={() => setSelectedOption('REMINDERS')}>
-                        <a href="#">
+                        <a>
                             <span class="icon">
                                 <FaRegBell style={{ fontSize: '1em' }} /></span>
                             <span class="title">REMINDERS</span>
@@ -93,7 +91,7 @@ const CaregiverResidentPage = () => {
                     </li>
 
                     <li class="list" onClick={() => setSelectedOption('RESOURCES')}>
-                        <a href="#">
+                        <a>
                             <span class="icon">
                                 <FaBook style={{ fontSize: '1em' }} /></span>
                             <span class="title">RESOURCES</span>
@@ -101,7 +99,7 @@ const CaregiverResidentPage = () => {
                     </li>
 
                     <li class="list" onClick={() => setSelectedOption('MESSAGES')}>
-                        <a href="#">
+                        <a>
                             <span class="icon">
                                 <FiMessageSquare style={{ fontSize: '1em' }} /></span>
                             <span class="title">MESSAGES</span>
@@ -110,7 +108,7 @@ const CaregiverResidentPage = () => {
 
 
                     <li class="list" onClick={() => setSelectedOption('NOTES')}>
-                        <a href="#">
+                        <a>
                             <span class="icon">
                                 <CgNotes style={{ fontSize: '1em' }} /></span>
                             <span class="title">NOTES</span>
@@ -133,7 +131,7 @@ const CaregiverResidentPage = () => {
                 </div>
 
                 {/* display the content based on the selected option */}
-                <div style={{ marginLeft: '4%', marginTop: '12%' }}>
+                <div className='caregiver-fragments'style={{ marginLeft: '4%', marginTop: '12%' }}>
                     {selectedOption === 'PROFILE' && <ProfileFragment />}
                     {selectedOption === 'GOALS' && <GoalsFragment />}
                     {selectedOption === 'REMINDERS' && <RemindersFragment />}
