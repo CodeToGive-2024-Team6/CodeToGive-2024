@@ -44,8 +44,9 @@
 
 .cards-container .card h2.title {
     font-size: 20px;
-    margin: 28px 0 10px 0;
+    margin: 28px 0 10 0; 
     line-height: 1.4;
+    width: 100%
 }
 
 
