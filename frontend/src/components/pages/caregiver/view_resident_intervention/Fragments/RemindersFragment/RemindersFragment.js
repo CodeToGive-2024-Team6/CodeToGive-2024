@@ -37,29 +37,22 @@ function RemindersFragment() {
 
     const [residents, setResidents] = useState([]);
     const [displayedResidents, setDisplayedResidents] = useState([]);
+    const [followUps, setFollowUps] = useState([]);
     useEffect(() => {
-        fetch('/caregiver/testCaregiver1')
+        fetch('/followups/testResident1')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                if (Array.isArray(data.residents)) {
-                    const transformedData = data.residents.map(resident => ({
-                        residentref: resident.residents
-                    }));
-                    setResidents(transformedData);
-
-                    
-                } else {
-                    console.error('Received data is not an array:', data);
-                }
+                setFollowUps(data);
             })
-            .catch(error => console.error('Error fetching resident data:', error));
-    }, []);
-    console.log("residents");
-    console.log(residents);
+            .catch(error => console.error('Error fetching follow-up data:', error));
+    }, []); // The empty array ensures this effect runs once after the initial render
+
+    
 
 
-    const [followUps, setFollowUps] = useState([]);
+
+
 
     useEffect(() => {
         const residentRefs = getResidentIDfromRefs(residents);
