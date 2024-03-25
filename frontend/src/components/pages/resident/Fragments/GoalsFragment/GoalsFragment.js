@@ -46,7 +46,7 @@ function GoalsFragment() {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
               <div
-                className="bg-sky-300 h-2.5 rounded-full"
+                className="bg-rose-300 h-2.5 rounded-full"
                 style={{
                   width: `${completionPercentage}%`,
                 }}

@@ -12,22 +12,22 @@ const GoalCard = ({ objective }) => {
     }
   }, [isModalOpen]);
 
-  let bgColorClass = '';
+  let cardColorClass = '';
   switch (objective.status) {
     case 'Completed':
-      bgColorClass = 'bg-cyan-500';
+      cardColorClass = 'bg-rose-400 text-white';
       break;
     case 'In Progress':
-      bgColorClass = 'bg-cyan-400';
+      cardColorClass = 'bg-rose-300 text-rose-800';
       break;
     default:
-      bgColorClass = 'bg-gray-400';
+      cardColorClass = 'bg-gray-100 text-rose-800';
   }
 
   return (
     <>
       <div
-        className={`relative flex flex-col w-full ${bgColorClass} text-white text-lg rounded-2xl p-6 gap-y-2`}
+        className={`relative flex flex-col w-full ${cardColorClass} text-lg rounded-2xl p-6 gap-y-2 border-double border-4 border-rose-200`}
       >
         {objective.title && (
           <div className="text-xl font-bold">Title: {objective.title}</div>
