@@ -9,7 +9,10 @@ import { Chart } from 'primereact/chart';
 
 
 const CaregiverHomePage = () => {
-    const appointments = ['Appointment 1: Date and Time', 'Appointment 2: Date and Time', 'Appointment 3: Date and Time'];
+    const appointments =
+     ["Doctor's Visit with Linda Hudson || Tue 24 || 8:00am - 10:00am",
+    "Amy Sandy's fundraiser  || Fri  April  5th || 4:00pm - 7:00pm" ,
+    "Wellness Workshop Series  || Wed 17th || 1:00pm - 3:00pm",]
     const [currentAppointmentIndex, setCurrentAppointmentIndex] = useState(0);
 
     useEffect(() => {
@@ -20,92 +23,132 @@ const CaregiverHomePage = () => {
     }, [currentAppointmentIndex, appointments.length]);
 
     const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
+        labels: ['Emergency housing', 'Transition','Short-term', ],
         datasets: [{
             label: 'My First Dataset',
             data: [300, 50, 100],
             backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+                'RGB(0,103,158)',    
+                'RGBA(0,103,158,0.31)', 
+                'RGBA(0,75,205,0.28)', 
             ],
             hoverOffset: 4
         }]
     };
 
+    const options = {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Current Occupation Rate',
+                font: {
+                    size: 20
+                }
+            }
+        }
+    };
+    const data2= {
+        labels: ['Ada', 'Dora','Yan','Lisa'],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [3, 5, 1,2],
+            backgroundColor: [
+                'RGB(0,103,158)',    
+                'RGBA(0,103,158,0.31)', 
+                'RGBA(0,75,205,0.28)', 
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const options2 = {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Weekly Goal Completion',
+                font: {
+                    size: 20
+                }
+            }
+        }
+    };
+
     return (
         <div className="page-layout">
-            <div>
-                <div className="header-bar">
+            
+                
+            <div className="home-header">
                     <h1>Hi! Caregiver Name</h1>
+
                     <div className="caregiver-homepage-before">
                         <Link to="/">
                             <img src={company_logo} alt="company logo" style={{width: '200px', height: '100px'}}/>
                         </Link>
                     </div>
+
                     <Link to="/caregiver_profile">
-                        <VscAccount style={{ color: 'white', fontSize: '3em', marginRight: '50px' }}>
+                        <VscAccount style={{ color:'#4fadd5', fontSize: '2em', marginRight: '50px' }}>
                         </VscAccount>
                     </Link>
-                </div>
-                <div className="appointment-view">
-                    <h2>Current Appointment</h2>
-                </div>
-                <div className="caregiver-upcoming-appointment">
-                    <h2>Upcoming Appointment</h2>
+            </div>
+          
+
+            
+            <div className="upcoming-appointment">
+                    <h4 style={{color:'white',  marginLeft:'6%', margin:'2%'}}>Upcoming Appointment</h4>
                     <div className="appointment-view">
                         <p>{appointments[currentAppointmentIndex]}</p>
                     </div>
+
+            </div>
+            
+            <div className="grid-view">
+
+                <Link to="/caregiver_search"style={{ textDecoration: 'none', color: 'black', fontWeight:'600' }} className="grid-box">
+                    <FaBuilding style={{fontSize: '5em', padding: 10}}/>
+                    <p>Search Facility</p>
+                </Link>
+
+
+                <Link to="/caregiver_add_resident"style={{textDecoration: 'none', color: 'black' , fontWeight:'600'  }} className="grid-box">
+                    <CgAddR style={{ fontSize: '5em' }} />
+
+                    <p>Add Resident</p>
+                </Link>
+
+                <Link to="/caregiver_communication" style={{ textDecoration: 'none', color: 'black', fontWeight:'600'  }} className="grid-box">
+                    <FaFacebookMessenger style={{fontSize: '5em', padding: 10}} />
+                    <p>Communication</p>
+                </Link>
+
+                <div className="grid-box" style={{ textDecoration: 'none', color: 'black', fontWeight:'600' }}>
+                    <FaAddressBook style={{fontSize: '5em', padding: 10}} />
+                    <p>My Resident</p>
                 </div>
-                <div className="grid-view">
+            </div>
+        
 
-                    <Link to="/caregiver_search"style={{ textDecoration: 'none', color: 'black', fontWeight:'600' }} className="grid-box">
-                        <FaBuilding style={{fontSize: '5em', padding: 10}}/>
-                        <p>Search Facility</p>
+        <div className='grid-view-stats'>
+            <div>
+                <canvas id="myChart"></canvas>
+                <div className='statistics-box'>
+                    <Link to="/stat">
+                    <Chart type='pie' data={data}  options={options} />
                     </Link>
-
-
-                    <Link to="/caregiver_add_resident"style={{textDecoration: 'none', color: 'black' , fontWeight:'600'  }} className="grid-box">
-                        <CgAddR style={{ fontSize: '5em' }} />
-
-                        <p>Add Resident</p>
-                    </Link>
-
-                    <Link to="/caregiver_communication" style={{ textDecoration: 'none', color: 'black', fontWeight:'600'  }} className="grid-box">
-                        <FaFacebookMessenger style={{fontSize: '5em', padding: 10}} />
-                        <p>Communication</p>
-                    </Link>
-
-                    <div className="grid-box" style={{ textDecoration: 'none', color: 'black', fontWeight:'600' }}>
-                        <FaAddressBook style={{fontSize: '5em', padding: 10}} />
-                        <p>My Resident</p>
-                    </div>
                 </div>
             </div>
 
-            <div className='grid-view-stats'>
-                <div>
-                    <canvas id="myChart"></canvas>
-                    <div className='statistics-box'>
-                        <Link to="/stat">
-                        <Chart type='pie' data={data} />
-                        </Link>
-                    </div>
-                </div>
-
-                <div className='statistics-box'>
-                    <h2>Statistics 2</h2>
-                </div>
-
-
+            <div className='statistics-box'>
+                <Link to="/stat">
+                    <Chart type='bar' data={data2}  options={options2} />
+                </Link>
             </div>
 
 
         </div>
+
+
+    </div>
     );
 };
 
