@@ -6,11 +6,11 @@ function GoalsFragment() {
   const [objectives, setGoals] = useState([]);
 
   useEffect(() => {
-    const residentId = '1';
+    const residentId = 'testResident1';
     const fetchGoals = async () => {
       try {
         const response = await axios.get(`/objectives/${residentId}`);
-        setGoals(response.data[0].objectives); // Assuming the data structure from your example
+        setGoals(response.data); // Assuming the data structure from your example
       } catch (error) {
         console.error('Failed to fetch objectives:', error);
       }
