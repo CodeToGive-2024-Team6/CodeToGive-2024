@@ -18,6 +18,7 @@ import RemindersFragment from './Fragments/RemindersFragment/RemindersFragment';
 import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
 import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
 import { SideBar, SideBarItem } from './SideBar';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [activeContent, setActiveContent] = useState('GOALS');
@@ -52,7 +53,14 @@ const HomePage = () => {
         </SideBar>
       </div>
       <div className="flex flex-col m-6 flex-1 overflow-auto">
-        <div className="text-2xl font-bold my-6 ">Welcome back, Jane! 👋</div>
+        <div className="flex w-full justify-between my-6">
+          <div className="text-2xl font-bold">Welcome back, Jane! 👋</div>
+          <Link className="no-underline" to="/">
+            <div className="p-3 bg-gray-200 text-gray-400 rounded-md hover:cursor-pointer hover:bg-gray-300">
+              LOGOUT
+            </div>
+          </Link>
+        </div>
         <div
           className="flex flex-col flex-1 overflow-auto"
           style={{ flexBasis: '40%', flexGrow: 1 }}
