@@ -105,13 +105,13 @@ function GoalsFragment() {
           style={{ flexBasis: '0%', flexGrow: 1 }}
         >
           <div className="flex flex-col shadow-md rounded-2xl p-6 gap-2">
-            <div className="text-lg font-medium">Your Progress</div>
+            <div className="text-lg font-medium">Progress Check</div>
             <div>
-              You've completed {completedGoals} of {totalGoals} objectives!
+              Resident completed {completedGoals} of {totalGoals} objectives!
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
               <div
-                className="bg-rose-300 h-2.5 rounded-full"
+                className="bg-sky-300 h-2.5 rounded-full"
                 style={{
                   width: `${completionPercentage}%`,
                 }}

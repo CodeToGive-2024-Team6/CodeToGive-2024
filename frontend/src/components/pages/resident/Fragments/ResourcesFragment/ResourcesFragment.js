@@ -7,7 +7,7 @@ import houseLogo from '../../../house_logo.png'; // Import house logo image
 function ResourcesFragment() {
     return (
         <div class="cards-container">
-            <div class="card">
+            <div class="card !bg-rose-200 !shadow-none">
                 <a href="https://lechainon.org/en/">
                     <div class="category">Documents</div>
                     <h2 class="title" style={{marginRight:"0px"}}>Helpful Documents</h2>
@@ -15,7 +15,7 @@ function ResourcesFragment() {
                     <div class="description">Check out the following documents to help you on your journey!</div>
                 </a>
             </div>
-            <div class="card">
+            <div class="card !bg-rose-200 !shadow-none">
                 <a href="https://lechainon.org/en/">
                     <div class="category" >Workshops</div>
                     <h2 class="title" style={{marginRight:"50px"}}>Workshops</h2>
@@ -23,7 +23,7 @@ function ResourcesFragment() {
                     <div class="description">These are a list of wonderful workshops you can join in!</div>
                 </a>
             </div>
-            <div class="card">
+            <div class="card !bg-rose-200 !shadow-none">
                 <a href="https://lechainon.org/en/">
                     <div class="category">Shelters</div>
                     <h2 class="title" style={{marginRight:"38px"}}>Shelters</h2>
