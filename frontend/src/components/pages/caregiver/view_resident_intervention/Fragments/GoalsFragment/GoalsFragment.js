@@ -1,37 +1,85 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ObjectiveCard from './GoalCard';
+import GoalCard from './GoalCard';
+import { Plus } from 'lucide-react';
+import GoalModal from './GoalModal';
 
 function GoalsFragment() {
-  const [objectives, setObjectives] = useState([]);
+  const [objectives, setGoals] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const residentId = '1';
-    const fetchObjectives = async () => {
+    const fetchGoals = async () => {
       try {
         const response = await axios.get(`/objectives/${residentId}`);
-        setObjectives(response.data[0].objectives); // Assuming the data structure from your example
+        setGoals(response.data[0].objectives); // Assuming the data structure from your example
       } catch (error) {
         console.error('Failed to fetch objectives:', error);
       }
     };
 
-    fetchObjectives();
+    fetchGoals();
   }, []);
 
-  const totalObjectives = objectives.length;
-  const completedObjectives = objectives.filter(
+  const openAddModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleAddGoal = (newGoalData) => {
+    const newGoal = {
+      ...newGoalData,
+      objectiveId: `id_${Math.random().toString(16).slice(2)}`,
+    };
+
+    setGoals([...objectives, newGoal]);
+
+    // TODO
+    // axios.post('/objectives', newGoal)
+    //   .then(response => {
+    //     console.log('Goal added successfully');
+    //     // Optionally update objectives list with response data if needed
+    //   })
+    //   .catch(error => {
+    //     console.error('Error adding objective:', error);
+    //   });
+  };
+
+  const handleEditGoal = (updatedGoal) => {
+    const updatedGoals = objectives.map((obj) =>
+      obj.objectiveId === updatedGoal.objectiveId ? updatedGoal : obj
+    );
+    setGoals(updatedGoals);
+
+    // TODO update this objective in your backend here
+  };
+
+  const totalGoals = objectives.length;
+  const completedGoals = objectives.filter(
     (objective) => objective.status === 'Completed'
   ).length;
   const completionPercentage =
-    totalObjectives > 0 ? (completedObjectives / totalObjectives) * 100 : 0;
+    totalGoals > 0 ? (completedGoals / totalGoals) * 100 : 0;
 
   return (
     <div className="flex flex-col md:flex-row gap-x-6">
-      <div className="flex flex-col flex-1 gap-y-6" style={{ flex: '2 1 0%' }}>
+      <div
+        className="flex flex-col flex-1 gap-y-6 pb-6"
+        style={{ flex: '2 1 0%' }}
+      >
         {objectives.map((objective, index) => (
-          <ObjectiveCard key={index} objective={objective} />
+          <GoalCard
+            key={index}
+            onEditGoal={handleEditGoal}
+            goal={objective}
+          />
         ))}
+        <button
+          onClick={openAddModal}
+          className="border-double border-4 border-sky-200 px-4 py-6 rounded-2xl bg-white text-sky-200"
+        >
+          <Plus size={40} />
+        </button>
       </div>
       {objectives.length > 0 ? (
         <div
@@ -41,8 +89,7 @@ function GoalsFragment() {
           <div className="flex flex-col shadow-md rounded-2xl p-6 gap-2">
             <div className="text-lg font-medium">Your Progress</div>
             <div>
-              You've completed {completedObjectives} of {totalObjectives}{' '}
-              objectives!
+              You've completed {completedGoals} of {totalGoals} objectives!
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
               <div
@@ -57,6 +104,12 @@ function GoalsFragment() {
       ) : (
         <h1>No objectives assigned</h1>
       )}
+      <GoalModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAddEditGoal={handleAddGoal}
+        mode={'add'}
+      />
     </div>
   );
 }
