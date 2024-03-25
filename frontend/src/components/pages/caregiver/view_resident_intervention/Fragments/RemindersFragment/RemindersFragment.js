@@ -6,6 +6,24 @@ import { MdDeleteForever } from "react-icons/md";
 
 
 
+async function getFollowUpsForResidents(residentRefs) {
+    try {
+        // Fetch follow-ups for each resident
+        const followUps = await Promise.all(residentRefs.map(residentRef => 
+            fetch(`/followups/${residentRef}`)
+                .then(response => response.json())
+        ));
+
+        return followUps;
+    } catch (error) {
+        console.error('Error fetching follow-up data:', error);
+    }
+}
+
+function getResidentIDfromRefs(refs) {
+    return refs.map(ref => ref.residentref);
+}
+
 
 
 
@@ -19,28 +37,35 @@ function RemindersFragment() {
 
     const [residents, setResidents] = useState([]);
     const [displayedResidents, setDisplayedResidents] = useState([]);
-
-    // Fetch residents data from the endpoint
+    const [followUps, setFollowUps] = useState([]);
     useEffect(() => {
-        fetch('/caregiver/testCaregiver1')
+        fetch('/followups/testResident1')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                console.log('here')
-                // Transform data to match the existing structure expected by the rendering logic
-                const transformedData = data.map(resident => ({
-                    residentref: resident.residents
-                }));
-                setResidents(transformedData);
-                console.log(transformedData);
-                
-            
+                setFollowUps(data);
             })
-            .catch(error => console.error('Error fetching resident data:', error));
+            .catch(error => console.error('Error fetching follow-up data:', error));
     }, []); // The empty array ensures this effect runs once after the initial render
 
     
-   
+
+
+
+
+
+    useEffect(() => {
+        const residentRefs = getResidentIDfromRefs(residents);
+        console.log(residentRefs);
+        getFollowUpsForResidents(residentRefs)
+            .then(followUps => {
+                setFollowUps(followUps);
+            });
+            console.log(followUps);
+    }, [residents]);
+
+
+
 
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
     const [showForm, setShowForm] = useState(false);
@@ -84,6 +109,8 @@ function RemindersFragment() {
             document.body.classList.remove('no-scroll');
         }
     }, [isFormOpen]);
+
+
 
     
 

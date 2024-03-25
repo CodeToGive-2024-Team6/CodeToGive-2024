@@ -27,7 +27,11 @@ const CaregiverSearchPage = () => {
                 // Transform data to match the existing structure expected by the rendering logic
                 const transformedData = data.map(resident => ({
                     name: `${resident.firstName} ${resident.lastName}`,
-                    house: resident.currentAccommodation
+                    house: resident.currentAccommodation,
+                    firstName: resident.firstName,
+                    lastName: resident.lastName,
+                    //get document id
+                    id: resident.id,
                 }));
                 setResidents(transformedData);
                 setDisplayedResidents(transformedData);
@@ -36,6 +40,8 @@ const CaregiverSearchPage = () => {
     }, []); // The empty array ensures this effect runs once after the initial render
 
 
+    // Handle click on a resident item and send resident data to the next page
+    
     const handleItemClick = (resident) => {
         console.log(`Clicked on ${resident.name}`);
         navigate('/caregiver_resident', { state: { resident } });
