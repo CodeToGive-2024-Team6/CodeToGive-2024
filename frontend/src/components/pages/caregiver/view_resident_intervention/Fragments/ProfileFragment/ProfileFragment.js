@@ -29,83 +29,113 @@ function ProfileFragment({resident}) {
             <div className='assigned-caregiver'>
                 <p>Assigned Caregiver: </p> 
             </div>
+
             <div className="resident-name">
                 <h1>{residents.firstName} {residents.lastName}</h1>
-            <div className="titles">
-                <h1>Basic Details</h1>
-                <div className="profile-container-basic">
-                        <p>
-                            <strong>Age: </strong> {residents.age}
-                        </p>
-                        <p>
-                            <strong>City/ Borough:</strong> {residents.borough}
-                        </p>
-                        <p>
-                            <strong>Revenue:</strong> {residents.income}
-                        </p>
-                        <p>
-                            <strong>Significant Persons:</strong> {residents.significantPersons && residents.significantPersons.map(person => person).join(', ')} 
-                            
-                        </p>
-                        <p>
-                            <strong>Immigrant Status:</strong> {residents.immigrantStatus}
-                        </p>
-                        <p>
-                            <strong>With Child:</strong> {residents.withChild}
-                        </p>
-                        <p>
-                            <strong>Native:</strong> {residents.native}
-                        </p>
-                        <p>
-                            <strong>Veteran:</strong> {residents.veteran}
-                        </p>
+            </div>
+
+            <div className='containerRow1'>
+
+                <div className="titles">
+                    <h1>Basic Details</h1>
+                    <div className="profile-container-basic-details">
+                            <p>
+                                <strong>Age: </strong> {residents.age}
+                            </p>
+                            <p>
+                                <strong>City/ Borough:</strong> {residents.borough}
+                            </p>
+                            <p>
+                                <strong>Revenue:</strong> {residents.income}
+                            </p>
+                            <p>
+                                <strong>Significant Persons:</strong> {residents.significantPersons && residents.significantPersons.map(person => person).join(', ')} 
+                                
+                            </p>
+                            <p>
+                                <strong>Immigrant Status:</strong> {residents.immigrantStatus}
+                            </p>
+                            <p>
+                                <strong>With Child:</strong> {residents.withChild}
+                            </p>
+                            <p>
+                                <strong>Native:</strong> {residents.native}
+                            </p>
+                            <p>
+                                <strong>Veteran:</strong> {residents.veteran}
+                            </p>
+                    </div>
+
+                    <div className="titles">
+                        <h1>Resident Status</h1>
+                        <div className="profile-container-resident-status">
+                                <p>
+                                    <strong>Plan Start Date:</strong> {startDate}
+                                </p>
+                                <p>
+                                    <strong>Start Date of the Stay:</strong> {startDate}
+                                </p>
+                                <p>
+                                    <strong>Place Accommodation:</strong> {residents.currentAccommodation}
+                                </p>
+                                <p>
+                                    <strong>First Visit:</strong> {String(residents.firstVisit)}
+                                </p>
+                                <p>
+                                    <strong>Issues:</strong> {residents.challenges && residents.challenges.map(challenge => challenge).join(', ')}
+                                </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className="titles">
-                <h1>Resident Status</h1>
-                <div className="profile-container-status">
-                        <p>
-                            <strong>Plan Start Date:</strong> {startDate} 
-                        </p>
-                        <p>
-                            <strong>Start Date of the Stay:</strong> {startDate}
-                        </p>
-                        <p>
-                            <strong>Place Accommodation:</strong> {residents.currentAccommodation}
-                        </p>
-                        <p>
-                            <strong>First Visit:</strong> {String(residents.firstVisit)}
-                        </p>
-                        <p>
-                            <strong>Issues:</strong> {residents.challenges && residents.challenges.map(challenge => challenge).join(', ')}
-                        </p>
-                </div>
-            </div>
+            <div className='containerRow2'>
+                <div className="titles">
+                    <h1>Treatment Care</h1>
+                    <div className="profile-container-care">
+                        <h3>Treatment Team:</h3>
+                        <div className='table'>
+                            <div className='teamColumn1'>
+                                <strong>Job</strong>
+                                <text>Psychiatrist</text>
+                                <text>Social Worker</text>
+                            </div>
+                            <div className='teamColumn2'>
+                                <strong>Name</strong>
+                                <text>Dr. XYZ</text>
+                                <text>Mr. ABC</text>
+                            </div>
+                            <div className='teamColumn3'>
+                                <strong>Address</strong>
+                                <text>1234 Sherbrooke Est</text>
+                                <text>Chum Hosipital</text>
+                            </div>
+                        </div>
 
-            <div className="titles">
-                <h1>Treatment Care</h1>
-                <div className="profile-container-care">
-                        <p>
-                            <strong>Treatment Team</strong>
-                        </p>
-                        <p>Psychiatrist             DR. XYZ        1234 Sherbrooke ESt</p>
-                        <p>Social Worker            Mr. ABC         Chum Hosipital</p>
-                            <strong>Community Services:</strong>
-                        <p>
-                        Spectre de rue       STD,HIV, HCV and overdose ...    1280 Ontario st E
-                        </p>
-                        <p>Cactus                           Supervised Injection Center...           1233 rue du berger
-                        </p>
-                        <p>
-                        .......
-                            ......
-                        </p>
+                        <br />
+
+                        <h3>Community Services:</h3>
+                        <div className='table'>
+                            <div className='teamColumn1'>
+                                <strong>Name</strong>
+                                <text>Spectre de rue</text>
+                                <text>Cactus</text>
+                            </div>
+                            <div className='teamColumn2'>
+                                <strong>Services Provided</strong>
+                                <text>STD,HIV, HCV and overdose ...</text>
+                                <text>Supervised Injection Center..</text>
+                            </div>
+                            <div className='teamColumn3'>
+                                <strong>Address</strong>
+                                <text>1280 Ontario st E</text>
+                                <text>1233 rue du berger</text>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
-
     );
 }
 

@@ -1,7 +1,8 @@
 /* ProfileFragment.css */
 
 .profile-wrapper {
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
 
@@ -14,19 +15,38 @@
     margin-top: 20px;
 }
 
-.profile-container-basic {
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 10px;
+.containerRow1, .containerRow2 {
+    display: flex;
+    flex-direction: row;
+    line-height: 1.5;
 }
 
-.profile-container-status {
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 10px;
+.profile-container-basic-details, .profile-container-resident-status {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    width: 50%;
+
+    margin: 20px 20px 20px 0;
+    padding: 20px;
+    height: auto;
+    
+    border: #ccc 1px solid;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .profile-container-care {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    width: 100%;
+    margin: 20px 20px 20px 0;
+    padding: 20px;
+    height: auto;
+
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 10px;
@@ -36,4 +56,16 @@
     background-color: #fff;
     border-radius: 5px;
     padding-left: 850px;
+}
+
+.table {
+    display: flex;
+    flex-direction: row;
+}
+
+.teamColumn1, .teamColumn2, .teamColumn3 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 20px 0 0;
 }
