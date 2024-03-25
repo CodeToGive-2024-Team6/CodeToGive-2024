@@ -57,7 +57,7 @@ const CaregiverResidentPage = () => {
       <div className="flex-none">
         <SideBar onActivateItem={handleActivateItem} className="fixed h-screen">
           <SideBarItem icon={<CircleUserRound />} text="PROFILE" active />
-          <SideBarItem icon={<Goal />} text="GOALS" active />
+          <SideBarItem icon={<Goal />} text="GOALS" />
           <SideBarItem icon={<Bell />} text="REMINDERS" />
           <SideBarItem icon={<LibraryBig />} text="RESOURCES" />
           <SideBarItem icon={<MessageSquareText />} text="MESSAGES" />

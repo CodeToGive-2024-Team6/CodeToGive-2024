@@ -6,7 +6,7 @@ const SidebarContext = createContext();
 
 const SideBar = ({ children, onActivateItem }) => {
   const [expanded, setExpanded] = useState(true);
-  const [activeItem, setActiveItem] = useState('GOALS');
+  const [activeItem, setActiveItem] = useState('PROFILE');
 
   const activateItem = (itemName) => {
     setActiveItem(itemName);
