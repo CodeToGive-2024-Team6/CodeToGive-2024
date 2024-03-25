@@ -66,10 +66,10 @@ function ProfileFragment({resident}) {
                 <h1>Resident Status</h1>
                 <div className="profile-container-status">
                         <p>
-                            <strong>Plan Start Date:</strong> {new Date(residents.planStartDate._seconds).toLocaleDateString()}
+                            <strong>Plan Start Date:</strong> 
                         </p>
                         <p>
-                            <strong>Start Date of the Stay:</strong> {new Date(residents.planStartDate._seconds).toLocaleDateString()}
+                            <strong>Start Date of the Stay:</strong> 
                         </p>
                         <p>
                             <strong>Place Accommodation:</strong> {residents.currentAccommodation}
