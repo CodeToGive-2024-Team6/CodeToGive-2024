@@ -6,7 +6,6 @@ import houseLogo from './house_logo.png'; // Import house logo image
 import { FaPeopleRoof } from "react-icons/fa6";
 import { TbUserHeart } from "react-icons/tb";
 import { BiHomeHeart } from "react-icons/bi";
-import { BsHearts } from "react-icons/bs";
 
 
 const StartPage = () => {
@@ -18,9 +17,7 @@ const StartPage = () => {
                     <div class="description"><BiHomeHeart style={{ fontSize: '2.5em' }} /></div>
                 </a>
             </div>
-            <div className="border"><div className="quote"><h1>Shelter for all women<BsHearts />
-
-            </h1></div></div>
+            <div className="border"><div className="quote"><h1>Shelter for all women</h1></div></div>
             <div className="container">
                 <div className="button-container">
                     <Link to="/caregiver_homepage" className="button-link">
