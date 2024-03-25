@@ -5,6 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
 
 const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID} = require('./getResidentData.js')
+const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo} = require('./setResidentData');
 
 const {getCaregiversAllData,
   getCaregiversByUserID,
@@ -243,6 +244,75 @@ app.put('/caregiverupdatelastname/:caregiver_id', async (req, res) => {
 
 
 
+// POST endpoint to set goals for a resident
+app.post('/setgoals/:residentId', async (req, res) => {
+  const { residentId } = req.params; 
+  const goalsData = req.body; 
+  
+  try {
+    await setGoals(residentId, goalsData); 
+    res.status(201).send({ message: 'Goals successfully added' });
+  } catch (error) {
+    console.error('Error adding goals:', error);
+    res.status(500).send({ message: 'Failed to add goals', error: error.message });
+  }
+});
+
+// POST endpoint to set notes for a resident
+app.post('/setnotes/:residentId', async (req, res) => {
+  const { residentId } = req.params; 
+  const goalsData = req.body; 
+  
+  try {
+    await setNotes(residentId, goalsData); 
+    res.status(201).send({ message: 'Notes successfully added' });
+  } catch (error) {
+    console.error('Error adding Notes:', error);
+    res.status(500).send({ message: 'Failed to add Notes', error: error.message });
+  }
+});
+
+// POST endpoint to set resources for a resident
+app.post('/setresources/:residentId', async (req, res) => {
+  const { residentId } = req.params; 
+  const goalsData = req.body; 
+  
+  try {
+    await setResources(residentId, goalsData); 
+    res.status(201).send({ message: 'Resources successfully added' });
+  } catch (error) {
+    console.error('Error adding Resources:', error);
+    res.status(500).send({ message: 'Failed to add Resources', error: error.message });
+  }
+});
+
+// POST endpoint to set followups for a resident
+app.post('/setfollowups/:residentId', async (req, res) => {
+  const { residentId } = req.params; 
+  const goalsData = req.body; 
+  
+  try {
+    await setFollowUps(residentId, goalsData); 
+    res.status(201).send({ message: 'Follow-ups successfully added' });
+  } catch (error) {
+    console.error('Error adding Follow-ups:', error);
+    res.status(500).send({ message: 'Failed to add Follow-ups', error: error.message });
+  }
+});
+
+
+// POST endpoint to set followups for a resident
+app.post('/setresidentinfo/', async (req, res) => {
+  const goalsData = req.body; 
+  
+  try {
+    await setResidentInfo(goalsData); 
+    res.status(201).send({ message: 'Resources successfully added' });
+  } catch (error) {
+    console.error('Error adding Resources:', error);
+    res.status(500).send({ message: 'Failed to add Resources', error: error.message });
+  }
+});
 
 // Start the Express server
 app.listen(PORT, () => {
