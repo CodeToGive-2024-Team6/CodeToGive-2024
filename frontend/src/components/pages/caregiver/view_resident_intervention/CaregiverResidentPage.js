@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import "./CaregiverResidentPage.css"; // Import CSS file
 
+//import fragments
+import ProfileFragment from "./Fragments/ProfileFragment/ProfileFragment";
+import GoalsFragment from "./Fragments/GoalsFragment/GoalsFragment";
+import RemindersFragment from "./Fragments/RemindersFragment/RemindersFragment";
+import ResourcesFragment from "./Fragments/ResourcesFragment/ResourcesFragment";
+import MessagesFragment from "./Fragments/MessagesFragment/MessagesFragment";
+import NotesFragment from "./Fragments/NotesFragment/NotesFragment";
+
+
+
+
+
+
 //import company logo
 import company_logo from "./company_logo.png";
-import {VscAccount} from  "react-icons/vsc";
+
+import { VscAccount } from "react-icons/vsc";
+
+
 import { LuGoal } from "react-icons/lu";
 import { FaRegBell } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
@@ -15,13 +31,14 @@ import { Profile } from "./Profile.js";
 
 const CaregiverResidentPage = () => {
 
-    const [activeContent, setActiveContent] = useState('goals');
+
+    const [selectedOption, setSelectedOption] = useState('RESOURCES');
 
     useEffect(() => {
         const list = document.querySelectorAll('.list');
 
         function activeLink() {
-            list.forEach((item) => 
+            list.forEach((item) =>
                 item.classList.remove('active'));
             this.classList.add('active');
         }
@@ -35,117 +52,106 @@ const CaregiverResidentPage = () => {
         };
     }, []);
 
+
+
     return (
-        
-        <div className="resident-profile-container-caregiver ">
+
+
+        <div className='resident-profile-container-caregiver '>
 
             <div class="navigation">
                 <ul>
-                    <VscAccount 
-                        style={{color: 'white', fontSize: '1em', marginRight: '50px'}}
+                    <VscAccount
+                        style={{ color: 'white', fontSize: '1em', marginRight: '50px' }}
                     />
                     {/* Main content of your application */}
 
-                    <li className={activeContent === 'profile' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('profile')}>
+
+                    <li class="list active" onClick={() => setSelectedOption('PROFILE')}>
+                        <a href="#">
                             <span class="icon">
-                            <FaRegUser style={{fontSize: '1em'}}/></span>
+                                <FaRegUser style={{ fontSize: '1em' }} /></span>
                             <span class="title">PROFILE</span>
                         </a>
                     </li>
 
-                    <li className={activeContent === 'goals' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('goals')}>
+
+                    <li class="list" onClick={() => setSelectedOption('GOALS')}>
+                        <a href="#">
                             <span class="icon">
-                            <LuGoal style={{fontSize: '1em'}}/></span>
+                                <LuGoal style={{ fontSize: '1em' }} /></span>
                             <span class="title">GOALS</span>
                         </a>
                     </li>
-                    <li className={activeContent === 'reminders' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('reminders')}>
+
+                    <li class="list" onClick={() => setSelectedOption('REMINDERS')}>
+                        <a href="#">
                             <span class="icon">
-                            <FaRegBell style={{fontSize: '1em'}}/></span>
+                                <FaRegBell style={{ fontSize: '1em' }} /></span>
                             <span class="title">REMINDERS</span>
                         </a>
                     </li>
-                    <li className={activeContent === 'resources' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('resources')}>
+
+                    <li class="list" onClick={() => setSelectedOption('RESOURCES')}>
+                        <a href="#">
                             <span class="icon">
-                            <FaBook style={{fontSize: '1em'}}/></span>
+                                <FaBook style={{ fontSize: '1em' }} /></span>
                             <span class="title">RESOURCES</span>
                         </a>
                     </li>
-                    <li className={activeContent === 'messages' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('messages')}>
+
+                    <li class="list" onClick={() => setSelectedOption('MESSAGES')}>
+                        <a href="#">
                             <span class="icon">
-                            <FiMessageSquare style={{fontSize: '1em'}}/></span>
+                                <FiMessageSquare style={{ fontSize: '1em' }} /></span>
                             <span class="title">MESSAGES</span>
                         </a>
                     </li>
 
-                    <li  className={activeContent === 'notes' ? 'list active' : 'list'}>
-                        <a href="#" onClick={() => setActiveContent('notes')}>
+
+                    <li class="list" onClick={() => setSelectedOption('NOTES')}>
+                        <a href="#">
                             <span class="icon">
-                            <CgNotes style={{fontSize: '1em'}}/></span>
+                                <CgNotes style={{ fontSize: '1em' }} /></span>
                             <span class="title">NOTES</span>
                         </a>
                     </li>
 
                 </ul>
+
             </div>
-            
 
+            {/* have a container for the heading and content */}
 
-            <div className="header-bar-caregiver">
-                <div className="circle-icon">
+            <div className='additional-content-caregiver'>
+                <div className="header-bar-caregiver">
+                    <div className="circle-icon">
+                    </div>
+                    {/* add company logo to the header */}
+                    <img src={company_logo} alt="company logo" style={{ width: '400px', height: '200px', marginLeft: '60%' }} />
+
                 </div>
-                {/* add company logo to the header */}
-                <img src={company_logo} alt="company logo" style={{width: '400px', height: '200px', marginLeft: '60%'}}/>
-    
+
+                {/* display the content based on the selected option */}
+                <div style={{ marginLeft: '4%', marginTop: '12%' }}>
+                    {selectedOption === 'PROFILE' && <ProfileFragment />}
+                    {selectedOption === 'GOALS' && <GoalsFragment />}
+                    {selectedOption === 'REMINDERS' && <RemindersFragment />}
+                    {selectedOption === 'RESOURCES' && <ResourcesFragment />}
+                    {selectedOption === 'MESSAGES' && <MessagesFragment />}
+                    {selectedOption === 'NOTES' && <NotesFragment />}
+                </div>
+
             </div>
 
-            {/* Additional content for the Caregiver Resident Page */}
-            <div className='additional-content'>
-                {activeContent === 'profile' && (
-                    <>
-                        <Profile/>
-                    </>
-                )}
-                {activeContent === 'goals' && (
-                    <>
-                        <h2>Goals</h2>
-                        <p>Your SMART goals/objectives forms and list will be displayed on this page!</p>
-                    </>
-                )}
-                {activeContent === 'reminders' && (
-                    <>
-                        <h2>Reminders</h2>
-                        <p>Your reminders will be displayed here!</p>
-                    </>
-                )}
-                {activeContent === 'resources' && (
-                    <>
-                        <h2>Resources</h2>
-                        <p>Your resources will be displayed here!</p>
-                    </>
-                )}
-                {activeContent === 'messages' && (
-                    <>
-                        <h2>Messages</h2>
-                        <p>Your messages will be tracked here!</p>
-                    </>
-                )}
-                {activeContent === 'notes' && (
-                    <>
-                        <h2>Notes</h2>
-                        <p>Your notes will be tracked here!</p>
-                    </>
-                )}
-            </div>
-        
+
+
         </div>
+
+
     );
-};
+
+}
 
 export default CaregiverResidentPage;
 
