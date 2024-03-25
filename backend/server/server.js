@@ -10,7 +10,8 @@ const {getCaregiversAllData,
   getCaregiversByFirstName,
   getCaregiversByLastName,
   getCaregiversByEmail,
-  getCaregiversByResidentID} = require('./getCaregiverData.js')
+  getCaregiversResidents
+  } = require('./getCaregiverData.js')
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
@@ -140,6 +141,18 @@ app.get('/caregiverbyemail/:email', async (req, res) => {
     res.status(404).send(error.message);
   }
 });
+
+// Endpoint that lists the residents assigned to a caregiver. Currently a placeholder.
+app.get('/caregiverresidents/:caregiver_id', async (req, res) => {
+  const caregiverId = req.params.caregiver_id;
+  try {
+    const info = await getCaregiversResidents(caregiverId);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
 
 
 // Start the Express server
