@@ -26,9 +26,11 @@ import {
   CircleUserRound,
   Goal,
   LibraryBig,
+  ListTodo,
   MessageSquareText,
   NotebookTabsIcon,
 } from 'lucide-react';
+import SurveyFragment from './Fragments/SurveyFragment/SurveyFragment.js';
 
 const CaregiverResidentPage = () => {
   const [selectedOption, setSelectedOption] = useState('PROFILE');
@@ -62,6 +64,7 @@ const CaregiverResidentPage = () => {
           <SideBarItem icon={<LibraryBig />} text="RESOURCES" />
           <SideBarItem icon={<MessageSquareText />} text="MESSAGES" />
           <SideBarItem icon={<NotebookTabsIcon />} text="NOTES" />
+          <SideBarItem icon={<ListTodo />} text="SURVEYS" />
         </SideBar>
       </div>
 
@@ -88,6 +91,7 @@ const CaregiverResidentPage = () => {
           {selectedOption === 'RESOURCES' && <ResourcesFragment />}
           {selectedOption === 'MESSAGES' && <MessagesFragment />}
           {selectedOption === 'NOTES' && <NotesFragment />}
+          {selectedOption === 'SURVEYS' && <SurveyFragment />}
         </div>
       </div>
     </div>
