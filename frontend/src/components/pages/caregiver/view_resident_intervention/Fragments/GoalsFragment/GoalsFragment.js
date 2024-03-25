@@ -9,11 +9,11 @@ function GoalsFragment() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const residentId = '1';
+    const residentId = 'testResident1';
     const fetchGoals = async () => {
       try {
         const response = await axios.get(`/objectives/${residentId}`);
-        setGoals(response.data[0].objectives); // Assuming the data structure from your example
+        setGoals(response.data); // Assuming the data structure from your example
       } catch (error) {
         console.error('Failed to fetch objectives:', error);
       }
@@ -81,7 +81,7 @@ function GoalsFragment() {
     totalGoals > 0 ? (completedGoals / totalGoals) * 100 : 0;
 
   return (
-    <div className="flex flex-col md:flex-row gap-x-6">
+    <div className="w-full flex flex-col md:flex-row gap-x-6">
       <div
         className="flex flex-col flex-1 gap-y-6 pb-6"
         style={{ flex: '2 1 0%' }}
@@ -101,7 +101,7 @@ function GoalsFragment() {
           <Plus size={40} />
         </button>
       </div>
-      {objectives.length > 0 ? (
+      {totalGoals > 0 ? (
         <div
           className="flex flex-col flex-1 gap-y-6 overflow-visible"
           style={{ flexBasis: '0%', flexGrow: 1 }}
