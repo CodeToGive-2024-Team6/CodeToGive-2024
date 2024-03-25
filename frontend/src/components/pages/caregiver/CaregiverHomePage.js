@@ -69,8 +69,8 @@ const CaregiverHomePage = () => {
                     </Link>
 
 
-                    <Link to="/caregiver_add_resident"style={{textDecoration: 'none', color: 'black' }} className="grid-box">
-                        <CgAddR style={{ fontSize: '4em' }} />
+                    <Link to="/caregiver_add_resident"style={{textDecoration: 'none', color: 'black' , fontWeight:'600'  }} className="grid-box">
+                        <CgAddR style={{ fontSize: '5em' }} />
 
                         <p>Add Resident</p>
                     </Link>
