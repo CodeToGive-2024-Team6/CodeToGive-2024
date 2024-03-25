@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
-  // Initialize state with either the objective to edit or a default structure for adding
   const [newGoal, setNewGoal] = useState({
     title: '',
     description: '',
-    term: 'Short-term', // Assuming "Short-term" as a default
-    status: 'Coming Soon', // Assuming "Coming Soon" as a default
+    term: 'Short-term',
+    status: 'Coming Soon',
     means: '',
     healthDeterminant: [],
   });
+  const [newDeterminant, setNewDeterminant] = useState('');
 
-  // If editing an objective, populate the form with the current objective details
   useEffect(() => {
     if (mode === 'edit' && goal) {
       setNewGoal({ ...goal });
@@ -41,6 +40,30 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
       healthDeterminant: checked
         ? [...prev.healthDeterminant, value]
         : prev.healthDeterminant.filter((hd) => hd !== value),
+    }));
+  };
+
+  const handleNewDeterminantChange = (e) => {
+    setNewDeterminant(e.target.value);
+  };
+
+  const addHealthDeterminant = (e) => {
+    e.preventDefault(); // Prevent form submission
+    if (newDeterminant && !newGoal.healthDeterminant.includes(newDeterminant)) {
+      setNewGoal((prev) => ({
+        ...prev,
+        healthDeterminant: [...prev.healthDeterminant, newDeterminant.trim()],
+      }));
+      setNewDeterminant('');
+    }
+  };
+
+  const removeHealthDeterminant = (hdToRemove) => {
+    setNewGoal((prev) => ({
+      ...prev,
+      healthDeterminant: prev.healthDeterminant.filter(
+        (hd) => hd !== hdToRemove
+      ),
     }));
   };
 
@@ -118,23 +141,27 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
           />
         </div>
 
-        <fieldset>
+        <div className="mb-4">
           <legend className="block mb-2">Health Determinants</legend>
-          {['Physical Health', 'Mental Health'].map((hd) => (
-            <div key={hd}>
-              <label>
-                <input
-                  type="checkbox"
-                  name="healthDeterminant"
-                  value={hd}
-                  checked={newGoal.healthDeterminant.includes(hd)}
-                  onChange={handleCheckboxChange}
-                />
-                {hd}
-              </label>
-            </div>
-          ))}
-        </fieldset>
+          <div className="flex flex-wrap gap-2 mb-2">
+            {newGoal.healthDeterminant.map((hd) => (
+              <span
+                key={hd}
+                className="bg-sky-200 text-sky-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-sky-600 dark:text-sky-200 cursor-pointer"
+                onClick={() => removeHealthDeterminant(hd)}
+              >
+                {hd} &times;
+              </span>
+            ))}
+          </div>
+          <input
+            type="text"
+            value={newDeterminant}
+            onChange={handleNewDeterminantChange}
+            className="border p-2 w-full rounded-md"
+            placeholder="Add new health determinant"
+          />
+        </div>
 
         <button
           type="submit"
