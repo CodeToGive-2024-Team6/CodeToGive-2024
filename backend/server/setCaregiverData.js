@@ -4,6 +4,10 @@ const serviceAccount = require('./codetogive6-firebase-adminsdk-1sqaf-a652c70cae
 
 const db = admin.firestore();
 
+
+//function to set caregiver data
+//need email, firstName, lastName, residentReferences fields
+
 function setCaregiverData(caregiverData) {
     const caregiversRef = db.collection('caregivers');
     return caregiversRef.add({
@@ -16,8 +20,8 @@ function setCaregiverData(caregiverData) {
 
 
 
-
 //function to update caregiver data
+//need email, firstName, lastName, residentReferences fields
 async function updateCaregiverData(caregiverData) {
     const caregiversRef = db.collection('caregivers').doc(caregiverData.id);
     return caregiversRef.update({
@@ -35,6 +39,8 @@ async function deleteCaregiverData(caregiverId) {
 }
 
 //functions to update fields one at a time
+
+//need email field
 async function updateCaregiverEmail(caregiverId, email) {
     const caregiversRef = db.collection('caregivers').doc(caregiverId);
     return caregiversRef.update({
@@ -42,6 +48,7 @@ async function updateCaregiverEmail(caregiverId, email) {
     });
 }
 
+//need firstName field
 async function updateCaregiverFirstName(caregiverId, firstName) {
     const caregiversRef = db.collection('caregivers').doc(caregiverId);
     return caregiversRef.update({
@@ -49,6 +56,7 @@ async function updateCaregiverFirstName(caregiverId, firstName) {
     });
 }
 
+//need lastName field
 async function updateCaregiverLastName(caregiverId, lastName) {
     const caregiversRef = db.collection('caregivers').doc(caregiverId);
     return caregiversRef.update({
@@ -56,6 +64,7 @@ async function updateCaregiverLastName(caregiverId, lastName) {
     });
 }
 
+//need residentReferences field
 async function updateCaregiverResidentReferences(caregiverId, residentReferences) {
     const caregiversRef = db.collection('caregivers').doc(caregiverId);
     return caregiversRef.update({
