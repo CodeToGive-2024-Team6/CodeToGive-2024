@@ -22,7 +22,7 @@
 .caregiver-upcoming-appointment {
     width: 40%;
     margin: 20px;
-    padding: 20px;
+    padding: 10px;
     border-radius: 15px;
     background-color: #B0F0FF;
 }
@@ -36,6 +36,8 @@
     position: absolute;
     left: 0;
     background-color: #ADD2E2;
+    /* background-color: #B0F0FF; */
+
 }
 
 /* CaregiverHomePage.css */
