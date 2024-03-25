@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CaregiverAddResident.css';
 import { MdNavigateBefore } from "react-icons/md";
+//import { setResidentInfo } from "../../setResidentData.js"; // Importing database function
 
 function CaregiverAddResident() {
+    /*
+    const [residentData, setResidentData] = useState({
+        firstName: '',
+        lastName: '',
+        age: '',
+        borough: '',
+        revenue: '',
+        planStartDate: '',
+        startStayDate: '',
+        issues: '',
+        veteran: false,
+        immigrantStatus: '',
+        nativeStatus: '',
+        withChild: false,
+        significantPersons: [],
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setResidentData({ ...residentData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setResidentInfo(residentData)
+            .then(() => {
+                // Success message or redirect
+                console.log('Resident information added successfully.');
+            })
+            .catch((error) => {
+                // Handle error
+                console.error('Error adding resident information: ', error);
+            });
+    };
+    */
     return (           
         <div>
             <div className="before-addresident">
@@ -15,16 +51,14 @@ function CaregiverAddResident() {
                 <div className='add-container'>
                     <header> Register a Resident </header>
                     <form action='#' class="addform">
-                        <div class="column">
-                            <div class="form-group">
-                                <label for='first_name'>First Name:</label>
-                                <input type='text' id='first_name' placeholder='Enter first name' required />
-                            </div>
+                        <div class="form-group">
+                            <label for='first_name'>First Name:</label>
+                            <input type='text' id='first_name' placeholder='Enter first name' required />
+                        </div>
 
-                            <div class="form-group">
-                                <label for='last_name'>Last Name:</label>
-                                <input type='text' id='last_name' placeholder='Enter last name' required />
-                            </div>
+                        <div class="form-group">
+                            <label for='last_name'>Last Name:</label>
+                            <input type='text' id='last_name' placeholder='Enter last name' required />
                         </div>
 
                         <div class="column">
@@ -61,8 +95,9 @@ function CaregiverAddResident() {
                             <input type='text' id='issue' placeholder='Enter issues' required />
                         </div>
 
+                        
                         <div class="checkbox">
-                            <h3>Veteran</h3>
+                            <h3>Veteran:</h3>
                             <div class="veteran-option">
                                 <div class="veteran">
                                     <input type="radio" id="check-veteran" name="veteran" checked />
@@ -75,6 +110,35 @@ function CaregiverAddResident() {
                             </div>
                         </div>
 
+                        <div class="column">
+                            <div class="select-box">
+                                <select>
+                                    <option hidden>-- Immigrant Status --</option>
+                                    <option>Permanent Resident</option>
+                                    <option>Citizen</option>
+                                    <option>Student Visa</option>
+                                    <option>Work Visa</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+
+                            <div class="select-box">
+                                <select>
+                                    <option hidden>-- Native Status --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+
+                            <div class="select-box">
+                                <select>
+                                    <option hidden>-- With Child --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for='significant'>Significant Persons:</label>
                             <input type='text' id='cellnumber' placeholder='Enter the cell number' required />
