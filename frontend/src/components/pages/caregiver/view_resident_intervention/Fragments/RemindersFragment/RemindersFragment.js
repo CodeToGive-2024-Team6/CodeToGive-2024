@@ -17,10 +17,37 @@ function RemindersFragment() {
         {heading: 'Reminder 4', meetingInfo: 'Meeting Info 4', date: '2022-04-04', time: '15:00', type: 'Type 4', note: 'Note 4', communication: 'Communication 4'},
     ]);
 
-    const [selectedReminder, setSelectedReminder] = useState(null);
+    const [residents, setResidents] = useState([]);
+    const [displayedResidents, setDisplayedResidents] = useState([]);
+
+    // Fetch residents data from the endpoint
+    useEffect(() => {
+        fetch('/caregiver/testCaregiver1')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                console.log('here')
+                // Transform data to match the existing structure expected by the rendering logic
+                const transformedData = data.map(resident => ({
+                    residentref: resident.residents
+                }));
+                setResidents(transformedData);
+                console.log(transformedData);
+                
+            
+            })
+            .catch(error => console.error('Error fetching resident data:', error));
+    }, []); // The empty array ensures this effect runs once after the initial render
+
+    
+   
+
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
     const [showForm, setShowForm] = useState(false);
     const [isFormOpen, setIsFormOpen] = useState(false);
+    const [selectedReminder, setSelectedReminder] = useState(null);
+
+    
 
 
     const handleReminderClick = (reminder) => {

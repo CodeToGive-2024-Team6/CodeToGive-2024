@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ObjectiveCard = ({ objective }) => {
+const GoalCard = ({ objective }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -15,13 +15,13 @@ const ObjectiveCard = ({ objective }) => {
   let bgColorClass = '';
   switch (objective.status) {
     case 'Completed':
-      bgColorClass = 'bg-rose-400';
+      bgColorClass = 'bg-cyan-500';
       break;
-    case 'In progress':
-      bgColorClass = 'bg-rose-300';
+    case 'In Progress':
+      bgColorClass = 'bg-cyan-400';
       break;
     default:
-      bgColorClass = 'bg-gray-300';
+      bgColorClass = 'bg-gray-400';
   }
 
   return (
@@ -64,4 +64,4 @@ const ObjectiveCard = ({ objective }) => {
   );
 };
 
-export default ObjectiveCard;
+export default GoalCard;

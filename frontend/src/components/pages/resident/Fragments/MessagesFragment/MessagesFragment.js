@@ -1,9 +1,20 @@
-import React from 'react';
 import './MessagesFragment.css';
 import { FiSend} from 'react-icons/fi';
 import { useState, useRef, useEffect } from 'react';
+import { RiUserFill} from 'react-icons/ri';
+import { FiSearch } from 'react-icons/fi';
+import company_logo from "../../../company_logo.png";
 
 function MessagesFragment() {
+
+    const placeholderProfile = Array.from({ length: 10}, (_, index) => ({
+        id: index + 1,
+        name: `Caregiver ${index + 1}`,
+        icon: <RiUserFill style={{ fontSize: '15px', color: 'black' }} />,
+        chatSnippet: 'Always happy to help...', 
+    }));
+
+
     //store messages
     const [messages, setMessages] = useState([]);
     // store current message
@@ -34,9 +45,31 @@ function MessagesFragment() {
             <div className ="heading">
                 <h1>Chat With</h1>
                 <h3>a Caregiver</h3>
+
+                <div className="search-container">
+                        <input type="text" placeholder="Search..." className="search-input" />
+                        <button className="search-button">
+                            <FiSearch className="search-button-icon" />
+                        </button>
+                </div>
+
+                <div className="profiles-list">
+                    {placeholderProfile.map(profile => (
+                        <div key={profile.id} className="profile-instance">
+                            <div className="profile-detail">
+                                <div className="profile-icon">{profile.icon}</div>
+                                <div className="profile-details">
+                                    <p className="prof-name">{profile.name}</p>
+                                    <p className="chat-snippet">{profile.chatSnippet}</p>
+                                 </div>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
             </div>
 
-            <div className="chat-area">
+            <div className="chat-space">
+                <img src={company_logo} alt="company logo" className="logo-style" />
                 {/* Display messages */}
                 {messages.map((message, index) => (
                     <div key={index} className="sent-message">
