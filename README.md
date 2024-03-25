@@ -89,7 +89,23 @@ localhost:3000/caregiverbyname/:last_name
 localhost:3000/caregiverbyemail/:email
 ```
 
+To add random data to the firebase database in the backend folder:
+- Place the service-account.json file in the backend folder
+- Install these python packages:
+```
+pip3 install faker
+pip3 install firebase-admin
+```
+- Run:
+```
+python3 add_data.py
+```
 
+To remove the random data from the firebase database in the backend folder:
+- Run:
+```
+python3 delete.py
+```
 
 >[!IMPORTANT]
 > Nothing yet!
