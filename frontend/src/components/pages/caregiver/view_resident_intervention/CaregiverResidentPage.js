@@ -26,7 +26,6 @@ import { FaBook } from "react-icons/fa";
 import { FiMessageSquare } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
-import { Profile } from "./Profile.js";
 
 
 const CaregiverResidentPage = () => {
