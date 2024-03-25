@@ -34,7 +34,7 @@ const CaregiverCommunicationPage = () => {
 
 
     // Function to handle sending messages
-    const sendMessage = () => {
+    const sendMessages = () => {
         if (currentMessage.trim() !== '') {
             // Add current message to messages array
             setMessages(prevMessages => [...prevMessages, currentMessage]);
@@ -44,7 +44,7 @@ const CaregiverCommunicationPage = () => {
     };
 
     return (
-        <div className="message-container">
+        <div className="communication-container">
 
             <div className="sidebar">
 
@@ -95,7 +95,7 @@ const CaregiverCommunicationPage = () => {
                 <div ref={chatEndRef}></div>
             </div>
 
-            <div className="message-input-container">
+            <div className="communication-input-container">
                 <textarea
                     placeholder="Type your message..."
                     value={currentMessage}
@@ -103,7 +103,7 @@ const CaregiverCommunicationPage = () => {
                 />
             </div>
 
-            <button className="send-button" onClick={sendMessage}>
+            <button className="button-send" onClick={sendMessages}>
                 <FiSend />
             </button>
 

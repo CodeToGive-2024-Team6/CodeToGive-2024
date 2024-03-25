@@ -1,4 +1,4 @@
-.message-container {
+.communication-container {
     position: relative; 
     border: 2px solid #ddd; 
     border-radius: 8px;
@@ -112,7 +112,7 @@
 }
 
 
-.message-input-container {
+.communication-input-container {
     position: absolute; 
     display: flex;
     bottom: 0; 
@@ -124,7 +124,7 @@
 }
 
 
-.message-input-container textarea {
+.communication-input-container textarea {
     height: 47px;
     width: 60%;
     padding: 8px;
@@ -134,7 +134,7 @@
   }
   
 
-.send-button {
+.button-send{
     position: absolute;
     display: flex;
     bottom: 0;
