@@ -102,7 +102,6 @@ function NotesFragment() {
                         {showForm && (
                             <div className="modal">
                                 <span className="close-button" onClick={() => { setShowForm(false); setIsFormOpen(false) }}>&times;</span>
-
                                 <div className="modal-content">                                    <form className="form-container" onSubmit={handleFormSubmit}>
                                     <br />
                                     <input name="title" value={newNote.title} onChange={handleInputChange} placeholder="Title" required />
