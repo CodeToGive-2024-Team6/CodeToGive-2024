@@ -65,6 +65,32 @@ localhost:3000/residentresources/:resident_id
 localhost:3000/followups/:resident_id
 ```
 
+```
+localhost:3000/residentalldata
+```
+
+```
+localhost:3000/caregivers
+```
+
+```
+localhost:3000/caregiver/:user_id
+```
+
+```
+localhost:3000/caregiverbyname/:first_name
+
+```
+
+```
+localhost:3000/caregiverbyname/:last_name
+```
+```
+localhost:3000/caregiverbyemail/:email
+```
+
+
+
 >[!IMPORTANT]
 > Nothing yet!
 
