@@ -6,10 +6,22 @@ const db = admin.firestore();
 
 
 // JSON To be structured as follows:
-// {description: string-type, healthDeterminant: array[string], means: string-type, status: string-type, term: string-type, title: string-type}
+// {description: string-type, healthAspects: array[string], means: string-type, status: string-type, term: string-type, title: string-type}
 function setGoals(residentId, goalsData) {
     const goalsRef = db.collection('residents').doc(residentId).collection('objectives');
     return goalsRef.add(goalsData);
+}
+
+// Updates a specific goal for a resident
+function updateGoal(residentId, goalId, goalData) {
+    const goalRef = db.collection('residents').doc(residentId).collection('objectives').doc(goalId);
+    return goalRef.update(goalData);
+}
+
+// Deletes a specific goal for a resident
+function deleteGoal(residentId, goalId) {
+    const goalRef = db.collection('residents').doc(residentId).collection('objectives').doc(goalId);
+    return goalRef.delete();
 }
 
 // JSON To be structured as follows:
@@ -45,6 +57,8 @@ module.exports = {
     
     setGoals,
     setNotes,
+    updateGoal,
+    deleteGoal,
     setResources,
     setFollowUps,
     setResidentInfo

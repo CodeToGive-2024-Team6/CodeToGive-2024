@@ -1,5 +1,6 @@
 import React, { useContext, createContext, useState } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const SidebarContext = createContext();
 
@@ -18,13 +19,15 @@ const SideBar = ({ children, onActivateItem }) => {
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white border-r shadow-lg">
         <div className="p-4 pb-2 flex justify-between items-center mb-16">
-          <img
-            src="/images/company_logo1.png"
-            className={`overflow-hidden transition-all ${
-              expanded ? 'w-32' : 'w-0'
-            }`}
-            alt=""
-          />
+          <Link to="/">
+            <img
+              src="/images/company_logo1.png"
+              className={`overflow-hidden transition-all ${
+                expanded ? 'w-32' : 'w-0'
+              }`}
+              alt=""
+            />
+          </Link>
           <div
             onClick={() => setExpanded((curr) => !curr)}
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
@@ -61,7 +64,7 @@ const SideBarItem = ({ icon, text, active, alert }) => {
         relative flex items-center py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
         transition-colors group
-        ${active ? 'bg-pink-100' : 'hover:bg-pink-50 text-gray-600'}
+        ${active ? 'bg-rose-100' : 'hover:bg-rose-50 text-gray-600'}
     `}
     >
       {icon}
@@ -78,19 +81,6 @@ const SideBarItem = ({ icon, text, active, alert }) => {
             expanded ? '' : 'top-2'
           }`}
         />
-      )}
-
-      {!expanded && (
-        <div
-          className={`
-          absolute left-full rounded-md px-2 py-1 ml-6
-          bg-indigo-100 text-indigo-800 text-sm
-          invisible opacity-20 -translate-x-3 transition-all
-          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
-      `}
-        >
-          {text}
-        </div>
       )}
     </li>
   );
