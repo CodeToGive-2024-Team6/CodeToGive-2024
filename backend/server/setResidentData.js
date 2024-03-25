@@ -6,7 +6,7 @@ const db = admin.firestore();
 
 
 // JSON To be structured as follows:
-// {description: string-type, healthDeterminant: array[string], means: string-type, status: string-type, term: string-type, title: string-type}
+// {description: string-type, healthAspects: array[string], means: string-type, status: string-type, term: string-type, title: string-type}
 function setGoals(residentId, goalsData) {
     const goalsRef = db.collection('residents').doc(residentId).collection('objectives');
     return goalsRef.add(goalsData);
