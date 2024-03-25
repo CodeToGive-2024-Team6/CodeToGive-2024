@@ -63,7 +63,7 @@
 .profile-list {
     display: flex;
     flex-direction: column;
-    max-height: 480px;
+    max-height: 75%;
     overflow-y: auto;
 }
 
@@ -138,7 +138,7 @@
     position: absolute;
     display: flex;
     bottom: 0;
-    right: 230px;
+    right: 12%;
     margin-bottom: 10px;
     background-color: #cb96b8;; 
     border: none;
