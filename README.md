@@ -107,7 +107,6 @@ To remove the random data from the firebase database in the backend folder:
 ```
 python3 delete.py
 ```
-
 >[!IMPORTANT]
 > Nothing yet!
 
