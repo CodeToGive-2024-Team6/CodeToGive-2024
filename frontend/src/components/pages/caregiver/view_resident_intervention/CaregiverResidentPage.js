@@ -16,6 +16,7 @@ import NotesFragment from "./Fragments/NotesFragment/NotesFragment";
 
 //import company logo
 import company_logo from "./company_logo.png";
+
 import { VscAccount } from "react-icons/vsc";
 
 
@@ -25,9 +26,11 @@ import { FaBook } from "react-icons/fa";
 import { FiMessageSquare } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
+import { Profile } from "./Profile.js";
 
 
 const CaregiverResidentPage = () => {
+
 
     const [selectedOption, setSelectedOption] = useState('RESOURCES');
 
@@ -53,6 +56,7 @@ const CaregiverResidentPage = () => {
 
     return (
 
+
         <div className='resident-profile-container-caregiver '>
 
             <div class="navigation">
@@ -62,6 +66,7 @@ const CaregiverResidentPage = () => {
                     />
                     {/* Main content of your application */}
 
+
                     <li class="list active" onClick={() => setSelectedOption('PROFILE')}>
                         <a href="#">
                             <span class="icon">
@@ -70,6 +75,7 @@ const CaregiverResidentPage = () => {
                         </a>
                     </li>
 
+
                     <li class="list" onClick={() => setSelectedOption('GOALS')}>
                         <a href="#">
                             <span class="icon">
@@ -77,6 +83,7 @@ const CaregiverResidentPage = () => {
                             <span class="title">GOALS</span>
                         </a>
                     </li>
+
                     <li class="list" onClick={() => setSelectedOption('REMINDERS')}>
                         <a href="#">
                             <span class="icon">
@@ -84,6 +91,7 @@ const CaregiverResidentPage = () => {
                             <span class="title">REMINDERS</span>
                         </a>
                     </li>
+
                     <li class="list" onClick={() => setSelectedOption('RESOURCES')}>
                         <a href="#">
                             <span class="icon">
@@ -91,6 +99,7 @@ const CaregiverResidentPage = () => {
                             <span class="title">RESOURCES</span>
                         </a>
                     </li>
+
                     <li class="list" onClick={() => setSelectedOption('MESSAGES')}>
                         <a href="#">
                             <span class="icon">
@@ -98,6 +107,7 @@ const CaregiverResidentPage = () => {
                             <span class="title">MESSAGES</span>
                         </a>
                     </li>
+
 
                     <li class="list" onClick={() => setSelectedOption('NOTES')}>
                         <a href="#">
@@ -135,10 +145,12 @@ const CaregiverResidentPage = () => {
             </div>
 
 
+
         </div>
 
 
     );
+
 }
 
 export default CaregiverResidentPage;
