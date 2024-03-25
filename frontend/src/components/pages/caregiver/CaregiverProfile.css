@@ -1,5 +1,4 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
@@ -27,7 +26,6 @@
 .caregiver-profile {
     position: absolute;
     margin-top: 200px;
-    /* transform: translateY(-50%); */
     left: 40px;
     width: 230px;
     height: 230px;
@@ -48,25 +46,24 @@
     margin-left: 50px;
 }
 @media (max-width: 768px) {
-    /* Styles for tablets and larger screens */
     .caregiver-profile-header {
-        height: 300px; /* Reset height for larger screens */
-        padding: 0 20px; /* Reset padding for larger screens */
+        height: 300px;
+        padding: 0 20px;
     }
 
     .caregiver-profile-header .caregiver-before {
-        font-size: 5px; /* Reset font size for larger screens */
+        font-size: 5px;
         margin-left: -72%;
     }
 
     .caregiver-profile {
-        margin-top: 260px; /* Reset margin top for larger screens */
-        width: 130px; /* Reset width for larger screens */
-        height: 130px; /* Reset height for larger screens */
+        margin-top: 260px;
+        width: 130px;
+        height: 130px;
     }
 
     .caregiver-profile-container {
-        margin-top: 40px; /* Reset margin top for larger screens */
-        margin-left: 50px; /* Reset margin left for larger screens */
+        margin-top: 40px;
+        margin-left: 50px;
     }
 }
