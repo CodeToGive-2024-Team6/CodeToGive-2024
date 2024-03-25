@@ -54,6 +54,25 @@ function GoalsFragment() {
     // TODO update this objective in your backend here
   };
 
+  const handleDeleteGoal = (objectiveIdToDelete) => {
+    setGoals(
+      objectives.filter(
+        ({ objectiveId }) => objectiveId !== objectiveIdToDelete
+      )
+    );
+
+    // TODO DELETE request to backend to delete the goal
+    // axios
+    //   .delete(`/objectives/${objectiveIdToDelete}`)
+    //   .then((response) => {
+    //     console.log('Goal deleted successfully');
+    //     // Optionally refresh goals list from backend if necessary
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error deleting goal:', error);
+    //   });
+  };
+
   const totalGoals = objectives.length;
   const completedGoals = objectives.filter(
     (objective) => objective.status === 'Completed'
@@ -72,6 +91,7 @@ function GoalsFragment() {
             key={index}
             onEditGoal={handleEditGoal}
             goal={objective}
+            onDeleteGoal={handleDeleteGoal}
           />
         ))}
         <button
