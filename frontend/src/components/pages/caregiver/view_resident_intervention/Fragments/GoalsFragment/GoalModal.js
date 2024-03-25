@@ -33,16 +33,6 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
     }));
   };
 
-  const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
-    setNewGoal((prev) => ({
-      ...prev,
-      healthDeterminant: checked
-        ? [...prev.healthDeterminant, value]
-        : prev.healthDeterminant.filter((hd) => hd !== value),
-    }));
-  };
-
   const handleNewDeterminantChange = (e) => {
     setNewDeterminant(e.target.value);
   };
@@ -161,6 +151,12 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
             className="border p-2 w-full rounded-md"
             placeholder="Add new health determinant"
           />
+          <button
+            onClick={addHealthDeterminant}
+            className="mt-2 px-4 py-2 bg-sky-300 text-white rounded hover:bg-sky-400"
+          >
+            Add
+          </button>
         </div>
 
         <button
