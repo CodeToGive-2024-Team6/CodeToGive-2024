@@ -9,21 +9,32 @@ import { MdNavigateBefore } from "react-icons/md";
 
 const CaregiverSearchPage = () => {
     const navigate = useNavigate();    
-    const allResidents = useMemo(() => [
-        { name: 'Resident 1', house: 'House A' },
-        { name: 'Resident 2', house: 'House B' },
-        { name: 'Resident 3', house: 'House A' },
-        { name: 'Resident 4', house: 'House C' }
-    ], []);
 
-
-    
-
-
+    const [residents, setResidents] = useState([]);
+    const [displayedResidents, setDisplayedResidents] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [displayedResidents, setDisplayedResidents] = useState(allResidents);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10; // Change this to the number of items you want per page
+
+
+    // Fetch residents data from the endpoint
+    useEffect(() => {
+        fetch('/residentalldata')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                console.log('here')
+                // Transform data to match the existing structure expected by the rendering logic
+                const transformedData = data.map(resident => ({
+                    name: `${resident.firstName} ${resident.lastName}`,
+                    house: resident.currentAccommodation
+                }));
+                setResidents(transformedData);
+                setDisplayedResidents(transformedData);
+            })
+            .catch(error => console.error('Error fetching resident data:', error));
+    }, []); // The empty array ensures this effect runs once after the initial render
+
 
     const handleItemClick = (resident) => {
         console.log(`Clicked on ${resident.name}`);
@@ -32,13 +43,12 @@ const CaregiverSearchPage = () => {
 
     useEffect(() => {
         setDisplayedResidents(
-            allResidents.filter(resident =>
+            residents.filter(resident =>
                 resident.name.toLowerCase().includes(searchValue.toLowerCase())
                 || resident.house.toLowerCase().includes(searchValue.toLowerCase())
             )
-
         );
-    }, [searchValue, allResidents]);
+    }, [searchValue, residents]);
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -54,7 +64,7 @@ const CaregiverSearchPage = () => {
 
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(displayedResidents.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(residents.length / itemsPerPage); i++) {
         pageNumbers.push(i);
     }
 

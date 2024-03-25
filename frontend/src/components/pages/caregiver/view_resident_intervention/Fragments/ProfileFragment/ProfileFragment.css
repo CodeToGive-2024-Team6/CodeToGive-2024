@@ -1,0 +1,39 @@
+/* ProfileFragment.css */
+
+.profile-wrapper {
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.resident-name {
+    width: 55%; /* Adjust as needed */
+}
+
+.titles {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.profile-container-basic {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.profile-container-status {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.profile-container-care {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.assigned-caregiver {
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 850px;
+}

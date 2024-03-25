@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import './ResidentHomePage.css'; // Import CSS file
+
 import { Bell, 
   CircleUserRound, 
   LibraryBig, 
@@ -74,6 +75,7 @@ const HomePage = () => {
       list.forEach((item) => item.classList.remove('active'));
       this.classList.add('active');
     }
+
 
     list.forEach((item) => item.addEventListener('click', activeLink));
 

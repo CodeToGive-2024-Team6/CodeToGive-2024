@@ -72,10 +72,12 @@ const CaregiverHomePage = () => {
                         <CgAddR style={{ fontSize: '4em' }} />
                         <p>Add Resident</p>
                     </div>
-                    <div className="grid-box">
+
+                    <Link to="/caregiver_communication" style={{ textDecoration: 'none', color: 'black' }} className="grid-box">
                         <FaFacebookMessenger style={{ fontSize: '4em' }} />
                         <p>Communication</p>
-                    </div>
+                    </Link>
+
                     <div className="grid-box">
                         <FaAddressBook style={{ fontSize: '4em' }} />
                         <p>My Resident</p>
