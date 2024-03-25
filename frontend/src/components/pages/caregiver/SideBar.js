@@ -64,7 +64,7 @@ const SideBarItem = ({ icon, text, active, alert }) => {
         relative flex items-center py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
         transition-colors group
-        ${active ? 'bg-cyan-100' : 'hover:bg-cyan-50 text-gray-600'}
+        ${active ? 'bg-cyan-100' : 'hover:bg-sky-50 text-gray-600'}
     `}
     >
       {icon}
