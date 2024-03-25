@@ -45,10 +45,6 @@ async function getResidentsByUserID(userID) {
   return residentData;
 }
 
-//get based on resident first name
-
-
-
 async function getObjectivesByUserID(userID) {
   // Directly reference the objectives subcollection of the specified resident
   const objectivesRef = db.collection('residents').doc(userID).collection('objectives');
