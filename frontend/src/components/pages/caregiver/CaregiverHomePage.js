@@ -68,10 +68,12 @@ const CaregiverHomePage = () => {
                         <p>Search Facility</p>
                     </Link>
 
-                    <div className="grid-box" style={{ textDecoration: 'none', color: 'black', fontWeight:'600' }} >
-                        <CgAddR style={{fontSize: '5em', padding: 10}} />
+
+                    <Link to="/caregiver_add_resident"style={{textDecoration: 'none', color: 'black' }} className="grid-box">
+                        <CgAddR style={{ fontSize: '4em' }} />
+
                         <p>Add Resident</p>
-                    </div>
+                    </Link>
 
                     <Link to="/caregiver_communication" style={{ textDecoration: 'none', color: 'black', fontWeight:'600'  }} className="grid-box">
                         <FaFacebookMessenger style={{fontSize: '5em', padding: 10}} />
