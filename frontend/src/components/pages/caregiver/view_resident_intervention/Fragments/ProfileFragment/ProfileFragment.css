@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerRow1, .containerRow2 {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    line-height: 1.5;
+}
+
+.basicDetails, .residentStatus {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    width: 50%;
+
+    margin: 20px 20px 20px 0;
+    padding: 20px;
+    height: auto;
+    
+    border: #000 1px solid;
+    border-radius: 10px;
+    background-color: #B0F0FF;
+}
+
+.treatmentTeam {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    width: 100%;
+    margin: 20px 20px 20px 0;
+    padding: 20px;
+    height: auto;
+    
+    border: #000 1px solid;
+    border-radius: 10px;
+    background-color: #B0F0FF;
+}
+
+.table {
+    display: flex;
+    flex-direction: row;
+}
+
+.teamColumn1, .teamColumn2, .teamColumn3 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 20px 0 0;
+}
