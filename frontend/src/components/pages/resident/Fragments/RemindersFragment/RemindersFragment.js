@@ -101,8 +101,6 @@ function RemindersFragment( {resident} ) {
             });
 
 
-        
-          
         // Clear the form inputs
         setNewReminder({
           heading: '',
@@ -118,12 +116,26 @@ function RemindersFragment( {resident} ) {
         setIsFormOpen(false);
       };
 
-    const handleLongPress = (index) => {
-        const newReminders = [...reminders];
-        newReminders.splice(index, 1);
-        setReminders(newReminders);
+      const handleLongPress = (index) => {
+        fetch(`/deletefollowup/${resident.id}/${followUps[index].id}`, {
+          method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+      
+          // Remove the follow-up from the followUps array
+            setFollowUps((prevState) => {
+                const updatedFollowUps = [...prevState];
+                updatedFollowUps.splice(index, 1);
+                return updatedFollowUps;
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      };
 
-    };
 
     useEffect(() => {
         if (isFormOpen) {
@@ -173,7 +185,7 @@ function RemindersFragment( {resident} ) {
                 
                 {showForm && (
                     <div className="modal">
-                        <div className="modal-content">
+                        
                             <span className="close-button" onClick={() => {setShowForm(false);setIsFormOpen(false)}}>&times;</span>
                             <form className="form-container" onSubmit={handleFormSubmit}>
                                 <input name="heading" value={newReminder.heading} onChange={handleInputChange} placeholder="Reminder Heading" required />
@@ -186,7 +198,7 @@ function RemindersFragment( {resident} ) {
                                 <br />
                                 <button type="submit" style={{marginBottom: '30px'}}>Add Reminder</button>
                             </form>
-                        </div>
+                        
                     </div>
                 )}
            

@@ -5,41 +5,96 @@ import { MdNavigateBefore } from "react-icons/md";
 //import { setResidentInfo } from "../../setResidentData.js"; // Importing database function
 
 function CaregiverAddResident() {
-    /*
-    const [residentData, setResidentData] = useState({
+    
+
+    const [residentInfo, setResidentInfo] = useState({
         firstName: '',
         lastName: '',
         age: '',
         borough: '',
         revenue: '',
-        planStartDate: '',
-        startStayDate: '',
-        issues: '',
-        veteran: false,
+        plan_start: '',
+        start_stay: '',
+        currentAccomodation: '',
+        veteran: '',
         immigrantStatus: '',
         nativeStatus: '',
-        withChild: false,
+        withChild: '',
         significantPersons: [],
+        challenges: [],
+
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setResidentData({ ...residentData, [name]: value });
-    };
+    const handleFormSubmit = (e) => {
 
-    const handleSubmit = (e) => {
         e.preventDefault();
-        setResidentInfo(residentData)
-            .then(() => {
-                // Success message or redirect
-                console.log('Resident information added successfully.');
+        console.log(residentInfo);
+
+        // Prepare the new reminder data
+        const newResidentData = {
+            firstName: residentInfo.firstName,
+            lastName: residentInfo.lastName,
+            age: residentInfo.age,
+            borough: residentInfo.borough,
+            income: residentInfo.revenue,
+            planStartDate: residentInfo.plan_start,
+            firstVisit: true,
+            planEndDate: '',
+            endOfStayDate: '',
+            challenges: residentInfo.challenges,
+            currentAccomodation: residentInfo.currentAccomodation,
+            veteran: residentInfo.veteran,
+            immigrationStatus: residentInfo.immigrantStatus,
+            native: residentInfo.nativeStatus,
+            withChild: residentInfo.withChild,
+            significantPersons: residentInfo.significantPersons,
+            caregivers: []
+
+        };
+
+        
+
+        // Add the new resident to the Firebase
+        fetch(`/setResidentInfo/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newResidentData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
             })
             .catch((error) => {
-                // Handle error
-                console.error('Error adding resident information: ', error);
+                console.error('Error:', error);
             });
+
+        // Clear the form inputs
+        setResidentInfo({
+            firstName: '',
+            lastName: '',
+            age: '',
+            borough: '',
+            revenue: '',
+            plan_start: '',
+            start_stay: '',
+            currentAccomodation: '',
+            veteran: '',
+            immigrantStatus: '',
+            nativeStatus: '',
+            withChild: '',
+            significantPersons: [],
+            challenges: [],
+        });
     };
-    */
+            
+
+
+       
+
+
+    
     return (           
         <div>
             <div className="before-addresident">
@@ -50,7 +105,7 @@ function CaregiverAddResident() {
             <body1>
                 <div className='add-container'>
                     <header> Register a Resident </header>
-                    <form action='#' class="addform">
+                    <form action='#' class="addform" onSubmit={handleFormSubmit}>
                         <div class="form-group">
                             <label for='first_name'>First Name:</label>
                             <input type='text' id='first_name' placeholder='Enter first name' required />
