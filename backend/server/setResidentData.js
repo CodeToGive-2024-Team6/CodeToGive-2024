@@ -1,29 +1,65 @@
 const admin = require('firebase-admin');
 const serviceAccount = require('./codetogive6-firebase-adminsdk-1sqaf-a652c70cae.json');
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
 
 const db = admin.firestore();
 
-//function to set resident data
-async function setResidentsData(residentData) {
-  const residentsRef = db.collection('residents');
-  const snapshot = await residentsRef.get();
-
-  if (snapshot.empty) {
-    console.log('No matching documents.');
-    return [];
-  }
-  const residentsData = snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
-
-  return residentsData;
+function setGoals(residentId, goalsData) {
+    const goalsRef = db.collection('residents').doc(residentId).collection('objectives');
+    return goalsRef.add(goalsData);
 }
 
-module.exports = setResidentsData;
+function setNotes(residentId, notesData) {
+    const notesRef = db.collection('residents').doc(residentId).collection('chronologicalNotes');
+    return notesRef.add(notesData);
+}
+
+function setResources(residentId, resourcesData) {
+    const resourcesRef = db.collection('residents').doc(residentId).collection('resources');
+    return resourcesRef.add(resourcesData);
+}
+
+function setFollowUps(residentId, followUpsData) {
+    const followUpsRef = db.collection('residents').doc(residentId).collection('followups');
+    return followUpsRef.add(followUpsData);
+}
+
+function setGeneralInfoData(generalInfoData) {
+    const generalInfoRef = db.collection('residents').doc(generalInfoData.residentID);
+    return generalInfoRef.set({
+      firstName: generalInfoData.firstName,
+      lastName: generalInfoData.lastName,
+      planStartDate: generalInfoData.planStartDate,
+      startDateOfStay: generalInfoData.startDateOfStay,
+      endOfStayDate: generalInfoData.endOfStayDate,
+      placeOfAccommodation: generalInfoData.placeOfAccommodation,
+      firstVisit: generalInfoData.firstVisit,
+      immigrationStatus: generalInfoData.immigrationStatus,
+      native: generalInfoData.native,
+      veteran: generalInfoData.veteran,
+      withChild: generalInfoData.withChild,
+      exitOrientation: generalInfoData.exitOrientation,
+      issues: generalInfoData.issues,
+      age: generalInfoData.age,
+      borough: generalInfoData.borough,
+      revenue: generalInfoData.revenue,
+      caregivers: generalInfoData.caregivers,
+      significantPersons: generalInfoData.significantPersons,
+      treatmentTeam: generalInfoData.treatmentTeam,
+      communityServices: generalInfoData.communityServices
+      
+    });
+  }
+
+module.exports = {
+    
+    setGoals,
+    setNotes,
+    setResources,
+    setFollowUps,
+    setGeneralInfoData
+    };
+
+
 
 
