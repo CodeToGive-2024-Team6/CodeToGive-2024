@@ -38,10 +38,10 @@ function GoalsFragment() {
           className="flex flex-col flex-1 gap-y-6 overflow-visible"
           style={{ flexBasis: '0%', flexGrow: 1 }}
         >
-          <div className="flex flex-col shadow-md rounded-2xl p-6 gap-2">
+          <div className="flex flex-col border-double border-gray-300 rounded-2xl p-6 gap-2">
             <div className="text-lg font-medium">Your Progress</div>
             <div>
-              You've completed {completedGoals} of {totalGoals}{' '}
+              Completed {completedGoals} of {totalGoals}{' '}
               objectives!
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
