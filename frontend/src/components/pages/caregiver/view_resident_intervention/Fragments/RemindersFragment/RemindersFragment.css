@@ -125,20 +125,26 @@
 }
 
 .modal {
-    position: fixed;
+    position: relative;
     z-index: 1;
-    left: 0;
-    top: 10%;
-    width: 100%;
-    height: 100%;
+    left: 20%;
+    /* top: 10%; */
+    width: 50%;
+    height: 50%;
     overflow: auto;
-    position: -webkit-sticky
+    position: -webkit-sticky;
+    align-self: center;
+    background-color: #fefefe;
+
 }
 
 .close-button {
-    position: inherit;
-}
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    text-size-adjust: 50px;
 
+}
 .info-left,
 .info-right {
     width: 100%;
@@ -254,26 +260,19 @@ form input {
 
 .modal-content {
     background-color: #fefefe;
-    margin: auto;
-    /* 15% from the top and centered */
+    margin: 0 auto; /* Align the modal to the top */
     border: 1px solid #888;
-    width: 30%;
-    /* Adjust this value to make the modal smaller or larger */
+    width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     box-sizing: border-box;
     border-radius: 20px;
 }
-
 .form-container {
     width: 100%;
-    /* Adjust this value as needed */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    border: #000 1px solid;
-    border-radius: 20px;
+    height: fit-content;
+    
 }
 
 .form-container input {

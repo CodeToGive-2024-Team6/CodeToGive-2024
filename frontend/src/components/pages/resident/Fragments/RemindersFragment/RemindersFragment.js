@@ -185,7 +185,7 @@ function RemindersFragment( {resident} ) {
                 
                 {showForm && (
                     <div className="modal">
-                        <div className="modal-content">
+                        
                             <span className="close-button" onClick={() => {setShowForm(false);setIsFormOpen(false)}}>&times;</span>
                             <form className="form-container" onSubmit={handleFormSubmit}>
                                 <input name="heading" value={newReminder.heading} onChange={handleInputChange} placeholder="Reminder Heading" required />
@@ -198,7 +198,7 @@ function RemindersFragment( {resident} ) {
                                 <br />
                                 <button type="submit" style={{marginBottom: '30px'}}>Add Reminder</button>
                             </form>
-                        </div>
+                        
                     </div>
                 )}
            
