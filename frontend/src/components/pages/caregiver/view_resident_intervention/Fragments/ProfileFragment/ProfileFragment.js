@@ -21,7 +21,7 @@ function ProfileFragment({resident}) {
     }, []); // The empty array ensures this effect runs once after the initial render
 
     console.log(residents);
-    //run a for loop to get the significant persons
+    const startDate = residents.planStartDate ? new Date(residents.planStartDate._seconds * 1000).toLocaleDateString() : 'N/A';    console.log(startDate);
     
 
     return (
@@ -66,10 +66,10 @@ function ProfileFragment({resident}) {
                 <h1>Resident Status</h1>
                 <div className="profile-container-status">
                         <p>
-                            <strong>Plan Start Date:</strong> 
+                            <strong>Plan Start Date:</strong> {startDate} 
                         </p>
                         <p>
-                            <strong>Start Date of the Stay:</strong> 
+                            <strong>Start Date of the Stay:</strong> {startDate}
                         </p>
                         <p>
                             <strong>Place Accommodation:</strong> {residents.currentAccommodation}

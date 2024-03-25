@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
 
-const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID} = require('./getResidentData.js')
+const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID, getFollowUpsForResident} = require('./getResidentData.js');
 const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo, updateGoal, deleteGoal } = require('./setResidentData');
 
 const {getCaregiversAllData,
@@ -125,6 +125,19 @@ app.get('/followups/:resident_id', async (req, res) => {
     res.status(404).send(error.message);
   }
 });
+
+
+// Endpoint that lists all followups listed by caregiver. Currently a placeholder.
+app.get('/followupsforresident/:resident_id', async (req, res) => {
+  const residentId = req.params.resident_id;
+  try {
+    const info = await getFollowUpsForResident(residentId);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
 
 // Endpoint that lists all caregivers. Currently a placeholder.
 app.get('/caregivers', async (req, res) => {
