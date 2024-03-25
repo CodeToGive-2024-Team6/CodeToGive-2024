@@ -20,22 +20,29 @@ const StartPage = () => {
             <div className="border"><div className="quote"><h1>Shelter for All Women</h1></div></div>
             <div className="container">
                 <div className="button-container">
-                    <Link to="/caregiver_homepage" className="button-link">
-                        <button className="circle caregiver">
-                            <TbUserHeart style={{ fontSize: '4em' }} />
-                        </button>
+                    <div>
+                        <Link to="/caregiver_homepage" className="button-link">
+                            <button className="circle caregiver">
+                                <TbUserHeart style={{ fontSize: '4em' }} />
+                            </button>
+                        </Link>
                         <div className="caregivers-name">
                             <p>Caregivers</p>
                         </div>
-                    </Link>
-                    <Link to="/resident_homepage" className="button-link">
-                        <button className="circle resident">
-                            <FaPeopleRoof style={{ fontSize: '4em' }} />
-                        </button>
+                    </div>
+
+                    <div>
+                        <Link to="/resident_homepage" className="button-link">
+                            <button className="circle resident">
+                                <FaPeopleRoof style={{ fontSize: '4em' }} />
+                            </button>
+                        </Link>
                         <div className="residents-name">
                             <p>Residents</p>
                         </div>
-                    </Link>
+                    </div>
+
+
                     <img src={houseLogo} alt="House Logo" className="houselogo" />
                 </div>
             </div>
