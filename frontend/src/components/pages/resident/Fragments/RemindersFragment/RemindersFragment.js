@@ -68,7 +68,7 @@ function RemindersFragment() {
                 <div style={{paddingBottom: '50px'}}>
                     
                 {reminders.map((reminder, index) => (
-                    <div key={index} className="reminder-item"  onClick={() => handleReminderClick(reminder)} onContextMenu={(event) => { event.preventDefault(); handleLongPress(index); }}>
+                    <div key={index} className="reminder-item !bg-red-100 border-double border-rose-200"  onClick={() => handleReminderClick(reminder)} onContextMenu={(event) => { event.preventDefault(); handleLongPress(index); }}>
                         <delete-button onClick={() => handleLongPress(index)}><MdDeleteForever style={{fontSize: '20px'}}/></delete-button>
                         <div className="reminder-item-content">
                             <h2 className="reminder-heading">{reminder.heading}</h2>
@@ -87,7 +87,7 @@ function RemindersFragment() {
                     </div>
                 ))}
 
-                <button onClick={() => {setShowForm(true);setIsFormOpen(true)} }>Add Reminder</button>
+                <button className='bg-rose-400' onClick={() => {setShowForm(true);setIsFormOpen(true)} }>Add Reminder</button>
                 
                 {showForm && (
                     <div className="modal">
@@ -113,7 +113,7 @@ function RemindersFragment() {
 
             </div>
 
-            <div className='scheduler'>
+            <div className='scheduler !bg-rose-200'>
 
             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FEdmonton&bgcolor=%23ffffff&title=le%20chainon&src=ZW4uY2FuYWRpYW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%230B8043" style={{height: ' 480px',width: '530px',marginLeft: '10px', borderWidth: '0px', borderRadius: "10px"}}></iframe>
                
