@@ -51,6 +51,9 @@ const GoalCard = ({ objective }) => {
           <div className="bg-white p-5 rounded-lg text-black w-3/4 md:w-1/2 lg:w-1/3">
             <h2 className="text-lg font-bold">Description</h2>
             <p>{objective.description}</p>
+            <br />
+            <h2 className="text-lg font-bold">Means</h2>
+            <p>{objective.means}</p>
             <button
               onClick={() => setIsModalOpen(false)}
               className="mt-4 px-4 py-2 bg-rose-400 text-white rounded hover:bg-gray-400"

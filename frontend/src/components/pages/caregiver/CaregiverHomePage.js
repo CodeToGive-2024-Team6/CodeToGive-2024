@@ -4,7 +4,8 @@ import { VscAccount } from "react-icons/vsc";
 import { FaAddressBook, FaBuilding, FaFacebookMessenger } from "react-icons/fa";
 import { CgAddR } from "react-icons/cg";
 import { Link } from 'react-router-dom';
-import company_logo from "../company_logo.png";
+import whiteCompanyLogo from "./view_resident_intervention/whiteCompanyLogo.png";
+
 import { Chart } from 'primereact/chart';
 
 
@@ -44,7 +45,7 @@ const CaregiverHomePage = () => {
                     <h1>Hi! Caregiver Name</h1>
                     <div className="caregiver-homepage-before">
                         <Link to="/">
-                            <img src={company_logo} alt="company logo" style={{width: '200px', height: '100px'}}/>
+                            <img src={whiteCompanyLogo} alt="company logo" style={{width: '200px', height: '100px'}}/>
                         </Link>
                     </div>
                     <Link to="/caregiver_profile">
