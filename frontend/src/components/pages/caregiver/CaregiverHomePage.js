@@ -5,6 +5,7 @@ import { FaAddressBook, FaBuilding, FaFacebookMessenger } from "react-icons/fa";
 import { CgAddR } from "react-icons/cg";
 import { Link } from 'react-router-dom';
 import company_logo from "../company_logo.png";
+import { Chart } from 'primereact/chart';
 
 
 const CaregiverHomePage = () => {
@@ -17,6 +18,24 @@ const CaregiverHomePage = () => {
         }, 5000);
         return () => clearInterval(interval); // This will clear Interval while unmounting the component
     }, [currentAppointmentIndex, appointments.length]);
+
+    const data = {
+        labels: [
+            'Red',
+            'Blue',
+            'Yellow'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }]
+    };
 
     return (
         <div className="page-layout">
@@ -35,7 +54,12 @@ const CaregiverHomePage = () => {
                 </div>
                 <div className="appointment-view">
                     <h2>Current Appointment</h2>
-                    <p>{appointments[currentAppointmentIndex]}</p>
+                </div>
+                <div className="caregiver-upcoming-appointment">
+                    <h2>Upcoming Appointment</h2>
+                    <div className="appointment-view">
+                        <p>{appointments[currentAppointmentIndex]}</p>
+                    </div>
                 </div>
                 <div className="grid-view">
 
@@ -48,10 +72,12 @@ const CaregiverHomePage = () => {
                         <CgAddR style={{ fontSize: '4em' }} />
                         <p>Add Resident</p>
                     </div>
-                    <div className="grid-box">
+
+                    <Link to="/caregiver_communication" style={{ textDecoration: 'none', color: 'black' }} className="grid-box">
                         <FaFacebookMessenger style={{ fontSize: '4em' }} />
                         <p>Communication</p>
-                    </div>
+                    </Link>
+
                     <div className="grid-box">
                         <FaAddressBook style={{ fontSize: '4em' }} />
                         <p>My Resident</p>
@@ -60,8 +86,13 @@ const CaregiverHomePage = () => {
             </div>
 
             <div className='grid-view-stats'>
-                <div className='statistics-box'>
-                    <h2>Statistics 1</h2>
+                <div>
+                    <canvas id="myChart"></canvas>
+                    <div className='statistics-box'>
+                        <Link to="/stat">
+                        <Chart type='pie' data={data} />
+                        </Link>
+                    </div>
                 </div>
 
                 <div className='statistics-box'>
