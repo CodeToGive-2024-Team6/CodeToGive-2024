@@ -29,159 +29,98 @@ async function getResidentsAllData() {
 
 
 async function getResidentsByUserID(userID) {
-  const residentsRef = db.collection('residents');
-  const snapshot = await residentsRef.where('userID', '==', userID).get();
+  const residentRef = db.collection('residents').doc(userID);
+  const snapshot = await residentRef.get();
   
-  if (snapshot.empty) {
-    console.log('No matching documents.');
-    return [];
+  if (!snapshot.exists) {
+    console.log('No matching document.');
+    return null; 
   }  
   
-  const residentsData = snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
-  return residentsData;
+  const residentData = {
+    id: snapshot.id,
+    ...snapshot.data()
+  };
+  
+  return residentData;
 }
 
 
 async function getObjectivesByUserID(userID) {
-  const residentsRef = db.collection('residents');
-  const snapshot = await residentsRef.where('userID', '==', userID).get();
+  // Directly reference the objectives subcollection of the specified resident
+  const objectivesRef = db.collection('residents').doc(userID).collection('objectives');
+  const snapshot = await objectivesRef.get();
 
   if (snapshot.empty) {
-    console.log('No matching residents.');
+    console.log('No matching objectives.');
     return [];
   }
 
-  // Prepare to gather all objectives for matching resident
-  let objectivesData = [];
+  const objectivesData = snapshot.docs.map(doc => ({
+    objectiveId: doc.id,
+    ...doc.data()
+  }));
 
-  for (let doc of snapshot.docs) {
-    const residentId = doc.id;
-    // Access the subcollection 'objectives' for each resident
-    const objectivesRef = db.collection('residents').doc(residentId).collection('objectives');
-    const objectivesSnapshot = await objectivesRef.get();
-
-    if (!objectivesSnapshot.empty) {
-      const objectives = objectivesSnapshot.docs.map(objDoc => ({
-        objectiveId: objDoc.id,
-        ...objDoc.data()
-      }));
-      
-      objectivesData.push({
-        residentId: residentId,
-        objectives: objectives
-      });
-    }
-  }
-
-  return objectivesData;
+  return objectivesData.map(objective => ({
+    residentId: userID,
+    ...objective
+  }));
 }
 
-
 async function getChronologicalNotesByUserID(userID) {
-  const residentsRef = db.collection('residents');
-  const snapshot = await residentsRef.where('userID', '==', userID).get();
+  // Directly access the subcollection 'chronologicalNotes' of the given residentID
+  const notesRef = db.collection('residents').doc(userID).collection('chronologicalNotes');
+  const notesSnapshot = await notesRef.orderBy('date', 'asc').get(); // Order the notes by date, ascending
 
-  if (snapshot.empty) {
-    console.log('No matching residents.');
+  if (notesSnapshot.empty) {
+    console.log('No matching notes.');
     return [];
   }
 
-  let notesData = [];
+  const notes = notesSnapshot.docs.map(noteDoc => ({
+    noteId: noteDoc.id,
+    ...noteDoc.data()
+  }));
 
-  for (let doc of snapshot.docs) {
-    const residentId = doc.id;
-    // Access the subcollection 'chronologicalNotes' for given residentID
-    const notesRef = db.collection('residents').doc(residentId).collection('chronologicalNotes');
-    const notesSnapshot = await notesRef.orderBy('date', 'asc').get(); // Order the notes by date, ascending
-
-    if (!notesSnapshot.empty) {
-      const notes = notesSnapshot.docs.map(noteDoc => ({
-        noteId: noteDoc.id,
-        ...noteDoc.data()
-      }));
-
-      notesData.push({
-        residentId: residentId,
-        notes: notes
-      });
-    }
-  }
-
-  return notesData;
+  return notes
 }
 
 
 async function getResourcesByUserID(userID) {
-  const residentsRef = db.collection('residents');
-  const snapshot = await residentsRef.where('userID', '==', userID).get();
+  // Directly access the 'resources' subcollection for the given residentID
+  const resourcesRef = db.collection('residents').doc(userID).collection('resources');
+  const resourcesSnapshot = await resourcesRef.get();
 
-  if (snapshot.empty) {
-    console.log('No matching residents.');
+  if (resourcesSnapshot.empty) {
+    console.log('No matching resources.');
     return [];
   }
 
-  // Prepare to gather all resources for matching resident
-  let resourcesData = [];
+  const resources = resourcesSnapshot.docs.map(resDoc => ({
+    resourceId: resDoc.id,
+    ...resDoc.data()
+  }));
 
-  for (let doc of snapshot.docs) {
-    const residentId = doc.id;
-    // Access the subcollection 'resources' for each resident
-    const resourcesRef = db.collection('residents').doc(residentId).collection('resources');
-    const resourcesSnapshot = await resourcesRef.get();
-
-    if (!resourcesSnapshot.empty) {
-      const resources = resourcesSnapshot.docs.map(resDoc => ({
-        resourceId: resDoc.id,
-        ...resDoc.data()
-      }));
-      
-      resourcesData.push({
-        residentId: residentId,
-        resources: resources
-      });
-    }
-  }
-
-  return resourcesData;
+  return resources;
 }
 
 
 async function getFollowupsByUserID(userID) {
-  const residentsRef = db.collection('residents');
-  const snapshot = await residentsRef.where('userID', '==', userID).get();
+  // Directly access the 'followups' subcollection for the given residentID
+  const followupsRef = db.collection('residents').doc(userID).collection('followups');
+  const followupsSnapshot = await followupsRef.orderBy('date', 'asc').get();
 
-  if (snapshot.empty) {
-    console.log('No matching residents.');
+  if (followupsSnapshot.empty) {
+    console.log('No matching followups.');
     return [];
   }
 
-  // Prepare to gather all followups for the matching resident
-  let followupsData = [];
+  const followups = followupsSnapshot.docs.map(followupDoc => ({
+    followupId: followupDoc.id,
+    ...followupDoc.data()
+  }));
 
-  for (let doc of snapshot.docs) {
-    const residentId = doc.id;
-    // Access the subcollection 'followups' for each resident
-    const followupsRef = db.collection('residents').doc(residentId).collection('followups');
-    // Ensure to adjust the orderBy field and direction according to your needs
-    const followupsSnapshot = await followupsRef.orderBy('date', 'asc').get();
-
-    if (!followupsSnapshot.empty) {
-      const followups = followupsSnapshot.docs.map(followupDoc => ({
-        followupId: followupDoc.id,
-        ...followupDoc.data()
-      }));
-
-      followupsData.push({
-        residentId: residentId,
-        followups: followups
-      });
-    }
-  }
-
-  return followupsData;
+  return followups;
 }
 
 
