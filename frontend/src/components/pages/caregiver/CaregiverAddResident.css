@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.before-addresident {
+    font-size: 30px;
+    position: absolute;
+    top: 5%;
+    left: 20px; /* Adjust this value as needed */
+    transform: translateY(-50%);
+}
+
+body1 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #B0F0FF;
+}
+
+.add-container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.add-container header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+
+.add-container addform {
+    margin-top: 30px;
+}
+
+.addform .form-group {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-group label {
+    color: #333;
+}
+
+.addform :where(.form-group input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.form-group input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.addform .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+.addform .checkbox {
+    margin-top: 20px;
+}
+
+.checkbox h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.addform :where(.veteran-option, .veteran) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+
+.veteran input {
+    accent-color: #00AFD7;
+}
+
+.addform .veteran {
+    column-gap: 5px;
+}
+
+.addform :where(.veteran input, .veteran label) {
+    cursor: pointer;
+}
+
+.select-box select {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+}
+
+.addform button {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: #00AFD7;
+}
+
+.addform button:hover {
+    background: #007f9d;
+}
+
+/* Responsive */
+@media screen and (max-width: 500px) {
+    .addform .column {
+        flex-wrap: wrap;
+    }
+
+    .addform :where(.veteran-option, .veteran) {
+        row-gap: 15px;
+    }
+}

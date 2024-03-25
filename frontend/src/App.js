@@ -10,7 +10,7 @@ import CaregiverResidentPage from './components/pages/caregiver/view_resident_in
 import CaregiverProfile from './components/pages/caregiver/CaregiverProfile';
 import StatisticsPage from './components/pages/StatisticsPage';
 import CaregiverCommunicationPage from './components/pages/caregiver/CaregiverCommunicationPage'
-
+import CaregiverAddResident from './components/pages/caregiver/CaregiverAddResident';
 
 
 import './App.css';
@@ -31,6 +31,7 @@ const App = () => {
                     <Route path = "/caregiver_profile" element = {<CaregiverProfile />} />
                     <Route path = "/caregiver_communication" element = {<CaregiverCommunicationPage/>} />
                     <Route path = "/stat" element = {<StatisticsPage />} />
+                    <Route path = "/caregiver_add_resident" element = {<CaregiverAddResident />} />
 
                     
                 </Routes>
