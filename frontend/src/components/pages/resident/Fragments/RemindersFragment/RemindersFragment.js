@@ -40,7 +40,7 @@ function RemindersFragment( {resident} ) {
     const [displayedResidents, setDisplayedResidents] = useState([]);
     const [followUps, setFollowUps] = useState([]);
     useEffect(() => {
-        fetch(`/followupsforresident/1YBJhlX3AhY3EzEbHEtv`) // This is the endpoint you're connecting to, e.g. `http://localhost:5000/residentinfo/1
+        fetch(`/followupsforresident/1iJfmB0IUQVX8SkJJP2p`) // This is the endpoint you're connecting to, e.g. `http://localhost:5000/residentinfo/1
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -84,7 +84,7 @@ function RemindersFragment( {resident} ) {
         };
       
         // Add the new reminder to the Firebase
-        fetch(`/setfollowups/1YBJhlX3AhY3EzEbHEtv`, {
+        fetch(`/setfollowups/1iJfmB0IUQVX8SkJJP2p`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ function RemindersFragment( {resident} ) {
       };
 
       const handleLongPress = (index) => {
-        fetch(`/deletefollowup/${resident.id}/${followUps[index].id}`, {
+        fetch(`/deletefollowup/1iJfmB0IUQVX8SkJJP2p/${followUps[index].id}`, {
           method: 'DELETE'
         })
         .then(response => response.json())
