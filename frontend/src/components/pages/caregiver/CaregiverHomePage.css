@@ -1,112 +1,155 @@
-/* CaregiverHomePage.css */
-
-/* Header bar */
 .header-bar {
-    width: 100%;
-    height: 250px;
-    background-color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+        width: 100%;
+        height: 250px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
 }
 
 .header-bar h1 {
-    font-size: 20px;
-    color: #343a40;
+        font-size: 20px;
+        color: #343a40;
 }
 
 .caregiver-upcoming-appointment {
-    width: 40%;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: #B0F0FF;
+        width: 40%;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #B0F0FF;
 }
 
-/* Appointment view */
 .appointment-view {
-    width: 40%;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 15px; /* Rounded corners */
-    position: absolute;
-    left: 0;
-    background-color: #ADD2E2;
+        width: 40%;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 15px;
+        position: absolute;
+        left: 0;
+        background-color: #ADD2E2;
 }
 
-/* CaregiverHomePage.css */
-
-/* Grid view */
 .grid-view {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 40%;
-    margin: 20px;
-    position: absolute;
-    left: 0;
-    top: calc(30% + 40px); /* Adjust this value as needed */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 40%;
+        margin: 20px;
+        padding: 10px;
+        position: absolute;
+        left: 0;
+        top: calc(30% + 40px);
 }
 
-/* CaregiverHomePage.css */
-
-/* Grid box */
 .grid-box {
-    width: 200px; /* Set width */
-    height: 200px; /* Set height */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color:#00AFD7;
-    display: flex; /* Add this */
-    justify-content: center; /* Add this */
-    align-items: center; /* Add this */
-    flex-direction: column; /* Add this */
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        background-color:#00AFD7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 }
 
-
-
-
-/* grid view for 2 boxes vertical*/
 .grid-view-stats {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
-    width: 40%;
-    margin: 10px;
-    position: absolute;
-    left: 55%;
-    top: calc(5% + 40px); /* Adjust this value as needed */
-    
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        width: 40%;
+        margin: 10px;
+        position: absolute;
+        left: 55%;
+        top: calc(5% + 40px);
 }
 
-/* Statistics box */
+.page-layout .grid-view .grid-box .p {
+        color: #fff;
+}
+
 .statistics-box {
-    width: 400px; /* Set width */
-    height: 350px; /* Set height */
-    padding: 0px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color: #fff;
-    display: flex; /* Add this */
-    justify-content: center; /* Add this */
-    align-items: center; /* Add this */
-    flex-direction: column;
-    transition: all 400ms ease;
+        width: 400px;
+        height: 350px;
+        padding: 0px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: all 400ms ease;
 }
 
 .statistics-box:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 10px #00AFD7;
+        transform: scale(1.03);
+        box-shadow: 0 0 10px #00AFD7;
 }
 
 .page-layout .header-bar .caregiver-homepage-before {
-    display: flex;
-    color: #4079;
+        display: flex;
+        color: #4079;
+}
+
+@media (max-width: 768px) {
+    .header-bar {
+        height: 150px;
+        padding: 0 10px;
+    }
+
+    .header-bar h1 {
+        font-size: 16px;
+    }
+
+    .caregiver-upcoming-appointment,
+    .appointment-view,
+    .grid-view,
+    .grid-box,
+    .grid-view-stats,
+    .statistics-box {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .grid-view {
+        grid-template-columns: repeat(1, 1fr);
+        top: calc(20% + 40px);
+    }
+
+    .grid-box {
+        width: 100%;
+        height: 150px;
+        padding: 10px;
+    }
+
+    .statistics-box {
+        width: 100%;
+        height: 300px;
+        padding: 10px;
+    }
+
+    .page-layout .header-bar .caregiver-homepage-before {
+        font-size: 14px;
+    }
+
+    .page-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid-view-stats {
+        order: 2;
+        margin-top: 730px;
+        margin-left: -53%;
+    }
 }

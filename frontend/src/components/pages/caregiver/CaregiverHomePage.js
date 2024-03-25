@@ -4,7 +4,8 @@ import { VscAccount } from "react-icons/vsc";
 import { FaAddressBook, FaBuilding, FaFacebookMessenger } from "react-icons/fa";
 import { CgAddR } from "react-icons/cg";
 import { Link } from 'react-router-dom';
-import company_logo from "../company_logo.png";
+import whiteCompanyLogo from "./view_resident_intervention/whiteCompanyLogo.png";
+
 import { Chart } from 'primereact/chart';
 
 
@@ -44,7 +45,7 @@ const CaregiverHomePage = () => {
                     <h1>Hi! Caregiver Name</h1>
                     <div className="caregiver-homepage-before">
                         <Link to="/">
-                            <img src={company_logo} alt="company logo" style={{width: '200px', height: '100px'}}/>
+                            <img src={whiteCompanyLogo} alt="company logo" style={{width: '200px', height: '100px'}}/>
                         </Link>
                     </div>
                     <Link to="/caregiver_profile">
@@ -63,23 +64,25 @@ const CaregiverHomePage = () => {
                 </div>
                 <div className="grid-view">
 
-                    <Link to="/caregiver_search"style={{ textDecoration: 'none', color: 'black' }} className="grid-box">
-                        <FaBuilding style={{fontSize: '4em'}}/>
+                    <Link to="/caregiver_search"style={{ textDecoration: 'none', color: 'black', fontWeight:'600' }} className="grid-box">
+                        <FaBuilding style={{fontSize: '5em', padding: 10}}/>
                         <p>Search Facility</p>
                     </Link>
 
-                    <div className="grid-box">
-                        <CgAddR style={{ fontSize: '4em' }} />
-                        <p>Add Resident</p>
-                    </div>
 
-                    <Link to="/caregiver_communication" style={{ textDecoration: 'none', color: 'black' }} className="grid-box">
-                        <FaFacebookMessenger style={{ fontSize: '4em' }} />
+                    <Link to="/caregiver_add_resident"style={{textDecoration: 'none', color: 'black' , fontWeight:'600'  }} className="grid-box">
+                        <CgAddR style={{ fontSize: '5em' }} />
+
+                        <p>Add Resident</p>
+                    </Link>
+
+                    <Link to="/caregiver_communication" style={{ textDecoration: 'none', color: 'black', fontWeight:'600'  }} className="grid-box">
+                        <FaFacebookMessenger style={{fontSize: '5em', padding: 10}} />
                         <p>Communication</p>
                     </Link>
 
-                    <div className="grid-box">
-                        <FaAddressBook style={{ fontSize: '4em' }} />
+                    <div className="grid-box" style={{ textDecoration: 'none', color: 'black', fontWeight:'600' }}>
+                        <FaAddressBook style={{fontSize: '5em', padding: 10}} />
                         <p>My Resident</p>
                     </div>
                 </div>
@@ -89,7 +92,9 @@ const CaregiverHomePage = () => {
                 <div>
                     <canvas id="myChart"></canvas>
                     <div className='statistics-box'>
+                        <Link to="/stat">
                         <Chart type='pie' data={data} />
+                        </Link>
                     </div>
                 </div>
 

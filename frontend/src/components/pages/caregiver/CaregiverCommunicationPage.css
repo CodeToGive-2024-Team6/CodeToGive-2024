@@ -1,20 +1,20 @@
 .communication-container {
-    position: relative; 
-    border: 2px solid #ddd; 
+    position: relative;
+    border: 2px solid #ddd;
     border-radius: 8px;
     padding: 8px;
-    margin: 10px; 
-    width: calc(100% - 20px); 
-    height: calc(100vh - 30px); 
+    margin: 10px;
+    width: calc(100% - 20px);
+    height: calc(100vh - 30px);
     max-height: calc(100vh - 30px);
-    
-    justify-content: center; 
+
+    justify-content: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 
 .link-wrapper:hover {
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 
@@ -23,17 +23,17 @@
     align-items: center;
     position: relative;
     margin-top: 12px;
-  }
-  
-  .search-input {
+}
+
+.search-input {
     padding: 10px;
-    padding-right: 40px; 
-    border: 1px solid #ccc; 
-    flex: 1; 
+    padding-right: 40px;
+    border: 1px solid #ccc;
+    flex: 1;
     height: 32px;
-  }
-  
-  .search-button {
+}
+
+.search-button {
     position: absolute;
     right: 0;
     top: 0;
@@ -41,20 +41,20 @@
     margin: auto;
     padding: 10px;
     border: none;
-    color: white; 
+    color: white;
     justify-content: center;
-    font-size: 0.9em; 
-  }
-  
- 
-.sidebar{
+    font-size: 0.9em;
+}
+
+
+.sidebar {
     position: absolute;
     left: 0px;
     top: 0px;
     height: 100%;
     width: 20%;
     padding: 15px;
-    background-color: #fff1fa;
+    background-color: #B0F0FF;
     box-shadow: 0 2px 4px rgba(180, 142, 173, 0.2);
 }
 
@@ -90,13 +90,13 @@
 
 
 .chat-header {
-    position: absolute; 
+    position: absolute;
     display: flex;
-    top: 0; 
+    top: 0;
     right: 0px;
     width: 80%;
     padding: 10px;
-    justify-content: left; 
+    justify-content: left;
     background-color: aliceblue;
 }
 
@@ -113,13 +113,13 @@
 
 
 .communication-input-container {
-    position: absolute; 
+    position: absolute;
     display: flex;
-    bottom: 0; 
+    bottom: 0;
     right: 0px;
     width: 80%;
     padding: 10px;
-    justify-content: center; 
+    justify-content: center;
     background-color: aliceblue;
 }
 
@@ -131,40 +131,41 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     margin-right: 100px;
-  }
-  
+}
 
-.button-send{
+
+.button-send {
     position: absolute;
     display: flex;
     bottom: 0;
     right: 230px;
     margin-bottom: 10px;
-    background-color: #cb96b8;; 
+    background-color: #00AFD7;
+    ;
     border: none;
-    padding: 15px; 
-    border-radius: 10px; 
-    cursor: pointer; 
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
     justify-content: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 
 .send-button svg {
-   stroke: white;
-   font-size: 15px;
-  }
+    stroke: white;
+    font-size: 15px;
+}
 
 
 .send-button:hover {
-background-color: #fee0fa;
+    background-color: #fee0fa;
 }
 
 
 .sent-message {
     display: flex;
-    flex-direction: column; 
-    align-self: flex-end; 
+    flex-direction: column;
+    align-self: flex-end;
     max-width: 50%;
     word-wrap: break-word;
     margin-bottom: 15px;
@@ -190,7 +191,8 @@ background-color: #fee0fa;
     transform: translate(-50%, -50%);
     width: 200px;
     height: 100px;
-    opacity: 0.1; /* Adjust opacity as needed */
+    opacity: 0.1;
+    /* Adjust opacity as needed */
     z-index: -1;
     object-fit: cover;
 }

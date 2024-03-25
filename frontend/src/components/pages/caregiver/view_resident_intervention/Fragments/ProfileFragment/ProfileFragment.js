@@ -1,89 +1,136 @@
 import React from 'react';
+import { useEffect, useState } from "react";
 import './ProfileFragment.css';
 
-function ProfileFragment() {
+function ProfileFragment({resident}) {    
+    const [residents, setResidents] = useState([]);
+    const [displayedResidents, setDisplayedResidents] = useState([]);
+    
+    console.log(resident);
+    
+    
+    // Fetch residents data from the endpoint
+    useEffect(() => {
+        fetch(`/residentinfo/${resident.id}`) // This is the endpoint you're connecting to, e.g. 'http://localhost:5000/residentinfo/1
+            .then(response => response.json())
+            .then(data => {
+                setResidents(data);
+                setDisplayedResidents(data);
+            })
+            .catch(error => console.error('Error fetching resident data:', error));
+    }, []); // The empty array ensures this effect runs once after the initial render
+
+    console.log(residents);
+    //run a for loop to get the significant persons
+    
 
     return (
-        <div className='container'>
-            <h1>Profile Fragment</h1>
+        <div className='profile-wrapper'>
+            <div className='assigned-caregiver'>
+                <p>Assigned Caregiver: </p> 
+            </div>
+
+            <div className="resident-name">
+                <h1>{residents.firstName} {residents.lastName}</h1>
+            </div>
 
             <div className='containerRow1'>
-                <div className='basicDetails'>
-                    <h2>Basic Details</h2>
-                    <h3>Age:</h3>
-                    <text>30</text>
-                    <h3>City/ Borough:</h3>
-                    <text>Ville-Marie</text>
-                    <h3>Revenue:</h3>
-                    <text>$1,234/month</text>
-                    <h3>Significant Persons:</h3>
-                    <text>450-555-1234 (Grand mother)</text>
-                    <h3>Immigrant Status:</h3>
-                    <text>Citizen</text>
-                    <h3>With Child:</h3>
-                    <text>No</text>
-                    <h3>Native:</h3>
-                    <text>No</text>
-                    <h3>Veteran: </h3>
-                    <text>Yes</text>
-                </div>
 
-                <div className='residentStatus'>
-                    <h2>Resident Status</h2>
-                    <h3>Plan Start Date:</h3>
-                    <text>2024/02/02</text>
-                    <h3>Start Date of the Stay:</h3>
-                    <text>2024/02/15</text>
-                    <h3>Place Accommodation:</h3>
-                    <text>House 5</text>
-                    <h3>First Visit:</h3>
-                    <text>Yes</text>
-                    <h3>Issues:</h3>
-                    <text>Substance Abuse, Sexual Assault</text>
+                <div className="titles">
+                    <h1>Basic Details</h1>
+                    <div className="profile-container-basic-details">
+                            <p>
+                                <strong>Age: </strong> {residents.age}
+                            </p>
+                            <p>
+                                <strong>City/ Borough:</strong> {residents.borough}
+                            </p>
+                            <p>
+                                <strong>Revenue:</strong> {residents.income}
+                            </p>
+                            <p>
+                                <strong>Significant Persons:</strong> {residents.significantPersons && residents.significantPersons.map(person => person).join(', ')} 
+                                
+                            </p>
+                            <p>
+                                <strong>Immigrant Status:</strong> {residents.immigrantStatus}
+                            </p>
+                            <p>
+                                <strong>With Child:</strong> {residents.withChild}
+                            </p>
+                            <p>
+                                <strong>Native:</strong> {residents.native}
+                            </p>
+                            <p>
+                                <strong>Veteran:</strong> {residents.veteran}
+                            </p>
+                    </div>
+
+                    <div className="titles">
+                        <h1>Resident Status</h1>
+                        <div className="profile-container-resident-status">
+                                <p>
+                                    <strong>Plan Start Date:</strong> 
+                                </p>
+                                <p>
+                                    <strong>Start Date of the Stay:</strong> 
+                                </p>
+                                <p>
+                                    <strong>Place Accommodation:</strong> {residents.currentAccommodation}
+                                </p>
+                                <p>
+                                    <strong>First Visit:</strong> {String(residents.firstVisit)}
+                                </p>
+                                <p>
+                                    <strong>Issues:</strong> {residents.challenges && residents.challenges.map(challenge => challenge).join(', ')}
+                                </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div className='containerRow2'>
-                <div className='treatmentTeam'>
-                    <h2>Treatment Care</h2>
+                <div className="titles">
+                    <h1>Treatment Care</h1>
+                    <div className="profile-container-care">
+                        <h3>Treatment Team:</h3>
+                        <div className='table'>
+                            <div className='teamColumn1'>
+                                <strong>Job</strong>
+                                <text>Psychiatrist</text>
+                                <text>Social Worker</text>
+                            </div>
+                            <div className='teamColumn2'>
+                                <strong>Name</strong>
+                                <text>Dr. XYZ</text>
+                                <text>Mr. ABC</text>
+                            </div>
+                            <div className='teamColumn3'>
+                                <strong>Address</strong>
+                                <text>1234 Sherbrooke Est</text>
+                                <text>Chum Hosipital</text>
+                            </div>
+                        </div>
 
-                    <h3>Treatment Team:</h3>
-                    <div className='table'>
-                        <div className='teamColumn1'>
-                            <strong>Job</strong>
-                            <text>Psychiatrist</text>
-                            <text>Social Worker</text>
-                        </div>
-                        <div className='teamColumn2'>
-                            <strong>Name</strong>
-                            <text>Dr. XYZ</text>
-                            <text>Mr. ABC</text>
-                        </div>
-                        <div className='teamColumn3'>
-                            <strong>Address</strong>
-                            <text>1234 Sherbrooke Est</text>
-                            <text>Chum Hosipital</text>
-                        </div>
-                    </div>
+                        <br />
 
-                    <br />
-
-                    <h3>Community Services:</h3>
-                    <div className='table'>
-                        <div className='teamColumn1'>
-                            <strong>Name</strong>
-                            <text>Spectre de rue</text>
-                            <text>Cactus</text>
-                        </div>
-                        <div className='teamColumn2'>
-                            <strong>Services Provided</strong>
-                            <text>STD,HIV, HCV and overdose ...</text>
-                            <text>Supervised Injection Center..</text>
-                        </div>
-                        <div className='teamColumn3'>
-                            <strong>Address</strong>
-                            <text>1280 Ontario st E</text>
-                            <text>1233 rue du berger</text>
+                        <h3>Community Services:</h3>
+                        <div className='table'>
+                            <div className='teamColumn1'>
+                                <strong>Name</strong>
+                                <text>Spectre de rue</text>
+                                <text>Cactus</text>
+                            </div>
+                            <div className='teamColumn2'>
+                                <strong>Services Provided</strong>
+                                <text>STD,HIV, HCV and overdose ...</text>
+                                <text>Supervised Injection Center..</text>
+                            </div>
+                            <div className='teamColumn3'>
+                                <strong>Address</strong>
+                                <text>1280 Ontario st E</text>
+                                <text>1233 rue du berger</text>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -93,4 +140,3 @@ function ProfileFragment() {
 }
 
 export default ProfileFragment;
-

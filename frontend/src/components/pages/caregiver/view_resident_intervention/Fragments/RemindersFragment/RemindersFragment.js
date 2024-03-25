@@ -6,6 +6,24 @@ import { MdDeleteForever } from "react-icons/md";
 
 
 
+async function getFollowUpsForResidents(residentRefs) {
+    try {
+        // Fetch follow-ups for each resident
+        const followUps = await Promise.all(residentRefs.map(residentRef => 
+            fetch(`/followups/${residentRef}`)
+                .then(response => response.json())
+        ));
+
+        return followUps;
+    } catch (error) {
+        console.error('Error fetching follow-up data:', error);
+    }
+}
+
+function getResidentIDfromRefs(refs) {
+    return refs.map(ref => ref.residentref);
+}
+
 
 
 
@@ -17,10 +35,44 @@ function RemindersFragment() {
         {heading: 'Reminder 4', meetingInfo: 'Meeting Info 4', date: '2022-04-04', time: '15:00', type: 'Type 4', note: 'Note 4', communication: 'Communication 4'},
     ]);
 
-    const [selectedReminder, setSelectedReminder] = useState(null);
+    const [residents, setResidents] = useState([]);
+    const [displayedResidents, setDisplayedResidents] = useState([]);
+    const [followUps, setFollowUps] = useState([]);
+    useEffect(() => {
+        fetch('/followups/testResident1')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setFollowUps(data);
+            })
+            .catch(error => console.error('Error fetching follow-up data:', error));
+    }, []); // The empty array ensures this effect runs once after the initial render
+
+    
+
+
+
+
+
+    useEffect(() => {
+        const residentRefs = getResidentIDfromRefs(residents);
+        console.log(residentRefs);
+        getFollowUpsForResidents(residentRefs)
+            .then(followUps => {
+                setFollowUps(followUps);
+            });
+            console.log(followUps);
+    }, [residents]);
+
+
+
+
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
     const [showForm, setShowForm] = useState(false);
     const [isFormOpen, setIsFormOpen] = useState(false);
+    const [selectedReminder, setSelectedReminder] = useState(null);
+
+    
 
 
     const handleReminderClick = (reminder) => {
@@ -57,6 +109,8 @@ function RemindersFragment() {
             document.body.classList.remove('no-scroll');
         }
     }, [isFormOpen]);
+
+
 
     
 

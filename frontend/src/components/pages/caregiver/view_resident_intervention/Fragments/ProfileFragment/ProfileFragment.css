@@ -1,16 +1,27 @@
-.container {
+/* ProfileFragment.css */
+
+.profile-wrapper {
     display: flex;
     flex-direction: column;
+    padding: 20px;
+}
+
+.resident-name {
+    width: 55%; /* Adjust as needed */
+}
+
+.titles {
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .containerRow1, .containerRow2 {
     display: flex;
     flex-direction: row;
-    width: auto;
     line-height: 1.5;
 }
 
-.basicDetails, .residentStatus {
+.profile-container-basic-details, .profile-container-resident-status {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -21,12 +32,12 @@
     padding: 20px;
     height: auto;
     
-    border: #000 1px solid;
+    border: #ccc 1px solid;
     border-radius: 10px;
-    background-color: #B0F0FF;
+    background-color: #fff;
 }
 
-.treatmentTeam {
+.profile-container-care {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -35,10 +46,16 @@
     margin: 20px 20px 20px 0;
     padding: 20px;
     height: auto;
-    
-    border: #000 1px solid;
-    border-radius: 10px;
-    background-color: #B0F0FF;
+
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.assigned-caregiver {
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 850px;
 }
 
 .table {

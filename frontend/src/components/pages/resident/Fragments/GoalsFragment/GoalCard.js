@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ObjectiveCard = ({ objective }) => {
+const GoalCard = ({ objective }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -12,25 +12,25 @@ const ObjectiveCard = ({ objective }) => {
     }
   }, [isModalOpen]);
 
-  let bgColorClass = '';
+  let cardColorClass = '';
   switch (objective.status) {
     case 'Completed':
-      bgColorClass = 'bg-rose-400';
+      cardColorClass = 'bg-rose-400 text-white';
       break;
-    case 'In progress':
-      bgColorClass = 'bg-rose-300';
+    case 'In Progress':
+      cardColorClass = 'bg-rose-300 text-rose-800';
       break;
     default:
-      bgColorClass = 'bg-gray-300';
+      cardColorClass = 'bg-gray-100 text-rose-800';
   }
 
   return (
     <>
       <div
-        className={`relative flex flex-col w-full ${bgColorClass} text-white text-lg rounded-2xl p-6 gap-y-2`}
+        className={`relative flex flex-col w-full ${cardColorClass} text-lg rounded-2xl p-6 gap-y-2 border-double border-4 border-rose-200`}
       >
-        {objective.title && (
-          <div className="text-xl font-bold">Title: {objective.title}</div>
+        {objective.goalTitle && (
+          <div className="text-xl font-bold">Title: {objective.goalTitle}</div>
         )}
         {objective.status && <div>Status: {objective.status}</div>}
         {objective.term && <div>Term: {objective.term}</div>}
@@ -51,6 +51,9 @@ const ObjectiveCard = ({ objective }) => {
           <div className="bg-white p-5 rounded-lg text-black w-3/4 md:w-1/2 lg:w-1/3">
             <h2 className="text-lg font-bold">Description</h2>
             <p>{objective.description}</p>
+            <br />
+            <h2 className="text-lg font-bold">Means</h2>
+            <p>{objective.means}</p>
             <button
               onClick={() => setIsModalOpen(false)}
               className="mt-4 px-4 py-2 bg-rose-400 text-white rounded hover:bg-gray-400"
@@ -64,4 +67,4 @@ const ObjectiveCard = ({ objective }) => {
   );
 };
 
-export default ObjectiveCard;
+export default GoalCard;
