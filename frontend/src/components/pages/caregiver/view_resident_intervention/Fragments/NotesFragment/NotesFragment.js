@@ -69,7 +69,7 @@ function NotesFragment() {
                             <div key={index} className="note-item" onClick={() => handleNoteClick(note)} onContextMenu={(event) => { event.preventDefault(); handleLongPress(index); }}>
                                 <div className="note-item-content">
                                     <div className="important-details">
-                                        <p><strong>Title: </strong> {note.title}</p>
+                                        <p><strong>Title: </strong> {note.goalTitle}</p>
                                         <p><strong>Date: </strong> {note.date}</p>
                                         <p><strong>Employee: </strong> {note.employee}</p>
                                     </div>
@@ -105,7 +105,7 @@ function NotesFragment() {
                                     <span className="close-button" onClick={() => { setShowForm(false); setIsFormOpen(false) }}>&times;</span>
                                     <form className="form-container" onSubmit={handleFormSubmit}>
                                         <br />
-                                        <input name="title" value={newNote.title} onChange={handleInputChange} placeholder="Title" required />
+                                        <input name="title" value={newNote.goalTitle} onChange={handleInputChange} placeholder="Title" required />
                                         <input name="type" value={newNote.type} onChange={handleInputChange} placeholder="Type" required />
                                         <input name="details" value={newNote.details} onChange={handleInputChange} placeholder="Details" required />
                                         <input name="observations" value={newNote.observations} onChange={handleInputChange} placeholder="Observations" required />

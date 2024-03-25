@@ -29,8 +29,8 @@ const GoalCard = ({ objective }) => {
       <div
         className={`relative flex flex-col w-full ${cardColorClass} text-lg rounded-2xl p-6 gap-y-2 border-double border-4 border-rose-200`}
       >
-        {objective.title && (
-          <div className="text-xl font-bold">Title: {objective.title}</div>
+        {objective.goalTitle && (
+          <div className="text-xl font-bold">Title: {objective.goalTitle}</div>
         )}
         {objective.status && <div>Status: {objective.status}</div>}
         {objective.term && <div>Term: {objective.term}</div>}

@@ -72,7 +72,7 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
           <input
             type="text"
             name="title"
-            value={newGoal.title}
+            value={newGoal.goalTitle}
             onChange={handleChange}
             className="border p-2 w-full"
             placeholder="Goal title"
