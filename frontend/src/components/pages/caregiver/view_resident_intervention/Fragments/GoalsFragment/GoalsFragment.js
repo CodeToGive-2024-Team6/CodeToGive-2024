@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ObjectiveCard from './ObjectiveCard';
 
-function GoalsFragment({ objectives }) {
-  const safeObjectives = objectives || [];
+function GoalsFragment() {
+  const [objectives, setObjectives] = useState([]);
 
-  const totalObjectives = safeObjectives.length;
-  const completedObjectives = safeObjectives.filter(
+  useEffect(() => {
+    const residentId = '1';
+    const fetchObjectives = async () => {
+      try {
+        const response = await axios.get(`/objectives/${residentId}`);
+        setObjectives(response.data[0].objectives); // Assuming the data structure from your example
+      } catch (error) {
+        console.error('Failed to fetch objectives:', error);
+      }
+    };
+
+    fetchObjectives();
+  }, []);
+
+  const totalObjectives = objectives.length;
+  const completedObjectives = objectives.filter(
     (objective) => objective.status === 'Completed'
   ).length;
   const completionPercentage =
@@ -13,12 +28,12 @@ function GoalsFragment({ objectives }) {
 
   return (
     <div className="flex flex-col md:flex-row gap-x-6">
-      <div className="flex flex-col gap-y-6">
-        {safeObjectives.map((objective, index) => (
+      <div className="flex flex-col flex-1 gap-y-6" style={{ flex: '2 1 0%' }}>
+        {objectives.map((objective, index) => (
           <ObjectiveCard key={index} objective={objective} />
         ))}
       </div>
-      {safeObjectives.length > 0 ? (
+      {objectives.length > 0 ? (
         <div
           className="flex flex-col flex-1 gap-y-6 overflow-visible"
           style={{ flexBasis: '0%', flexGrow: 1 }}
@@ -38,7 +53,6 @@ function GoalsFragment({ objectives }) {
               ></div>
             </div>
           </div>
-          <div className="shadow-md rounded-2xl p-6">Feedback Form here!</div>
         </div>
       ) : (
         <h1>No objectives assigned</h1>
