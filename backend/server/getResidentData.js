@@ -29,8 +29,8 @@ async function getResidentsAllData() {
 
 
 async function getResidentsByUserID(userID) {
-  const residentRef = db.collection('residents').doc(userID);
-  const snapshot = await residentRef.get();
+  const residentRef = db.collection('residents').doc(userID).get();
+  const snapshot = await residentRef;
   
   if (!snapshot.exists) {
     console.log('No matching document.');
@@ -44,6 +44,9 @@ async function getResidentsByUserID(userID) {
   
   return residentData;
 }
+
+//get based on resident first name
+
 
 
 async function getObjectivesByUserID(userID) {

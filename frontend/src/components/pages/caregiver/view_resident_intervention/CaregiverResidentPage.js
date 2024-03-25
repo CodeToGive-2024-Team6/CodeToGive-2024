@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import './CaregiverResidentPage.css'; // Import CSS file
+import { useLocation } from 'react-router-dom';
 
 //import fragments
 import ProfileFragment from './Fragments/ProfileFragment/ProfileFragment';
@@ -31,6 +32,9 @@ import {
 } from 'lucide-react';
 
 const CaregiverResidentPage = () => {
+  const location = useLocation();
+  const resident = location.state.resident;
+
   const [selectedOption, setSelectedOption] = useState('PROFILE');
 
   useEffect(() => {
@@ -82,12 +86,12 @@ const CaregiverResidentPage = () => {
           className="caregiver-fragments overflow-auto"
           style={{ marginLeft: '4%', marginTop: '12%' }}
         >
-          {selectedOption === 'PROFILE' && <ProfileFragment />}
-          {selectedOption === 'GOALS' && <GoalsFragment />}
-          {selectedOption === 'REMINDERS' && <RemindersFragment />}
-          {selectedOption === 'RESOURCES' && <ResourcesFragment />}
-          {selectedOption === 'MESSAGES' && <MessagesFragment />}
-          {selectedOption === 'NOTES' && <NotesFragment />}
+          {selectedOption === 'PROFILE' && <ProfileFragment resident={resident} />}
+          {selectedOption === 'GOALS' && <GoalsFragment resident={resident} />}
+          {selectedOption === 'REMINDERS' && <RemindersFragment resident={resident} />}
+          {selectedOption === 'RESOURCES' && <ResourcesFragment resident={resident} />}
+          {selectedOption === 'MESSAGES' && <MessagesFragment resident={resident} />}
+          {selectedOption === 'NOTES' && <NotesFragment resident={resident} />}
         </div>
       </div>
     </div>
