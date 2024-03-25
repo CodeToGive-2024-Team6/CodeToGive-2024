@@ -12,6 +12,18 @@ function setGoals(residentId, goalsData) {
     return goalsRef.add(goalsData);
 }
 
+// Updates a specific goal for a resident
+function updateGoal(residentId, goalId, goalData) {
+    const goalRef = db.collection('residents').doc(residentId).collection('objectives').doc(goalId);
+    return goalRef.update(goalData);
+}
+
+// Deletes a specific goal for a resident
+function deleteGoal(residentId, goalId) {
+    const goalRef = db.collection('residents').doc(residentId).collection('objectives').doc(goalId);
+    return goalRef.delete();
+}
+
 // JSON To be structured as follows:
 // {date: date-type, details: string-type, interventionSetUp: string-type, linkedGoal: string-type, motive: string-type, noteType: string-type, observations: string-type}
 function setNotes(residentId, notesData) {
@@ -45,6 +57,8 @@ module.exports = {
     
     setGoals,
     setNotes,
+    updateGoal,
+    deleteGoal,
     setResources,
     setFollowUps,
     setResidentInfo
