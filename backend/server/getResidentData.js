@@ -107,7 +107,7 @@ async function getResourcesByUserID(userID) {
 async function getFollowupsByUserID(userID) {
   // Directly access the 'followups' subcollection for the given residentID
   const followupsRef = db.collection('residents').doc(userID).collection('followups');
-  const followupsSnapshot = await followupsRef.orderBy('date', 'asc').get();
+  const followupsSnapshot = await followupsRef.get();
 
   if (followupsSnapshot.empty) {
     console.log('No matching followups.');
@@ -120,7 +120,29 @@ async function getFollowupsByUserID(userID) {
   }));
 
   return followups;
+
+}
+
+//get all followup documents for a given resident
+async function getFollowUpsForResident(residentID) {
+  const followUpsRef = db.collection('residents').doc(residentID).collection('followups');
+  const snapshot = await followUpsRef.get();
+
+  if (snapshot.empty) {
+    console.log('No matching documents.');
+    return [];
+  }
+
+  const followUpsData = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+
+  return followUpsData;
 }
 
 
-module.exports = {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID}
+
+
+
+module.exports = {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID, getFollowUpsForResident};

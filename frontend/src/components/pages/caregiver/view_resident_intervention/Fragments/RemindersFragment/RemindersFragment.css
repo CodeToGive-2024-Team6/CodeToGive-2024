@@ -21,9 +21,9 @@
     /* background-color: #B0F0FF; */
     width: 50%;
     height: 200px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     /* background: linear-gradient(to right, #B0F0FF, #00AFD7); */
-    
+
     background: #B0F0FF;
 
 }
@@ -45,7 +45,7 @@
     background-color: #B0F0FF;
     width: 100%;
     height: 200px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .reminder-item-content {
@@ -56,7 +56,8 @@
 }
 
 .reminder-heading {
-    font-size: 1.5em; /* Adjust as needed */
+    font-size: 1.5em;
+    /* Adjust as needed */
     font-weight: bold;
 }
 
@@ -66,8 +67,10 @@
 
 .reminder-date {
     align-self: center;
-    font-size: 1.2em; /* Adjust as needed */
+    font-size: 1.2em;
+    /* Adjust as needed */
 }
+
 .delete-button {
     position: absolute;
     top: 10px;
@@ -77,13 +80,13 @@
     cursor: pointer;
     border: #000 1px solid;
     border-radius: 10px;
-    
+
 }
 
 .container {
     display: flex;
     justify-content: space-between;
-    
+
 }
 
 .scheduler {
@@ -93,7 +96,7 @@
     width: 50%;
     margin-top: 20px;
     height: 500px;
-    
+
     border: #000 1px solid;
     border-radius: 10px;
     background-color: #B0F0FF;
@@ -121,10 +124,6 @@
     background-color: #FFA500;
 }
 
-
-
-
-
 .modal {
     position: fixed;
     z-index: 1;
@@ -133,21 +132,15 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    /* background-color: rgba(0,0,0,0.4); */
-    margin-left: auto;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
     position: -webkit-sticky
 }
-
-
-
 
 .close-button {
     position: inherit;
 }
 
-.info-left, .info-right {
+.info-left,
+.info-right {
     width: 100%;
 }
 
@@ -176,7 +169,8 @@
     border-bottom: 1px solid #000;
 }
 
-.info-left, .info-right {
+.info-left,
+.info-right {
     width: 45%;
 }
 
@@ -185,18 +179,19 @@
     margin-bottom: 20px;
 }
 
-.info-left p, .info-right p {
+.info-left p,
+.info-right p {
     margin: 10px 0;
     line-height: 1.6;
 }
 
-.info-left p strong, .info-right p strong {
+.info-left p strong,
+.info-right p strong {
     margin-right: 10px;
 }
 
 .close-button {
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
 }
@@ -207,8 +202,9 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 button {
-    background-color: #00AFD7 ;
+    background-color: #00AFD7;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -258,23 +254,22 @@ form input {
 
 .modal-content {
     background-color: #fefefe;
-    margin: auto; /* 15% from the top and centered */
+    margin: auto;
+    /* 15% from the top and centered */
     border: 1px solid #888;
-    width: 30%; /* Adjust this value to make the modal smaller or larger */
+    width: 30%;
+    /* Adjust this value to make the modal smaller or larger */
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
     border-radius: 20px;
-    margin-bottom: 100px;
-    
 }
 
 .form-container {
-    width: 100%; /* Adjust this value as needed */
-    margin: auto;
+    width: 100%;
+    /* Adjust this value as needed */
     padding: 20px;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border: #000 1px solid;
@@ -284,6 +279,5 @@ form input {
 .form-container input {
     width: 100%;
     margin-bottom: 10px;
-    padding: 10px;
     box-sizing: border-box;
 }
