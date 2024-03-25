@@ -63,9 +63,8 @@
 .profile-list {
     display: flex;
     flex-direction: column;
-    max-height: 75%;
+    max-height: 480px;
     overflow-y: auto;
-    cursor: pointer;
 }
 
 .profile-item {
@@ -76,10 +75,6 @@
     padding: 10px;
     font-size: 12px;
 }
-
-.profile-item:hover {
-    background-color: #edf7ff;
-} 
 
 .profile-info {
     display: flex;
@@ -143,7 +138,7 @@
     position: absolute;
     display: flex;
     bottom: 0;
-    right: 12%;
+    right: 230px;
     margin-bottom: 10px;
     background-color: #cb96b8;; 
     border: none;
