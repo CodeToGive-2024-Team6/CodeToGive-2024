@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ObjectiveCard from './ObjectiveCard';
+import ObjectiveCard from './GoalCard';
 
 function GoalsFragment() {
   const [objectives, setObjectives] = useState([]);
