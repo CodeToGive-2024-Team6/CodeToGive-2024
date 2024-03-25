@@ -55,7 +55,7 @@ function GoalsFragment() {
           </div>
         </div>
       ) : (
-        <h1>No objectives assigned</h1>
+        <h3>No objectives assigned</h3>
       )}
     </div>
   );

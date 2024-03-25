@@ -1,5 +1,6 @@
 const cors = require('cors');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
 
@@ -11,11 +12,23 @@ const {getCaregiversAllData,
   getCaregiversByFirstName,
   getCaregiversByLastName,
   getCaregiversByEmail,
-  getCaregiversByResidentID} = require('./getCaregiverData.js')
+  getCaregiversResidents
+} = require('./getCaregiverData.js')
+
+
+const {setCaregiverData,
+  updateCaregiverData,
+  deleteCaregiverData,
+  updateCaregiverEmail,
+  updateCaregiverFirstName,
+  updateCaregiverLastName} = require('./setCaregiverData.js')
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
 app.use(cors());
+
+// app.use(bodyParser.json());
+
 
 // Define a root route
 app.get('/', (req, res) => {
@@ -166,6 +179,95 @@ app.get('/caregiverbyemail/:email', async (req, res) => {
     res.status(404).send(error.message);
   }
 });
+
+// Endpoint that lists the residents assigned to a caregiver. Currently a placeholder.
+app.get('/caregiverresidents/:caregiver_id', async (req, res) => {
+  const caregiverId = req.params.caregiver_id;
+  try {
+    const info = await getCaregiversResidents(caregiverId);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+
+// Endpoint to add a new caregiver. Currently a placeholder.
+app.post('/caregiveradd', async (req, res) => {
+  const caregiverData = req.body;
+  try {
+    const info = await setCaregiverData(caregiverData);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+
+// Endpoint to update a caregiver's information. Currently a placeholder.
+app.put('/caregiverupdate/:caregiver_id', async (req, res) => {
+  const caregiverData = req.body;
+  try {
+    const info = await updateCaregiverData(caregiverData);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+// Endpoint to delete a caregiver. Currently a placeholder.
+app.delete('/caregiverdelete/:caregiver_id', async (req, res) => {
+  const caregiverId = req.params.caregiver_id;
+  try {
+    const info = await deleteCaregiverData(caregiverId);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+// Endpoint to update a caregiver's email. Currently a placeholder.
+app.put('/caregiverupdateemail/:caregiver_id', async (req, res) => {
+  const caregiverId = req.params.caregiver_id;
+  const email = req.body.email;
+  try {
+    const info = await updateCaregiverEmail(caregiverId, email);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+// Endpoint to update a caregiver's first name. Currently a placeholder.
+app.put('/caregiverupdatefirstname/:caregiver_id', async (req, res) => {
+  const caregiverId = req.params.caregiver_id;
+  const firstName = req.body.firstName;
+  try {
+    const info = await updateCaregiverFirstName(caregiverId, firstName);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+// Endpoint to update a caregiver's last name. Currently a placeholder.
+app.put('/caregiverupdatelastname/:caregiver_id', async (req, res) => {
+  const caregiverId = req.params.caregiver_id;
+  const lastName = req.body.lastName;
+  try {
+    const info = await updateCaregiverLastName(caregiverId, lastName);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+
+
+
+
+
+
 
 // POST endpoint to set goals for a resident
 app.post('/setgoals/:residentId', async (req, res) => {

@@ -17,7 +17,7 @@ const StartPage = () => {
                     <div class="description"><BiHomeHeart style={{ fontSize: '2.5em' }} /></div>
                 </a>
             </div>
-            <div className="border"><div className="quote"><h1>Shelter for all women</h1></div></div>
+            <div className="border"><div className="quote"><h1>Shelter for All Women</h1></div></div>
             <div className="container">
                 <div className="button-container">
                     <Link to="/caregiver_homepage" className="button-link">
