@@ -1,10 +1,12 @@
 import React from 'react';
+import CaregiverCommunicationPage from '../../../CaregiverCommunicationPage';
+import './MessagesFragment.css';
 
 function MessagesFragment() {
     return (
-        <div>
-            <h1>Messages Fragment</h1>
-        </div>
+       
+        <CaregiverCommunicationPage />
+        
     );
 }
 

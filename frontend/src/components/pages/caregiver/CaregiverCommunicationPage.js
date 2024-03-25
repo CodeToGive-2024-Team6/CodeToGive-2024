@@ -53,7 +53,7 @@ const CaregiverCommunicationPage = () => {
                 </Link>
 
                     <h1>Chat With</h1>
-                    <h3>Residents</h3>
+                    <h3>a Resident</h3>
                     
                     <div className="search-bar-container">
                         <input type="text" placeholder="Search..." className="search-input" />
