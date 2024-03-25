@@ -83,12 +83,12 @@ const CaregiverHomePage = () => {
 
                     <div className="caregiver-homepage-before">
                         <Link to="/">
-                            <img src={whiteCompanyLogo} alt="company logo" style={{width: '200px', height: '100px'}}/>
+                            <img src={whiteCompanyLogo} alt="company logo" style={{marginRight: '200px', width: '200px', height: '100px'}}/>
                         </Link>
                     </div>
 
                     <Link to="/caregiver_profile">
-                        <VscAccount style={{ color:'#4fadd5', fontSize: '2em', marginRight: '50px' }}>
+                        <VscAccount style={{ color:'white', fontSize: '2em', fontWeight: 'bold',marginRight: '50px' }}>
                         </VscAccount>
                     </Link>
             </div>
@@ -129,6 +129,7 @@ const CaregiverHomePage = () => {
             </div>
         
 
+        <div>
         <div className='grid-view-stats'>
             <div>
                 <canvas id="myChart"></canvas>
@@ -138,12 +139,14 @@ const CaregiverHomePage = () => {
                     </Link>
                 </div>
             </div>
+        
 
             <div className='statistics-box'>
                 <Link to="/stat">
                     <Chart type='bar' data={data2}  options={options2} />
                 </Link>
             </div>
+        </div>
 
 
         </div>
