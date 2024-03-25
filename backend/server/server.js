@@ -5,8 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
 
 const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID, getFollowUpsForResident} = require('./getResidentData.js');
-const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo, updateGoal, deleteGoal } = require('./setResidentData');
-
+const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo, updateGoal, deleteGoal, deleteFollowUp } = require('./setResidentData.js');
 const {getCaregiversAllData,
   getCaregiversByUserID,
   getCaregiversByFirstName,
@@ -335,6 +334,20 @@ app.post('/setfollowups/:residentId', async (req, res) => {
   } catch (error) {
     console.error('Error adding Follow-ups:', error);
     res.status(500).send({ message: 'Failed to add Follow-ups', error: error.message });
+  }
+});
+
+
+// DELETE endpoint to delete a followup for a resident
+app.delete('/deletefollowup/:residentId/:followUpId', async (req, res) => {
+  const { residentId, followUpId } = req.params;
+
+  try {
+    await deleteFollowUp(residentId, followUpId);
+    res.json({ message: 'Follow-up successfully deleted' });
+  } catch (error) {
+    console.error('Error deleting follow-up:', error);
+    res.status(500).send({ message: 'Failed to delete follow-up', error: error.message });
   }
 });
 

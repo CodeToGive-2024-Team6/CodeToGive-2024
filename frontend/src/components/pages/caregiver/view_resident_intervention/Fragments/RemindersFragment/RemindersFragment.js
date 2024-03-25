@@ -99,9 +99,6 @@ function RemindersFragment( {resident} ) {
             .catch((error) => {
                 console.error('Error:', error);
             });
-
-
-        
           
         // Clear the form inputs
         setNewReminder({
@@ -118,12 +115,25 @@ function RemindersFragment( {resident} ) {
         setIsFormOpen(false);
       };
 
-    const handleLongPress = (index) => {
-        const newReminders = [...reminders];
-        newReminders.splice(index, 1);
-        setReminders(newReminders);
-
-    };
+      const handleLongPress = (index) => {
+        fetch(`/deletefollowup/${resident.id}/${followUps[index].id}`, {
+          method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+      
+          // Remove the follow-up from the reminders array
+          setReminders(prevReminders => {
+            const newReminders = [...prevReminders];
+            newReminders.splice(index, 1);
+            return newReminders;
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      };
 
     useEffect(() => {
         if (isFormOpen) {

@@ -45,6 +45,11 @@ function setFollowUps(residentId, followUpsData) {
     return followUpsRef.add(followUpsData);
 }
 
+function deleteFollowUp(residentId, followUpId) {
+    const followUpRef = db.collection('residents').doc(residentId).collection('followups').doc(followUpId);
+    return followUpRef.delete();
+}
+
 
 //JSON To be structured as follows:
 // {age: integer, borough: string, caregivers: array[caregiver-IDS], challenges: array[string], currentAccomodation: string, endOfStayDate: date, firstName: string, lastName: string, firstVisit: boolean, immigrationStatus: string, income: string, native: boolean, planEndDate: date, planStartDate: date, significantPersons: array[string], veteran: boolean, withChild: boolean}
@@ -61,7 +66,10 @@ module.exports = {
     deleteGoal,
     setResources,
     setFollowUps,
+    deleteFollowUp,
     setResidentInfo
+
+
     };
 
 
