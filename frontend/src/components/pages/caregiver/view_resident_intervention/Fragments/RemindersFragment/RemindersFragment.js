@@ -6,6 +6,7 @@ import { MdDeleteForever } from "react-icons/md";
 
 
 
+
 async function getFollowUpsForResidents(residentRefs) {
     try {
         // Fetch follow-ups for each resident
@@ -27,7 +28,7 @@ function getResidentIDfromRefs(refs) {
 
 
 
-function RemindersFragment() {
+function RemindersFragment( {resident} ) {
     const [reminders, setReminders] = useState([
         {heading: 'Reminder 1', meetingInfo: 'Meeting Info 1', date: '2022-01-01', time: '12:00', type: 'Type 1', note: 'Note 1', communication: 'Communication 1'},
         {heading: 'Reminder 2', meetingInfo: 'Meeting Info 2', date: '2022-02-02', time: '13:00', type: 'Type 2', note: 'Note 2', communication: 'Communication 2'},
@@ -39,7 +40,7 @@ function RemindersFragment() {
     const [displayedResidents, setDisplayedResidents] = useState([]);
     const [followUps, setFollowUps] = useState([]);
     useEffect(() => {
-        fetch('/followups/testResident1')
+        fetch(`/followupsforresident/${resident.id}`) // This is the endpoint you're connecting to, e.g. `http://localhost:5000/residentinfo/1
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -47,24 +48,7 @@ function RemindersFragment() {
             })
             .catch(error => console.error('Error fetching follow-up data:', error));
     }, []); // The empty array ensures this effect runs once after the initial render
-
-    
-
-
-
-
-
-    useEffect(() => {
-        const residentRefs = getResidentIDfromRefs(residents);
-        console.log(residentRefs);
-        getFollowUpsForResidents(residentRefs)
-            .then(followUps => {
-                setFollowUps(followUps);
-            });
-            console.log(followUps);
-    }, [residents]);
-
-
+    console.log(followUps);
 
 
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
@@ -89,18 +73,67 @@ function RemindersFragment() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        setReminders([...reminders, newReminder]);
-        setNewReminder({ heading: '', meetingInfo: '', date: '', time: '' , type: '', note: '', communication: ''});
+      
+        // Prepare the new reminder data
+        const newFollowUpData = {
+          date: new Date(`${newReminder.date}T${newReminder.time}`),
+          meansOfCommunication: newReminder.communication,
+          note: newReminder.meetingInfo,
+          title: newReminder.heading,
+          type: newReminder.type
+        };
+      
+        // Add the new reminder to the Firebase
+        fetch(`/setfollowups/${resident.id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newFollowUpData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                setFollowUps([...followUps, newFollowUpData]);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+          
+        // Clear the form inputs
+        setNewReminder({
+          heading: '',
+          meetingInfo: '',
+          date: '',
+          time: '',
+          type: '',
+          communication: ''
+        });
+      
+        // Close the form
         setShowForm(false);
         setIsFormOpen(false);
-    };
+      };
 
-    const handleLongPress = (index) => {
-        const newReminders = [...reminders];
-        newReminders.splice(index, 1);
-        setReminders(newReminders);
-
-    };
+      const handleLongPress = (index) => {
+        fetch(`/deletefollowup/${resident.id}/${followUps[index].id}`, {
+          method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+      
+          // Remove the follow-up from the reminders array
+          setReminders(prevReminders => {
+            const newReminders = [...prevReminders];
+            newReminders.splice(index, 1);
+            return newReminders;
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      };
 
     useEffect(() => {
         if (isFormOpen) {
@@ -121,21 +154,26 @@ function RemindersFragment() {
             <div className='list-view-reminders'>
                 <div style={{paddingBottom: '50px'}}>
                     
-                {reminders.map((reminder, index) => (
+                {followUps.map((reminder, index) => (
                     <div key={index} className="reminder-item"  onClick={() => handleReminderClick(reminder)} onContextMenu={(event) => { event.preventDefault(); handleLongPress(index); }}>
                         <delete-button onClick={() => handleLongPress(index)}><MdDeleteForever style={{fontSize: '20px'}}/></delete-button>
                         <div className="reminder-item-content">
                             <h2 className="reminder-heading">{reminder.heading}</h2>
                             <div className="reminder-details">
-                                <p><strong>Meeting Info: </strong> {reminder.meetingInfo}</p>
+                                <p><strong>Meeting Info: </strong> {reminder.title}</p>
                                 <p><strong>Type: </strong> {reminder.type}</p>
                                 <p><strong>Note: </strong> {reminder.note}</p>
-                                <p><strong>Communication: </strong> {reminder.communication}</p>
+                                <p><strong>Communication: </strong> {reminder.meansOfCommunication}</p>
 
                             </div>
                         </div>
                         <div className="reminder-date">
-                            <p>{reminder.date} at {reminder.time}</p>
+                            <p>
+                            {reminder.followUpDate 
+                                ? `${new Date(reminder.followUpDate._seconds * 1000).toLocaleDateString()} at ${new Date(reminder.followUpDate._seconds * 1000).toLocaleTimeString()}`
+                                : 'N/A'
+                            }
+                            </p>  
                         </div>
 
                     </div>
