@@ -69,7 +69,7 @@ function NotesFragment() {
                             <div key={index} className="note-item" onClick={() => handleNoteClick(note)} onContextMenu={(event) => { event.preventDefault(); handleLongPress(index); }}>
                                 <div className="note-item-content">
                                     <div className="important-details">
-                                        <p><strong>Title: </strong> {note.title}</p>
+                                        <p><strong>Title: </strong> {note.goalTitle}</p>
                                         <p><strong>Date: </strong> {note.date}</p>
                                         <p><strong>Employee: </strong> {note.employee}</p>
                                     </div>

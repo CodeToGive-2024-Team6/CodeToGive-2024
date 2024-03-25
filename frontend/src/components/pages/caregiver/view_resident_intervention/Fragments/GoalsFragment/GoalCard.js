@@ -31,8 +31,8 @@ const GoalCard = ({ goal, onEditGoal, onDeleteGoal }) => {
       <div
         className={`relative flex flex-col w-full ${bgColorClass} text-white text-lg rounded-2xl p-6 gap-y-2`}
       >
-        {goal.title && (
-          <div className="text-xl font-bold">Title: {goal.title}</div>
+        {goal.goalTitle && (
+          <div className="text-xl font-bold">Title: {goal.goalTitle}</div>
         )}
         {goal.status && <div>Status: {goal.status}</div>}
         {goal.term && <div>Term: {goal.term}</div>}

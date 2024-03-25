@@ -2,67 +2,62 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import './ProfileFragment.css';
 
-function ProfileFragment() {
+function ProfileFragment({resident}) {    
     const [residents, setResidents] = useState([]);
     const [displayedResidents, setDisplayedResidents] = useState([]);
     
+    console.log(resident);
+    
+    
     // Fetch residents data from the endpoint
     useEffect(() => {
-        fetch('/residentalldata')
+        fetch(`/residentinfo/${resident.id}`) // This is the endpoint you're connecting to, e.g. 'http://localhost:5000/residentinfo/1
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                console.log('here')
-                // Transform data to match the existing structure expected by the rendering logic
-                const transformedData = data.map(resident => ({
-                    name: `${resident.firstName} ${resident.lastName}`,
-                    caregiver: resident.caregiver,
-                    age: resident.age,
-                    borough: resident.borough,
-                    income: resident.income,
-                    significantPersons: resident.significantPersons,
-                    immigrant: resident.immigrationStatus,
-                    house: resident.currentAccommodation,
-                }));
-                setResidents(transformedData);
-                setDisplayedResidents(transformedData);
+                setResidents(data);
+                setDisplayedResidents(data);
             })
             .catch(error => console.error('Error fetching resident data:', error));
     }, []); // The empty array ensures this effect runs once after the initial render
 
+    console.log(residents);
+    const startDate = residents.planStartDate ? new Date(residents.planStartDate._seconds * 1000).toLocaleDateString() : 'N/A';    console.log(startDate);
+    
+
     return (
         <div className='profile-wrapper'>
             <div className='assigned-caregiver'>
-                <p>Assigned Caregiver: </p>
+                <p>Assigned Caregiver: </p> 
             </div>
             <div className="resident-name">
-                <h1>Resident Name</h1>
+                <h1>{residents.firstName} {residents.lastName}</h1>
             <div className="titles">
                 <h1>Basic Details</h1>
                 <div className="profile-container-basic">
                         <p>
-                            <strong>Age: </strong> 30
+                            <strong>Age: </strong> {residents.age}
                         </p>
                         <p>
-                            <strong>City/ Borough:</strong> Ville-Marie
+                            <strong>City/ Borough:</strong> {residents.borough}
                         </p>
                         <p>
-                            <strong>Revenue:</strong> $1,234/month
+                            <strong>Revenue:</strong> {residents.income}
                         </p>
                         <p>
-                            <strong>Significant Persons:</strong> 450-555-1234 (Grand mother)
+                            <strong>Significant Persons:</strong> {residents.significantPersons && residents.significantPersons.map(person => person).join(', ')} 
+                            
                         </p>
                         <p>
-                            <strong>Immigrant Status:</strong> Citizen
+                            <strong>Immigrant Status:</strong> {residents.immigrantStatus}
                         </p>
                         <p>
-                            <strong>With Child:</strong> No
+                            <strong>With Child:</strong> {residents.withChild}
                         </p>
                         <p>
-                            <strong>Native:</strong> No
+                            <strong>Native:</strong> {residents.native}
                         </p>
                         <p>
-                            <strong>Veteran:</strong> Yes
+                            <strong>Veteran:</strong> {residents.veteran}
                         </p>
                 </div>
             </div>
@@ -71,19 +66,19 @@ function ProfileFragment() {
                 <h1>Resident Status</h1>
                 <div className="profile-container-status">
                         <p>
-                            <strong>Plan Start Date:</strong> 2024/02/02
+                            <strong>Plan Start Date:</strong> {startDate} 
                         </p>
                         <p>
-                            <strong>Start Date of the Stay:</strong> 2024/02/15
+                            <strong>Start Date of the Stay:</strong> {startDate}
                         </p>
                         <p>
-                            <strong>Place Accommodation:</strong> House 5
+                            <strong>Place Accommodation:</strong> {residents.currentAccommodation}
                         </p>
                         <p>
-                            <strong>First Visit:</strong> Yes
+                            <strong>First Visit:</strong> {String(residents.firstVisit)}
                         </p>
                         <p>
-                            <strong>Issues:</strong> Substance Abuse, Sexual Assault
+                            <strong>Issues:</strong> {residents.challenges && residents.challenges.map(challenge => challenge).join(', ')}
                         </p>
                 </div>
             </div>

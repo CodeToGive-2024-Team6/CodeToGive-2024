@@ -7,9 +7,28 @@ import { MdDeleteForever } from "react-icons/md";
 
 
 
+async function getFollowUpsForResidents(residentRefs) {
+    try {
+        // Fetch follow-ups for each resident
+        const followUps = await Promise.all(residentRefs.map(residentRef => 
+            fetch(`/followups/${residentRef}`)
+                .then(response => response.json())
+        ));
+
+        return followUps;
+    } catch (error) {
+        console.error('Error fetching follow-up data:', error);
+    }
+}
+
+function getResidentIDfromRefs(refs) {
+    return refs.map(ref => ref.residentref);
+}
 
 
-function RemindersFragment() {
+
+
+function RemindersFragment( {resident} ) {
     const [reminders, setReminders] = useState([
         {heading: 'Reminder 1', meetingInfo: 'Meeting Info 1', date: '2022-01-01', time: '12:00', type: 'Type 1', note: 'Note 1', communication: 'Communication 1'},
         {heading: 'Reminder 2', meetingInfo: 'Meeting Info 2', date: '2022-02-02', time: '13:00', type: 'Type 2', note: 'Note 2', communication: 'Communication 2'},
@@ -17,10 +36,27 @@ function RemindersFragment() {
         {heading: 'Reminder 4', meetingInfo: 'Meeting Info 4', date: '2022-04-04', time: '15:00', type: 'Type 4', note: 'Note 4', communication: 'Communication 4'},
     ]);
 
-    const [selectedReminder, setSelectedReminder] = useState(null);
+    const [residents, setResidents] = useState([]);
+    const [displayedResidents, setDisplayedResidents] = useState([]);
+    const [followUps, setFollowUps] = useState([]);
+    useEffect(() => {
+        fetch(`/followupsforresident/1YBJhlX3AhY3EzEbHEtv`) // This is the endpoint you're connecting to, e.g. `http://localhost:5000/residentinfo/1
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setFollowUps(data);
+            })
+            .catch(error => console.error('Error fetching follow-up data:', error));
+    }, []); // The empty array ensures this effect runs once after the initial render
+    console.log(followUps);
+
+
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
     const [showForm, setShowForm] = useState(false);
     const [isFormOpen, setIsFormOpen] = useState(false);
+    const [selectedReminder, setSelectedReminder] = useState(null);
+
+    
 
 
     const handleReminderClick = (reminder) => {
@@ -37,11 +73,50 @@ function RemindersFragment() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        setReminders([...reminders, newReminder]);
-        setNewReminder({ heading: '', meetingInfo: '', date: '', time: '' , type: '', note: '', communication: ''});
+      
+        // Prepare the new reminder data
+        const newFollowUpData = {
+          date: new Date(`${newReminder.date}T${newReminder.time}`),
+          meansOfCommunication: newReminder.communication,
+          note: newReminder.meetingInfo,
+          title: newReminder.heading,
+          type: newReminder.type
+        };
+      
+        // Add the new reminder to the Firebase
+        fetch(`/setfollowups/1YBJhlX3AhY3EzEbHEtv`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newFollowUpData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                setFollowUps([...followUps, newFollowUpData]);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+
+        
+          
+        // Clear the form inputs
+        setNewReminder({
+          heading: '',
+          meetingInfo: '',
+          date: '',
+          time: '',
+          type: '',
+          communication: ''
+        });
+      
+        // Close the form
         setShowForm(false);
         setIsFormOpen(false);
-    };
+      };
 
     const handleLongPress = (index) => {
         const newReminders = [...reminders];
@@ -58,6 +133,8 @@ function RemindersFragment() {
         }
     }, [isFormOpen]);
 
+
+
     
 
     return (
@@ -67,27 +144,32 @@ function RemindersFragment() {
             <div className='list-view-reminders'>
                 <div style={{paddingBottom: '50px'}}>
                     
-                {reminders.map((reminder, index) => (
-                    <div key={index} className="reminder-item !bg-red-100 border-double border-rose-200"  onClick={() => handleReminderClick(reminder)} onContextMenu={(event) => { event.preventDefault(); handleLongPress(index); }}>
+                {followUps.map((reminder, index) => (
+                    <div key={index} className="reminder-item"  onClick={() => handleReminderClick(reminder)} onContextMenu={(event) => { event.preventDefault(); handleLongPress(index); }}>
                         <delete-button onClick={() => handleLongPress(index)}><MdDeleteForever style={{fontSize: '20px'}}/></delete-button>
                         <div className="reminder-item-content">
                             <h2 className="reminder-heading">{reminder.heading}</h2>
                             <div className="reminder-details">
-                                <p><strong>Meeting Info: </strong> {reminder.meetingInfo}</p>
+                                <p><strong>Meeting Info: </strong> {reminder.title}</p>
                                 <p><strong>Type: </strong> {reminder.type}</p>
                                 <p><strong>Note: </strong> {reminder.note}</p>
-                                <p><strong>Communication: </strong> {reminder.communication}</p>
+                                <p><strong>Communication: </strong> {reminder.meansOfCommunication}</p>
 
                             </div>
                         </div>
                         <div className="reminder-date">
-                            <p>{reminder.date} at {reminder.time}</p>
+                            <p>
+                            {reminder.followUpDate 
+                                ? `${new Date(reminder.followUpDate._seconds * 1000).toLocaleDateString()} at ${new Date(reminder.followUpDate._seconds * 1000).toLocaleTimeString()}`
+                                : 'N/A'
+                            }
+                            </p>  
                         </div>
 
                     </div>
                 ))}
 
-                <button className='bg-rose-400' onClick={() => {setShowForm(true);setIsFormOpen(true)} }>Add Reminder</button>
+                <button onClick={() => {setShowForm(true);setIsFormOpen(true)} }>Add Reminder</button>
                 
                 {showForm && (
                     <div className="modal">
@@ -113,7 +195,7 @@ function RemindersFragment() {
 
             </div>
 
-            <div className='scheduler !bg-rose-200'>
+            <div className='scheduler'>
 
             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FEdmonton&bgcolor=%23ffffff&title=le%20chainon&src=ZW4uY2FuYWRpYW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%230B8043" style={{height: ' 480px',width: '530px',marginLeft: '10px', borderWidth: '0px', borderRadius: "10px"}}></iframe>
                
