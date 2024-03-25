@@ -123,11 +123,11 @@ function RemindersFragment( {resident} ) {
         .then(data => {
           console.log('Success:', data);
       
-          // Remove the follow-up from the reminders array
-          setReminders(prevReminders => {
-            const newReminders = [...prevReminders];
-            newReminders.splice(index, 1);
-            return newReminders;
+          // Remove the follow-up from the followUps array
+            setFollowUps((prevState) => {
+                const updatedFollowUps = [...prevState];
+                updatedFollowUps.splice(index, 1);
+                return updatedFollowUps;
           });
         })
         .catch((error) => {

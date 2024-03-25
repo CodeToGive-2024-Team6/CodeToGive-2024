@@ -45,10 +45,15 @@ function setFollowUps(residentId, followUpsData) {
     return followUpsRef.add(followUpsData);
 }
 
-function deleteFollowUp(residentId, followUpId) {
+async function deleteFollowUp(residentId, followUpId) {
     const followUpRef = db.collection('residents').doc(residentId).collection('followups').doc(followUpId);
-    return followUpRef.delete();
-}
+    try {
+      await followUpRef.delete();
+      console.log('Follow-up deleted successfully');
+    } catch (error) {
+      console.error('Error deleting follow-up: ', error);
+    }
+  }
 
 
 //JSON To be structured as follows:
