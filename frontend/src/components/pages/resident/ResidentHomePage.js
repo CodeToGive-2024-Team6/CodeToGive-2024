@@ -7,6 +7,7 @@ import {
   CircleUserRound,
   Goal,
   LibraryBig,
+  ListTodo,
   MessageSquareText,
 } from 'lucide-react';
 //import companyLogo from "../../../company_logo.png";
@@ -19,6 +20,7 @@ import ResourcesFragment from './Fragments/ResourcesFragment/ResourcesFragment';
 import MessagesFragment from './Fragments/MessagesFragment/MessagesFragment';
 import { SideBar, SideBarItem } from './SideBar';
 import { Link } from 'react-router-dom';
+import SurveyFragment from './Fragments/SurveyFragment/SurveyFragment';
 
 const HomePage = () => {
   const [activeContent, setActiveContent] = useState('GOALS');
@@ -50,6 +52,7 @@ const HomePage = () => {
           <SideBarItem icon={<Bell />} text="REMINDERS" />
           <SideBarItem icon={<MessageSquareText />} text="MESSAGES" />
           <SideBarItem icon={<LibraryBig />} text="RESOURCES" />
+          <SideBarItem icon={<ListTodo />} text="SURVEYS" />
         </SideBar>
       </div>
       <div className="flex flex-col m-6 flex-1 overflow-auto">
@@ -74,6 +77,7 @@ const HomePage = () => {
           {activeContent === 'REMINDERS' && <RemindersFragment />}
           {activeContent === 'RESOURCES' && <ResourcesFragment />}
           {activeContent === 'MESSAGES' && <MessagesFragment />}
+          {activeContent === 'SURVEYS' && <SurveyFragment />}
         </div>
       </div>
     </div>

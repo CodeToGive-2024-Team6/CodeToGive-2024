@@ -7,7 +7,7 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
     term: 'Short-term',
     status: 'Coming Soon',
     means: '',
-    healthDeterminant: [],
+    healthAspects: [],
   });
   const [newDeterminant, setNewDeterminant] = useState('');
 
@@ -37,21 +37,21 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
     setNewDeterminant(e.target.value);
   };
 
-  const addHealthDeterminant = (e) => {
+  const addhealthAspects = (e) => {
     e.preventDefault(); // Prevent form submission
-    if (newDeterminant && !newGoal.healthDeterminant.includes(newDeterminant)) {
+    if (newDeterminant && !newGoal.healthAspects.includes(newDeterminant)) {
       setNewGoal((prev) => ({
         ...prev,
-        healthDeterminant: [...prev.healthDeterminant, newDeterminant.trim()],
+        healthAspects: [...prev.healthAspects, newDeterminant.trim()],
       }));
       setNewDeterminant('');
     }
   };
 
-  const removeHealthDeterminant = (hdToRemove) => {
+  const removehealthAspects = (hdToRemove) => {
     setNewGoal((prev) => ({
       ...prev,
-      healthDeterminant: prev.healthDeterminant.filter(
+      healthAspects: prev.healthAspects.filter(
         (hd) => hd !== hdToRemove
       ),
     }));
@@ -134,11 +134,11 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
         <div className="mb-4">
           <legend className="block mb-2">Health Determinants</legend>
           <div className="flex flex-wrap gap-2 mb-2">
-            {newGoal.healthDeterminant.map((hd) => (
+            {newGoal.healthAspects.map((hd) => (
               <span
                 key={hd}
                 className="bg-sky-200 text-sky-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-sky-600 dark:text-sky-200 cursor-pointer"
-                onClick={() => removeHealthDeterminant(hd)}
+                onClick={() => removehealthAspects(hd)}
               >
                 {hd} &times;
               </span>
@@ -152,7 +152,7 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
             placeholder="Add new health determinant"
           />
           <button
-            onClick={addHealthDeterminant}
+            onClick={addhealthAspects}
             className="mt-2 px-4 py-2 bg-sky-300 text-white rounded hover:bg-sky-400"
           >
             Add
