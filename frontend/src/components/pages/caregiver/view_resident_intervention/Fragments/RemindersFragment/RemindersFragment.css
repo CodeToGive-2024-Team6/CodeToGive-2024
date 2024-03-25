@@ -22,9 +22,9 @@
     width: 50%;
     height: 200px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background: linear-gradient(to right, #B0F0FF, #00AFD7);
+    /* background: linear-gradient(to right, #B0F0FF, #00AFD7); */
     
-
+    background: #B0F0FF;
 
 }
 

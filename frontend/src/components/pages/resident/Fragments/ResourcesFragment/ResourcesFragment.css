@@ -25,8 +25,10 @@
 .cards-container .card img {
     margin-top: 5px; 
     margin-bottom: 5px; 
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 0px;
+    margin-right: 30px;
+    height:50px;
+    width:50px;
     object-fit: cover;
 }
 
@@ -44,8 +46,9 @@
 
 .cards-container .card h2.title {
     font-size: 20px;
-    margin: 28px 0 10px 0;
+    margin: 28px 0 10 0; 
     line-height: 1.4;
+    /* width: 100% */
 }
 
 

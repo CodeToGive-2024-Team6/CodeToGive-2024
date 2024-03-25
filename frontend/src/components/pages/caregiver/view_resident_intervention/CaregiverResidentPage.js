@@ -10,10 +10,6 @@ import MessagesFragment from "./Fragments/MessagesFragment/MessagesFragment";
 import NotesFragment from "./Fragments/NotesFragment/NotesFragment";
 
 
-
-
-
-
 //import company logo
 import company_logo from "./company_logo.png";
 import { VscAccount } from "react-icons/vsc";

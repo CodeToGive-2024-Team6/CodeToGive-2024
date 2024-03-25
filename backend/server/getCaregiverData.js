@@ -25,21 +25,18 @@ async function getCaregiversAllData() {
   return caregiversData;
 }
 
-//function to fetch caregiver data by userID
+//function to fetch caregiver data by document ID
+//check if the document ID is equal to the caregiverID
 async function getCaregiversByUserID(userID) {
-  const caregiversRef = db.collection('caregivers');
-  const snapshot = await caregiversRef.where('userID', '==', userID).get();
+  const caregiversRef = db.collection('caregivers').doc(userID).get();
+  const snapshot = await caregiversRef;
 
-  if (snapshot.empty) {
+  if (!snapshot.exists) {
     console.log('No matching documents.');
     return [];
   }
 
-  const caregiversData = snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
-
+  const caregiversData = snapshot.data();
   return caregiversData;
 }
 
@@ -98,40 +95,22 @@ async function getCaregiversByEmail(email) {
   return caregiversData;
 }
 
-//function to fetch all residents for a given caregiver
-async function getCaregiversByResidentID(residentID) {
+//function to fetch the residents of a caregiver by caregiverID
+async function getCaregiversResidents(caregiverID) {
   const caregiversRef = db.collection('caregivers');
-  const snapshot = await caregiversRef.where('residentID', '==', residentID).get();
+  const snapshot = await caregiversRef.doc(caregiverID).collection('residents').get();
 
   if (snapshot.empty) {
     console.log('No matching documents.');
     return [];
   }
 
-  const caregiversData = snapshot.docs.map(doc => ({
+  const residentsData = snapshot.docs.map(doc => ({
     id: doc.id,
     ...doc.data()
   }));
 
-  return caregiversData;
-}
-
-//function to fetch caregiver data by email
-async function getCaregiversByEmail(email) {
-  const caregiversRef = db.collection('caregivers');
-  const snapshot = await caregiversRef.where('email', '==', email).get();
-
-  if (snapshot.empty) {
-    console.log('No matching documents.');
-    return [];
-  }
-
-  const caregiversData = snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
-
-  return caregiversData;
+  return residentsData;
 }
 
 
@@ -142,5 +121,6 @@ module.exports = {
   getCaregiversByFirstName,
   getCaregiversByLastName,
   getCaregiversByEmail,
-  getCaregiversByResidentID
+  getCaregiversResidents
+  
 };
