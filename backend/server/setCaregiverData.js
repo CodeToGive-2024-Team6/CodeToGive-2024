@@ -4,17 +4,27 @@ const serviceAccount = require('./codetogive6-firebase-adminsdk-1sqaf-a652c70cae
 
 const db = admin.firestore();
 
+const ref = "residents/";
+
+
 
 //function to set caregiver data
 //need email, firstName, lastName, residentReferences fields
 
 function setCaregiverData(caregiverData) {
     const caregiversRef = db.collection('caregivers');
+
+    //find the length of the resident array
+    for (let i = 0; i < caregiverData.residents.length; i++) {
+        caregiverData.residents[i] = db.collection(ref).doc(caregiverData.residents[i]);
+    }
+
     return caregiversRef.add({
         email: caregiverData.email,
         firstName: caregiverData.firstName,
         lastName: caregiverData.lastName,
-        residentReferences: caregiverData.residentReferences
+        references: caregiverData.residents
+    
     });
 }
 
@@ -22,8 +32,9 @@ function setCaregiverData(caregiverData) {
 
 //function to update caregiver data
 //need email, firstName, lastName, residentReferences fields
-async function updateCaregiverData(caregiverData) {
-    const caregiversRef = db.collection('caregivers').doc(caregiverData.id);
+//if caregiverid == document id, update the fields
+async function updateCaregiverData(caregiverId, caregiverData) {
+    const caregiversRef = db.collection('caregivers').doc(caregiverId);
     return caregiversRef.update({
         email: caregiverData.email,
         firstName: caregiverData.firstName,
@@ -31,6 +42,7 @@ async function updateCaregiverData(caregiverData) {
         residentReferences: caregiverData.residentReferences
     });
 }
+
 
 //function to delete caregiver data
 async function deleteCaregiverData(caregiverId) {
@@ -79,7 +91,14 @@ async function updateCaregiverResidentReferences(caregiverId, residentReferences
 
 
 module.exports = {
-    setCaregiverData
+    setCaregiverData,
+    updateCaregiverData,
+    deleteCaregiverData,
+    updateCaregiverEmail,
+    updateCaregiverFirstName,
+    updateCaregiverLastName,
+    updateCaregiverResidentReferences
+
 };
 
 
