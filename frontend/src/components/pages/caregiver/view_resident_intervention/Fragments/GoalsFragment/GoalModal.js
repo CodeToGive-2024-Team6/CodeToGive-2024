@@ -45,7 +45,7 @@ const GoalModal = ({ isOpen, onClose, onAddEditGoal, goal, mode }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center z-100">
+    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center z-50">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-5 rounded-lg text-black w-3/4 md:w-1/2 lg:w-1/3"
