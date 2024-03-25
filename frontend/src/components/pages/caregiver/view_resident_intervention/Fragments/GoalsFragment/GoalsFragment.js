@@ -5,11 +5,11 @@ import { Plus } from 'lucide-react';
 import GoalModal from './GoalModal';
 
 function GoalsFragment() {
+  const residentId = 'testResident1'; // TODO: replace with how auth provider passes this
   const [objectives, setGoals] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const residentId = 'testResident1';
     const fetchGoals = async () => {
       try {
         const response = await axios.get(`/objectives/${residentId}`);
@@ -26,7 +26,7 @@ function GoalsFragment() {
     setIsModalOpen(true);
   };
 
-  const handleAddGoal = (newGoalData) => {
+  const handleAddGoal = async (newGoalData) => {
     const newGoal = {
       ...newGoalData,
       objectiveId: `id_${Math.random().toString(16).slice(2)}`,
@@ -34,43 +34,41 @@ function GoalsFragment() {
 
     setGoals([...objectives, newGoal]);
 
-    // TODO
-    // axios.post('/objectives', newGoal)
-    //   .then(response => {
-    //     console.log('Goal added successfully');
-    //     // Optionally update objectives list with response data if needed
-    //   })
-    //   .catch(error => {
-    //     console.error('Error adding objective:', error);
-    //   });
+    try {
+      await axios.post(`/setgoals/${residentId}`, newGoal);
+    } catch (error) {
+      console.error('Failed to add new goal:', error);
+    }
   };
 
-  const handleEditGoal = (updatedGoal) => {
+  const handleEditGoal = async (updatedGoal) => {
     const updatedGoals = objectives.map((obj) =>
       obj.objectiveId === updatedGoal.objectiveId ? updatedGoal : obj
     );
     setGoals(updatedGoals);
 
-    // TODO update this objective in your backend here
+    try {
+      await axios.patch(
+        `/objectives/${residentId}/${updatedGoal.objectiveId}`,
+        updatedGoal
+      );
+    } catch (error) {
+      console.error('Failed to update goal:', error);
+    }
   };
 
-  const handleDeleteGoal = (objectiveIdToDelete) => {
+  const handleDeleteGoal = async (objectiveIdToDelete) => {
     setGoals(
       objectives.filter(
         ({ objectiveId }) => objectiveId !== objectiveIdToDelete
       )
     );
 
-    // TODO DELETE request to backend to delete the goal
-    // axios
-    //   .delete(`/objectives/${objectiveIdToDelete}`)
-    //   .then((response) => {
-    //     console.log('Goal deleted successfully');
-    //     // Optionally refresh goals list from backend if necessary
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error deleting goal:', error);
-    //   });
+    try {
+      await axios.delete(`/objectives/${residentId}/${objectiveIdToDelete}`);
+    } catch (error) {
+      console.error('Failed to delete goal:', error);
+    }
   };
 
   const totalGoals = objectives.length;

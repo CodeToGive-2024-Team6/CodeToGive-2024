@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
 
 const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID} = require('./getResidentData.js')
-const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo} = require('./setResidentData');
+const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo, updateGoal, deleteGoal } = require('./setResidentData');
 
 const {getCaregiversAllData,
   getCaregiversByUserID,
@@ -52,6 +52,31 @@ app.get('/objectives/:resident_id', async (req, res) => {
     res.json(info);
   } catch (error) {
     res.status(404).send(error.message);
+  }
+});
+
+app.patch('/objectives/:residentId/:objectiveId', async (req, res) => {
+  const { residentId, objectiveId } = req.params;
+  const updatedGoalData = req.body;
+
+  try {
+    await updateGoal(residentId, objectiveId, updatedGoalData);
+    res.json({ message: 'Goal successfully updated' });
+  } catch (error) {
+    console.error('Error updating goal:', error);
+    res.status(500).send({ message: 'Failed to update goal', error: error.message });
+  }
+});
+
+app.delete('/objectives/:residentId/:objectiveId', async (req, res) => {
+  const { residentId, objectiveId } = req.params;
+
+  try {
+    await deleteGoal(residentId, objectiveId);
+    res.json({ message: 'Goal successfully deleted' });
+  } catch (error) {
+    console.error('Error deleting goal:', error);
+    res.status(500).send({ message: 'Failed to delete goal', error: error.message });
   }
 });
 
