@@ -1,0 +1,99 @@
+.container {
+    max-width: 18000px;
+    margin: 0 auto;
+    padding: 0px;
+    position: relative;
+}
+
+.language-toggle {
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.language-toggle:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
+}
+
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.chart-item {
+    width: calc(50% - 10px);
+    min-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    background-color: #f1f8fa;
+}
+
+.page-bar {
+    background-color: #00AFD7;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-bar h1 {
+    margin: 0;
+}
+
+.print-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.print-button:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
+}
+
+@media print {
+    .chart-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+        padding: 20px;
+        width: 150%;
+    }
+
+    .chart-item {
+        width: 60%;
+        page-break-after: always;
+    }
+
+    .chart-description {
+        margin-top: 5px;
+    }
+
+    .language-toggle,
+    .print-button,
+    .page-bar {
+        display: none;
+    }
+}

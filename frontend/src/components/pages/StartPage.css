@@ -1,21 +1,44 @@
 /* start page */
 
+/* html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+} */
+
 .start-page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height to ensure the page takes at least the full viewport height */
   background-color: #f5efe8;
+  background-size: cover; /* Ensure background covers entire viewport */
+  position: relative; /* Set position to relative for absolute positioning of elements inside */
 }
 
+
 .start-page .header {
+  display: flex;
+}
+
+.start-page .header a {
+  color: #00AFD7;
+  text-decoration: none;
+}
+
+.start-page .description {
+  margin-left: 1150px;
+  padding-top: 30px;
+}
+
+.start-page .border {
+  height: 3px;
+  width: 100%;
+  background-color: #00AFD7;
   margin-bottom: 20px;
-  /* Adjust margin as needed */
 }
 
 .start-page .logo {
   width: 200px;
-  /* Adjust width as needed */
-
 }
 
 .start-page h1 {
@@ -23,10 +46,21 @@
   margin-bottom: 1rem;
 }
 
-.button-container {
+.start-page .button-container {
   display: flex;
   justify-content: space-between;
-  /* Adjust as needed */
+  text-decoration: none;
+}
+
+.start-page .container {
+  display: flex;
+  text-decoration: none;
+}
+
+.start-page .quote {
+  font-size: xx-large;
+  padding-top: 90px;
+  padding-left: 60px;
 }
 
 .start-page .circle {
@@ -43,6 +77,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 1.5rem;
   color: white;
+  text-decoration: none;
 }
 
 .start-page .circle:hover {
@@ -51,38 +86,204 @@
 
 .start-page .circle.caregiver {
   margin-top: 220px;
-  margin-left: 150px;
   margin-right: 20px;
-  /* Add margin between buttons */
+  margin-left: 190px;
+  text-decoration: none;
+
 }
 
 .start-page .circle.resident {
   margin-top: 220px;
-  margin-left: 20px;
-  margin-left: 20px;
-  /* Add margin between buttons */
+  margin-left: 190px;
+  text-decoration: none;
 }
 
 .start-page .houselogo {
   width: 500px;
   height: 600px;
-  margin-right: 20px;
+  margin-left: 130px;
   float: right;
 }
 
 .start-page .rectangle {
   background-color: #00AFD7;
   height: 100px;
+  position: absolute;
+  bottom: 0; /* Position the rectangle at the bottom */
+  left: 0; /* Align the rectangle to the left */
+  right: 0; /* Align the rectangle to the right */
 }
+
 
 .start-page .caregivers-name {
   color: #00AFD7;
   font-size: x-large;
-  margin-left: 193px;
+  margin-left: 227px;
+  text-decoration: none;
 }
 
 .start-page .residents-name {
   color: #00AFD7;
   font-size: x-large;
-  margin-left: 65px;
+  margin-left: 236px;
+  text-decoration: none;
+}
+
+.start-page .heart-container {
+  position: relative;
+}
+
+.start-page .heart {
+  position: absolute;
+}
+
+.start-page .heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 18px;
+  top: 0;
+  width: 18px;
+  height: 30px;
+  background: #00AFD7;
+  border-radius: 30px 30px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.start-page .heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.start-page .x1 {
+  left: 5%;
+}
+
+.start-page .x2 {
+  left: 25%;
+}
+
+.start-page .x3 {
+  left: 55%;
+}
+
+.start-page .x4 {
+  left: 72%;
+}
+
+.start-page .x5 {
+  left: 88%;
+}
+
+.start-page .x6 {
+  left: 33%;
+}
+
+@keyframes moveclouds {
+  0% {
+    top: 0px;
+  }
+
+  100% {
+    top: -500px;
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+
+  100% {
+    margin-left: 50px;
+  }
+}
+
+@keyframes swayWays {
+  0% {
+    transform: rotate(12deg);
+    left: -0.3%;
+  }
+
+  33% {
+    transform: rotate(-2deg);
+    left: 0.7%;
+  }
+
+  100% {
+    transform: rotate(0deg);
+    left: -12%;
+  }
+}
+
+.heart {
+  animation: moveclouds 11s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+
+.heart.x2 {
+  animation: moveclouds 14s linear infinite, sideWays 5s ease-in-out infinite alternate;
+}
+
+.heart.x3 {
+  animation: moveclouds 16s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+
+.heart.x4 {
+  animation: moveclouds 12s linear infinite, sideWays 2s ease-in-out infinite alternate;
+}
+
+.heart.x5 {
+  animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+
+@media screen and (max-width: 768px) {
+  .start-page {
+    background-size: contain; /* Adjust background size to contain */
+  }
+
+  .start-page .logo {
+    width: 150px; /* Adjust logo width for smaller screens */
+  }
+
+  .start-page .circle {
+    width: 150px; /* Adjust button width for smaller screens */
+    height: 150px; /* Adjust button height for smaller screens */
+  }
+
+  .start-page {
+    width: 100%; /* Adjust house logo width for smaller screens */
+    height: auto; /* Adjust house logo height for smaller screens */
+    margin-right: 0; /* Remove right margin for house logo */
+    margin-bottom: 20px; /* Add bottom margin for spacing */
+    float: none; /* Remove float for centering */
+  }
+
+  .start-page .rectangle {
+    height: 50px; /* Adjust rectangle height for smaller screens */
+  }
+
+  .start-page .caregivers-name,
+  .start-page .residents-name {
+    font-size: large; /* Adjust font size for names */
+    margin-left: 0; /* Remove left margin for centering */
+    width: 100%; /* Make names container full width */
+    text-align: center; /* Center the names */
+  }
+
+  .start-page .circle.caregiver,
+  .start-page .circle.resident {
+    margin-left: auto; /* Move buttons to the right */
+    margin-right: auto; /* Move buttons to the left */
+  }
+
+  .start-page .heart-container {
+    margin-top: -50px; /* Adjust heart container position */
+  }
+
+  .houselogo {
+    display: none;
+  }
+
 }

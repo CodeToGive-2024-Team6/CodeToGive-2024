@@ -152,7 +152,8 @@ def menu():
     print("6. Delete community services")
     choice = input("Enter your choice: ")
     return choice
-
+  
+# main() to run menu to delete collections from firebase
 def main():
     choice = menu()
     if choice == "1":

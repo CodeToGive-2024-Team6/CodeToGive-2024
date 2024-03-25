@@ -1,0 +1,188 @@
+.message-container {
+    position: relative; 
+    border: 2px solid #ddd; 
+    border-radius: 8px;
+    padding: 8px;
+    margin: 10px; 
+    width: 100%;
+    height: 560px;
+
+    
+    justify-content: center; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.heading{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    padding: 15px;
+    background-color: #fdf0f8;
+    box-shadow: 0 2px 4px rgba(180, 142, 173, 0.2);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 12px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    padding-right: 40px; 
+    border: 1px solid #ccc; 
+    flex: 1; 
+    height: 32px;
+  }
+  
+  .search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 10px;
+    border: none;
+    color: white; 
+    justify-content: center;
+    font-size: 0.9em; 
+  }
+/*profile styling*/
+.profiles-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 75%;
+    overflow-y: auto;
+    cursor: pointer;
+}
+
+.profile-instance {
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    font-size: 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.profile-instance:hover {
+    background-color: #edf7ff; 
+}
+
+.profile-detail {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    margin-right: 10px; 
+}
+
+.prof-name {
+    font-weight: bold;
+}
+
+.chat-snippet {
+    color: #666;
+    margin-top: 2px;
+}
+
+
+
+
+
+.chat-space{
+    position: absolute;
+    display: flex;
+    right: 3%;
+    width: 64%;
+    height: 87%;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+
+.message-input-container {
+    position: absolute; 
+    display: flex;
+    bottom: 0; 
+    right: 1px;
+    width: 80%;
+    padding: 10px;
+    justify-content: center; 
+}
+
+
+.message-input-container textarea {
+    height: 47px;
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  
+  }
+  
+
+.send-button {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 6%;
+    margin-bottom: 10px;
+    background-color: #cb96b8;; 
+    border: none;
+    padding: 15px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.send-button svg {
+   stroke: white;
+   font-size: 15px;
+  }
+
+
+.send-button:hover {
+    background-color: #fee0fa;
+}
+
+
+.sent-message {
+    display: flex;
+    flex-direction: column; 
+    align-self: flex-end; 
+    max-width: 50%;
+    word-wrap: break-word;
+    margin-bottom: 15px;
+}
+
+.you-text {
+    font-weight: bold;
+    font-size: 8px;
+}
+
+.message-text {
+    background-color: #f0f0f0;
+    padding: 8px;
+    margin: 4px;
+    border-radius: 8px;
+}
+
+.logo-style {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    opacity: 0.1; /* Adjust opacity as needed */
+    z-index: -1;
+    object-fit: cover;
+}
