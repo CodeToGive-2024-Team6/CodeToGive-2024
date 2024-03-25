@@ -101,23 +101,22 @@ function NotesFragment() {
 
                         {showForm && (
                             <div className="modal">
-                                <div className="modal-content">
-                                    <span className="close-button" onClick={() => { setShowForm(false); setIsFormOpen(false) }}>&times;</span>
-                                    <form className="form-container" onSubmit={handleFormSubmit}>
-                                        <br />
-                                        <input name="title" value={newNote.goalTitle} onChange={handleInputChange} placeholder="Title" required />
-                                        <input name="type" value={newNote.type} onChange={handleInputChange} placeholder="Type" required />
-                                        <input name="details" value={newNote.details} onChange={handleInputChange} placeholder="Details" required />
-                                        <input name="observations" value={newNote.observations} onChange={handleInputChange} placeholder="Observations" required />
-                                        <input name="employee" value={newNote.employee} onChange={handleInputChange} placeholder="Employee" required />
-                                        <input name="followupType" value={newNote.followUpType} onChange={handleInputChange} placeholder="Follow up type" required />
-                                        <input name="motive" value={newNote.motive} onChange={handleInputChange} placeholder="Motive" required />
-                                        <input name="interventions" value={newNote.interventions} onChange={handleInputChange} placeholder="Interventions" required />
-                                        <input name="goals" value={newNote.goals} onChange={handleInputChange} placeholder="Goals" required />
-                                        <input name="date" value={newNote.date} onChange={handleInputChange} placeholder="Date (YYYY-MM-DD)" required />
-                                        <br />
-                                        <button type="submit" style={{ marginBottom: '30px' }}>Add a note</button>
-                                    </form>
+                                <span className="close-button" onClick={() => { setShowForm(false); setIsFormOpen(false) }}>&times;</span>
+                                <div className="modal-content">                                    <form className="form-container" onSubmit={handleFormSubmit}>
+                                    <br />
+                                    <input name="title" value={newNote.title} onChange={handleInputChange} placeholder="Title" required />
+                                    <input name="type" value={newNote.type} onChange={handleInputChange} placeholder="Type" required />
+                                    <input name="details" value={newNote.details} onChange={handleInputChange} placeholder="Details" required />
+                                    <input name="observations" value={newNote.observations} onChange={handleInputChange} placeholder="Observations" required />
+                                    <input name="employee" value={newNote.employee} onChange={handleInputChange} placeholder="Employee" required />
+                                    <input name="followupType" value={newNote.followUpType} onChange={handleInputChange} placeholder="Follow up type" required />
+                                    <input name="motive" value={newNote.motive} onChange={handleInputChange} placeholder="Motive" required />
+                                    <input name="interventions" value={newNote.interventions} onChange={handleInputChange} placeholder="Interventions" required />
+                                    <input name="goals" value={newNote.goals} onChange={handleInputChange} placeholder="Goals" required />
+                                    <input name="date" value={newNote.date} onChange={handleInputChange} placeholder="Date (YYYY-MM-DD)" required />
+                                    <br />
+                                    <button type="submit" style={{ marginBottom: '30px' }}>Add a note</button>
+                                </form>
                                 </div>
                             </div>
                         )}
