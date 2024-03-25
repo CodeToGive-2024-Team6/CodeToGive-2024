@@ -1,9 +1,5 @@
 /* start page */
-html, body {
-  overflow-x: hidden;
-  overflow-y: hidden;
 
-}
 .start-page {
   display: flex;
   flex-direction: column;
