@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ObjectiveCard from './ObjectiveCard';
+import GoalCard from './GoalCard';
 
 function GoalsFragment() {
   const [objectives, setObjectives] = useState([]);
@@ -30,7 +30,7 @@ function GoalsFragment() {
     <div className="flex flex-col md:flex-row gap-x-6">
       <div className="flex flex-col flex-1 gap-y-6" style={{ flex: '2 1 0%' }}>
         {objectives.map((objective, index) => (
-          <ObjectiveCard key={index} objective={objective} />
+          <GoalCard key={index} objective={objective} />
         ))}
       </div>
       {objectives.length > 0 ? (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ObjectiveCard = ({ objective }) => {
+const GoalCard = ({ objective }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -64,4 +64,4 @@ const ObjectiveCard = ({ objective }) => {
   );
 };
 
-export default ObjectiveCard;
+export default GoalCard;
