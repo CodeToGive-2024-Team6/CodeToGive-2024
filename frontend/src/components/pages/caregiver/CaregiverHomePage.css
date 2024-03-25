@@ -49,6 +49,7 @@
     gap: 20px;
     width: 40%;
     margin: 20px;
+    padding: 10px;
     position: absolute;
     left: 0;
     top: calc(30% + 40px); /* Adjust this value as needed */
