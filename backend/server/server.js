@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
@@ -12,6 +13,8 @@ const {getCaregiversAllData,
   getCaregiversByResidentID} = require('./getCaregiverData.js')
 
 app.use(express.json()); // Middleware to parse JSON bodies
+
+app.use(cors());
 
 // Define a root route
 app.get('/', (req, res) => {
