@@ -91,13 +91,12 @@
     overflow: auto;
     margin-left: auto;
     padding-bottom: 50px;
-    margin-bottom: 50px;
     position: -webkit-sticky
 }
 
 .close-button {
-    color: #aaa;
     margin-right: 500px;
+    padding-top: 80px;
     font-size: 28px;
     font-weight: bold;
 }
@@ -160,24 +159,16 @@ form input {
 
 .modal-content {
     background-color: #fefefe;
-    margin: auto;
-    /* 15% from the top and centered */
-    border: 1px solid #888;
     width: 30%;
     /* Adjust this value to make the modal smaller or larger */
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
-    border-radius: 20px;
-    margin-bottom: 100px;
-
 }
 
 .form-container {
     width: 100%;
     /* Adjust this value as needed */
-    margin: auto;
     padding: 20px;
     box-sizing: border-box;
     display: flex;
