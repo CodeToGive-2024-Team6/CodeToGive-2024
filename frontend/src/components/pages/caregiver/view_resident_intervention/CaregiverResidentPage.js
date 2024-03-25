@@ -95,6 +95,7 @@ const CaregiverResidentPage = () => {
           {selectedOption === 'RESOURCES' && <ResourcesFragment resident={resident} />}
           {selectedOption === 'MESSAGES' && <MessagesFragment resident={resident} />}
           {selectedOption === 'NOTES' && <NotesFragment resident={resident} />}
+          {selectedOption === 'SURVEYS' && <SurveyFragment resident={resident} />}
         </div>
       </div>
     </div>
