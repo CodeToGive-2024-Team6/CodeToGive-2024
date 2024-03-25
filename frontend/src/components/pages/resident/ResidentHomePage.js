@@ -81,6 +81,7 @@ const HomePage = () => {
       this.classList.add('active');
     }
 
+
     list.forEach((item) => item.addEventListener('click', activeLink));
 
     return () => {
