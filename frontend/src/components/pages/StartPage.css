@@ -5,9 +5,27 @@
   flex-direction: column;
   height: 100vh;
   background-color: #f5efe8;
+  font-family: monospace;
 }
 
 .start-page .header {
+  display: flex;
+}
+
+.start-page .header a {
+  color: #00AFD7;
+  text-decoration: none;
+}
+
+.start-page .description {
+  margin-left: 1150px;
+  padding-top: 30px;
+}
+
+.start-page .border {
+  height: 3px;
+  width: 100%;
+  background-color: #00AFD7;
   margin-bottom: 20px;
 }
 
@@ -20,9 +38,37 @@
   margin-bottom: 1rem;
 }
 
-.button-container {
+.start-page .button-container {
   display: flex;
   justify-content: space-between;
+}
+
+.start-page .container {
+  display: flex;
+}
+
+.start-page .quote {
+  font-size: xx-large;
+  padding-top: 100px;
+  padding-left: 20px;
+}
+
+.start-page .quote2 {
+  font-size: xx-large;
+  padding-top: 100px;
+  padding-left: 20px;
+}
+
+.start-page .quote3 {
+  font-size: xx-large;
+  padding-top: 100px;
+  padding-left: 20px;
+}
+
+.start-page .quote4 {
+  font-size: xx-large;
+  padding-top: 100px;
+  padding-left: 20px;
 }
 
 .start-page .circle {
@@ -47,22 +93,20 @@
 
 .start-page .circle.caregiver {
   margin-top: 220px;
-  margin-left: 150px;
   margin-right: 20px;
-  /* Add margin between buttons */
+  margin-left: 190px;
 }
 
 .start-page .circle.resident {
   margin-top: 220px;
-  margin-left: 20px;
-  margin-left: 20px;
-  /* Add margin between buttons */
+  margin-left: 190px;
 }
 
 .start-page .houselogo {
   width: 500px;
   height: 600px;
-  margin-right: 20px;
+  margin-left: 130px;
+
   float: right;
 }
 
@@ -74,13 +118,15 @@
 .start-page .caregivers-name {
   color: #00AFD7;
   font-size: x-large;
-  margin-left: 193px;
+  margin-left: 227px;
+  text-decoration: none;
 }
 
 .start-page .residents-name {
   color: #00AFD7;
   font-size: x-large;
-  margin-left: 65px;
+  margin-left: 236px;
+  text-decoration: none;
 }
 
 .start-page .heart-container {
@@ -174,21 +220,21 @@
 }
 
 .heart {
-  animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  animation: moveclouds 11s linear infinite, sideWays 4s ease-in-out infinite alternate;
 }
 
 .heart.x2 {
-  animation: moveclouds 25s linear infinite, sideWays 5s ease-in-out infinite alternate;
+  animation: moveclouds 14s linear infinite, sideWays 5s ease-in-out infinite alternate;
 }
 
 .heart.x3 {
-  animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  animation: moveclouds 16s linear infinite, sideWays 4s ease-in-out infinite alternate;
 }
 
 .heart.x4 {
-  animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  animation: moveclouds 12s linear infinite, sideWays 2s ease-in-out infinite alternate;
 }
 
 .heart.x5 {
-  animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
+  animation: moveclouds 17s linear infinite, sideWays 1s ease-in-out infinite alternate;
 }
