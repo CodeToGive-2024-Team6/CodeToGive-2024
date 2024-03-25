@@ -3,28 +3,28 @@ import axios from 'axios';
 import GoalCard from './GoalCard';
 
 function GoalsFragment() {
-  const [objectives, setObjectives] = useState([]);
+  const [objectives, setGoals] = useState([]);
 
   useEffect(() => {
     const residentId = '1';
-    const fetchObjectives = async () => {
+    const fetchGoals = async () => {
       try {
         const response = await axios.get(`/objectives/${residentId}`);
-        setObjectives(response.data[0].objectives); // Assuming the data structure from your example
+        setGoals(response.data[0].objectives); // Assuming the data structure from your example
       } catch (error) {
         console.error('Failed to fetch objectives:', error);
       }
     };
 
-    fetchObjectives();
+    fetchGoals();
   }, []);
 
-  const totalObjectives = objectives.length;
-  const completedObjectives = objectives.filter(
+  const totalGoals = objectives.length;
+  const completedGoals = objectives.filter(
     (objective) => objective.status === 'Completed'
   ).length;
   const completionPercentage =
-    totalObjectives > 0 ? (completedObjectives / totalObjectives) * 100 : 0;
+    totalGoals > 0 ? (completedGoals / totalGoals) * 100 : 0;
 
   return (
     <div className="flex flex-col md:flex-row gap-x-6">
@@ -41,7 +41,7 @@ function GoalsFragment() {
           <div className="flex flex-col shadow-md rounded-2xl p-6 gap-2">
             <div className="text-lg font-medium">Your Progress</div>
             <div>
-              You've completed {completedObjectives} of {totalObjectives}{' '}
+              You've completed {completedGoals} of {totalGoals}{' '}
               objectives!
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
