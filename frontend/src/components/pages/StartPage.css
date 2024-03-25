@@ -5,7 +5,7 @@
   flex-direction: column;
   height: 100vh;
   background-color: white;
-  font-family: monospace;
+  font-family: sans-serif;
 }
 
 .start-page .header {
@@ -41,34 +41,18 @@
 .start-page .button-container {
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
 }
 
 .start-page .container {
   display: flex;
+  text-decoration: none;
 }
 
 .start-page .quote {
   font-size: xx-large;
-  padding-top: 100px;
-  padding-left: 20px;
-}
-
-.start-page .quote2 {
-  font-size: xx-large;
-  padding-top: 100px;
-  padding-left: 20px;
-}
-
-.start-page .quote3 {
-  font-size: xx-large;
-  padding-top: 100px;
-  padding-left: 20px;
-}
-
-.start-page .quote4 {
-  font-size: xx-large;
-  padding-top: 100px;
-  padding-left: 20px;
+  padding-top: 90px;
+  padding-left: 60px;
 }
 
 .start-page .circle {
@@ -85,6 +69,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 1.5rem;
   color: white;
+  text-decoration: none;
 }
 
 .start-page .circle:hover {
@@ -95,18 +80,20 @@
   margin-top: 220px;
   margin-right: 20px;
   margin-left: 190px;
+  text-decoration: none;
+
 }
 
 .start-page .circle.resident {
   margin-top: 220px;
   margin-left: 190px;
+  text-decoration: none;
 }
 
 .start-page .houselogo {
   width: 500px;
   height: 600px;
   margin-left: 130px;
-
   float: right;
 }
 
