@@ -91,6 +91,7 @@ localhost:3000/caregiverbyemail/:email
 
 To add random data to the firebase database in the backend folder:
 - Place the service-account.json file in the backend folder
+
 - Install these python packages:
 ```
 pip3 install faker
