@@ -1,12 +1,20 @@
 /* start page */
 
+/* html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+} */
+
 .start-page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: white;
-  font-family: sans-serif;
+  min-height: 100vh; /* Use min-height to ensure the page takes at least the full viewport height */
+  background-color: #f5efe8;
+  background-size: cover; /* Ensure background covers entire viewport */
+  position: relative; /* Set position to relative for absolute positioning of elements inside */
 }
+
 
 .start-page .header {
   display: flex;
@@ -100,7 +108,12 @@
 .start-page .rectangle {
   background-color: #00AFD7;
   height: 100px;
+  position: absolute;
+  bottom: 0; /* Position the rectangle at the bottom */
+  left: 0; /* Align the rectangle to the left */
+  right: 0; /* Align the rectangle to the right */
 }
+
 
 .start-page .caregivers-name {
   color: #00AFD7;
@@ -119,7 +132,6 @@
 .start-page .heart-container {
   position: relative;
 }
-
 
 .start-page .heart {
   position: absolute;
@@ -223,5 +235,55 @@
 }
 
 .heart.x5 {
-  animation: moveclouds 17s linear infinite, sideWays 1s ease-in-out infinite alternate;
+  animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+
+@media screen and (max-width: 768px) {
+  .start-page {
+    background-size: contain; /* Adjust background size to contain */
+  }
+
+  .start-page .logo {
+    width: 150px; /* Adjust logo width for smaller screens */
+  }
+
+  .start-page .circle {
+    width: 150px; /* Adjust button width for smaller screens */
+    height: 150px; /* Adjust button height for smaller screens */
+  }
+
+  .start-page {
+    width: 100%; /* Adjust house logo width for smaller screens */
+    height: auto; /* Adjust house logo height for smaller screens */
+    margin-right: 0; /* Remove right margin for house logo */
+    margin-bottom: 20px; /* Add bottom margin for spacing */
+    float: none; /* Remove float for centering */
+  }
+
+  .start-page .rectangle {
+    height: 50px; /* Adjust rectangle height for smaller screens */
+  }
+
+  .start-page .caregivers-name,
+  .start-page .residents-name {
+    font-size: large; /* Adjust font size for names */
+    margin-left: 0; /* Remove left margin for centering */
+    width: 100%; /* Make names container full width */
+    text-align: center; /* Center the names */
+  }
+
+  .start-page .circle.caregiver,
+  .start-page .circle.resident {
+    margin-left: auto; /* Move buttons to the right */
+    margin-right: auto; /* Move buttons to the left */
+  }
+
+  .start-page .heart-container {
+    margin-top: -50px; /* Adjust heart container position */
+  }
+
+  .houselogo {
+    display: none;
+  }
+
 }

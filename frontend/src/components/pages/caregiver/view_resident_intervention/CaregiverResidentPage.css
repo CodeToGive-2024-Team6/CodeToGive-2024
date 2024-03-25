@@ -30,6 +30,10 @@
 
 }
 
+.additional-content-caregiver .caregiver-fragments {
+    display: flex;
+}
+
 .resident-profile-container-caregiver {
     display: flex;
     justify-content: space-between;
