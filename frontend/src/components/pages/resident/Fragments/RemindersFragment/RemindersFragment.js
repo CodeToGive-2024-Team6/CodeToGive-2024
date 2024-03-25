@@ -50,15 +50,6 @@ function RemindersFragment( {resident} ) {
     }, []); // The empty array ensures this effect runs once after the initial render
     console.log(followUps);
 
-    //get a list of all comm
-
-   
-
-
-
-
-
-
 
     const [newReminder, setNewReminder] = useState({ heading: '', meetingInfo: '', date: '', time: '', type: '', note: '', communication: ''});
     const [showForm, setShowForm] = useState(false);
@@ -82,11 +73,50 @@ function RemindersFragment( {resident} ) {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        setReminders([...reminders, newReminder]);
-        setNewReminder({ heading: '', meetingInfo: '', date: '', time: '' , type: '', note: '', communication: ''});
+      
+        // Prepare the new reminder data
+        const newFollowUpData = {
+          date: new Date(`${newReminder.date}T${newReminder.time}`),
+          meansOfCommunication: newReminder.communication,
+          note: newReminder.meetingInfo,
+          title: newReminder.heading,
+          type: newReminder.type
+        };
+      
+        // Add the new reminder to the Firebase
+        fetch(`/setfollowups/1YBJhlX3AhY3EzEbHEtv`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newFollowUpData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                setFollowUps([...followUps, newFollowUpData]);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+
+        
+          
+        // Clear the form inputs
+        setNewReminder({
+          heading: '',
+          meetingInfo: '',
+          date: '',
+          time: '',
+          type: '',
+          communication: ''
+        });
+      
+        // Close the form
         setShowForm(false);
         setIsFormOpen(false);
-    };
+      };
 
     const handleLongPress = (index) => {
         const newReminders = [...reminders];
