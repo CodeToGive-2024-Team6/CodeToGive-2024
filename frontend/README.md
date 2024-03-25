@@ -11,5 +11,6 @@ To instal the icons package
 ### `npm install lucide-react`
 ### `npm install chart.js`
 ### `npm install primereact primeicons`
+### `npm install axios`
 
 

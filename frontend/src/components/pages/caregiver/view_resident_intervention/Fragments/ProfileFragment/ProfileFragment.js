@@ -1,12 +1,39 @@
 import React from 'react';
+import { useEffect, useState } from "react";
 import './ProfileFragment.css';
 
 function ProfileFragment() {
+    const [residents, setResidents] = useState([]);
+    const [displayedResidents, setDisplayedResidents] = useState([]);
+    
+    // Fetch residents data from the endpoint
+    useEffect(() => {
+        fetch('/residentalldata')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                console.log('here')
+                // Transform data to match the existing structure expected by the rendering logic
+                const transformedData = data.map(resident => ({
+                    name: `${resident.firstName} ${resident.lastName}`,
+                    caregiver: resident.caregiver,
+                    age: resident.age,
+                    borough: resident.borough,
+                    income: resident.income,
+                    significantPersons: resident.significantPersons,
+                    immigrant: resident.immigrationStatus,
+                    house: resident.currentAccommodation,
+                }));
+                setResidents(transformedData);
+                setDisplayedResidents(transformedData);
+            })
+            .catch(error => console.error('Error fetching resident data:', error));
+    }, []); // The empty array ensures this effect runs once after the initial render
 
     return (
         <div className='profile-wrapper'>
             <div className='assigned-caregiver'>
-                <p>Assigned Caregiver: Caregiver Name</p>
+                <p>Assigned Caregiver: </p>
             </div>
             <div className="resident-name">
                 <h1>Resident Name</h1>
