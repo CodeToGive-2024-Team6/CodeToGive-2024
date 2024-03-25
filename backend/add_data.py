@@ -169,6 +169,7 @@ def add_follow_up_collection_to_residents():
                 follow_up_date = plan_start_date + timedelta(days=random.randint(0, (plan_end_date - plan_start_date).days))
                 # Add a dummy document to create the collection
                 follow_up_collection_ref.add({
+                    "title": fake.sentence(nb_words=3),
                     "followUpDate": follow_up_date,
                     "type": random.choice(["appointment", "meeting", "checkpoint"]),
                     "note": fake.paragraph(nb_sentences=2),
@@ -195,7 +196,7 @@ def add_objectives_collection_to_residents(resident_ref):
         }
         # Create a new objective document and store its reference
         new_objective, new_objective_ref = objectives_collection_ref.add(objective_data)
-        objectives_refs.append(new_objective_ref.id)
+        objectives_refs.append(new_objective_ref)
     
     return objectives_refs
 
@@ -339,10 +340,6 @@ def main():
             add_resources(num_resources)
             print(f"{num_resources} resources added to Firestore.")
         else:
-            break
-        
+            break       
         
 main()
-
-
-
