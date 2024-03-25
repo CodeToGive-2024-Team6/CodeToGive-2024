@@ -48,6 +48,23 @@ Access the server by using the following local address in a browser:
 localhost:3000
 ```
 
+5 endpoints are currently created to fetch resident data (Use 1 as a resident_id to access test data):
+```
+localhost:3000/residentinfo/:resident_id
+```
+```
+localhost:3000/objectives/:resident_id
+```
+```
+localhost:3000/notes/:resident_id
+```
+```
+localhost:3000/residentresources/:resident_id
+```
+```
+localhost:3000/followups/:resident_id
+```
+
 >[!IMPORTANT]
 > Nothing yet!
 

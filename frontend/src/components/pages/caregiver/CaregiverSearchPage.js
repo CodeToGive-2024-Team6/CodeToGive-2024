@@ -1,17 +1,25 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import './CaregiverSearchPage.css'; // Import CSS file
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { VscAccount } from "react-icons/vsc";
 import { useNavigate } from 'react-router-dom';
+import { MdNavigateBefore } from "react-icons/md";
+
 
 const CaregiverSearchPage = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
     const allResidents = useMemo(() => [
         { name: 'Resident 1', house: 'House A' },
         { name: 'Resident 2', house: 'House B' },
         { name: 'Resident 3', house: 'House A' },
         { name: 'Resident 4', house: 'House C' }
     ], []);
+
+
+    
+
+
     const [searchValue, setSearchValue] = useState('');
     const [displayedResidents, setDisplayedResidents] = useState(allResidents);
     const [currentPage, setCurrentPage] = useState(1);
@@ -59,7 +67,11 @@ const CaregiverSearchPage = () => {
     return (
         <div>
             <div className="header-bar">
-                <h1>Caregiver Search</h1>
+                <div className='search-before'>
+                    <Link to="/caregiver_homepage">
+                        <MdNavigateBefore />
+                    </Link>
+                </div>
                 <input
                     className="search-bar"
                     type="text"
