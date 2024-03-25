@@ -4,9 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the environment variable PORT or 3000 if not set
 
-const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID} = require('./getResidentData.js')
-const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo, updateGoal, deleteGoal } = require('./setResidentData');
-
+const {getResidentsAllData,getResidentsByUserID, getObjectivesByUserID, getChronologicalNotesByUserID, getResourcesByUserID, getFollowupsByUserID, getFollowUpsForResident} = require('./getResidentData.js');
+const { setGoals, setNotes, setResources, setFollowUps, setResidentInfo, updateGoal, deleteGoal, deleteFollowUp } = require('./setResidentData.js');
 const {getCaregiversAllData,
   getCaregiversByUserID,
   getCaregiversByFirstName,
@@ -125,6 +124,19 @@ app.get('/followups/:resident_id', async (req, res) => {
     res.status(404).send(error.message);
   }
 });
+
+
+// Endpoint that lists all followups listed by caregiver. Currently a placeholder.
+app.get('/followupsforresident/:resident_id', async (req, res) => {
+  const residentId = req.params.resident_id;
+  try {
+    const info = await getFollowUpsForResident(residentId);
+    res.json(info);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
 
 // Endpoint that lists all caregivers. Currently a placeholder.
 app.get('/caregivers', async (req, res) => {
@@ -322,6 +334,20 @@ app.post('/setfollowups/:residentId', async (req, res) => {
   } catch (error) {
     console.error('Error adding Follow-ups:', error);
     res.status(500).send({ message: 'Failed to add Follow-ups', error: error.message });
+  }
+});
+
+
+// DELETE endpoint to delete a followup for a resident
+app.delete('/deletefollowup/:residentId/:followUpId', async (req, res) => {
+  const { residentId, followUpId } = req.params;
+
+  try {
+    await deleteFollowUp(residentId, followUpId);
+    res.json({ message: 'Follow-up successfully deleted' });
+  } catch (error) {
+    console.error('Error deleting follow-up:', error);
+    res.status(500).send({ message: 'Failed to delete follow-up', error: error.message });
   }
 });
 
